@@ -24,7 +24,7 @@ function Drawer(prop: Prop) {
   return (
     <div className={classes.main}>
       <DrawerTitle />
-      <DrawerContent />
+      <DrawerContent rootModule={prop.rootModule} />
     </div>
   )
 }

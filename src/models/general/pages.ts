@@ -3,6 +3,7 @@ export interface Page {
   path: string
   icon: JSX.Element
   page: JSX.Element
+  index: number
   subpage?: SubPage
 }
 
@@ -13,5 +14,6 @@ export interface SubPage {
 
 export interface RootModule {
   moduleName: string
+  index: number
   pages: Page[]
 }

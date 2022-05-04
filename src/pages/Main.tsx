@@ -18,47 +18,55 @@ import PageLayout from '../components/layout/PageLayout'
 const pages: RootModule[] = [
   {
     moduleName: 'Menu',
+    index: 1,
     pages: [
       {
-        label: 'overview',
+        label: 'Overview',
         path: '/overview',
         icon: <OverviewIcon />,
         page: <Overview />,
+        index: 1,
       },
       {
-        label: 'trends',
+        label: 'Trends',
         path: '/trends',
         icon: <TrendsIcon />,
         page: <Trends />,
+        index: 2,
       },
     ],
   },
   {
     moduleName: 'Others',
+    index: 2,
     pages: [
       {
-        label: 'coins',
+        label: 'Coins',
         path: '/coins',
         icon: <CoinsIcon />,
         page: <Coins />,
+        index: 3,
       },
       {
-        label: 'exchange',
+        label: 'Exchange',
         path: '/exchange',
         icon: <ExchangeIcon />,
         page: <Exchange />,
+        index: 4,
       },
       {
-        label: 'defi',
+        label: 'Defi',
         path: '/defi',
         icon: <DefiIcon />,
         page: <Defi />,
+        index: 5,
       },
       {
-        label: 'nft',
+        label: 'NFT',
         path: '/nft',
         icon: <NFTIcon />,
         page: <NFT />,
+        index: 6,
       },
     ],
   },
