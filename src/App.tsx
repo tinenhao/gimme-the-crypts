@@ -1,5 +1,6 @@
 import React from 'react'
 import Erbaum from './assets/fonts/Erbaum-Bold.woff'
+import Main from './pages/Main'
 import {
   createTheme,
   CssBaseline,
@@ -11,7 +12,7 @@ type fontDisplay = 'swap' | 'auto'
 
 const erbaum = {
   fontFamily: 'Erbaum',
-  fontStyle: 'semi-bold',
+  fontStyle: 'bold',
   fontDisplay: 'swap' as fontDisplay,
   fontWeight: 300,
   src: `
@@ -32,7 +33,9 @@ const theme: Theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Erbaum', sans-serif !important",
+    allVariants: {
+      fontFamily: "'erbaum', sans-serif !important",
+    },
   },
   overrides: {
     MuiCssBaseline: {
@@ -43,13 +46,10 @@ const theme: Theme = createTheme({
   },
 })
 
-// Drystick Semi Bold
-// Erbaum Book
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div>test</div>
+      <Main />
       <CssBaseline />
     </ThemeProvider>
   )
