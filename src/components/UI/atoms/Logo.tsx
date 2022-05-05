@@ -4,8 +4,8 @@ import logo from '../../../assets/logo.png'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
-    height: '2.5rem',
-    width: '2.5rem',
+    height: '40px',
+    width: '40px',
     margin: 'auto',
     backgroundImage: `url(${logo})`,
     backgroundSize: 'contain',

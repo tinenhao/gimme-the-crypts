@@ -1,14 +1,15 @@
 import React from 'react'
 import { RootModule } from '../../../models/general/pages'
-import { makeStyles, Theme } from '@material-ui/core'
 import {
+  makeStyles,
+  Theme,
   List,
-  ListItemButton,
+  ListItem,
   ListItemAvatar,
   ListItemText,
   Avatar,
   Typography,
-} from '@mui/material'
+} from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -28,12 +29,17 @@ function DrawerTabs(pages: RootModule[]) {
       <Typography>{section.moduleName}</Typography>
       <List>
         {section.pages.map((element) => (
-          <ListItemButton key={element.index} disableGutters divider>
+          <ListItem
+            key={element.index}
+            disableGutters
+            button
+            onClick={() => console.log('test')}
+          >
             <ListItemAvatar>
               <Avatar>{element.icon}</Avatar>
             </ListItemAvatar>
             <ListItemText primary={element.label} />
-          </ListItemButton>
+          </ListItem>
         ))}
       </List>
     </div>

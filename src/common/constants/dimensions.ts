@@ -1,3 +1,3 @@
-export const drawerWidth = '19vw'
+export const drawerWidth = '280px'
 
-export const appBarHeight = '10vh'
+export const appBarHeight = '88px'

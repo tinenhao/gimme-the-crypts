@@ -1,15 +1,13 @@
 import React from 'react'
-import { makeStyles, Theme } from '@material-ui/core'
+import { makeStyles, Theme, Drawer as MuiDrawer } from '@material-ui/core'
 import { RootModule } from '../../../models/general/pages'
 import { drawerWidth } from '../../../common/constants/dimensions'
 import DrawerTitle from '../molecules/DrawerTitle'
 import DrawerContent from '../molecules/DrawerContent'
 
 const useStyles = makeStyles((theme: Theme) => ({
-  main: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100vh',
+  drawerPaper: {
+    background: 'transparent',
     width: drawerWidth,
   },
 }))
@@ -22,10 +20,10 @@ function Drawer(prop: Prop) {
   const classes = useStyles()
 
   return (
-    <div className={classes.main}>
+    <MuiDrawer classes={{ paper: classes.drawerPaper }} variant="permanent">
       <DrawerTitle />
       <DrawerContent rootModule={prop.rootModule} />
-    </div>
+    </MuiDrawer>
   )
 }
 

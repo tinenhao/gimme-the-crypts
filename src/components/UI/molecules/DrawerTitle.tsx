@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   main: {
     display: 'flex',
     height: appBarHeight,
-    width: drawerWidth,
+    marginLeft: '20px',
   },
   type: {
     margin: 'auto',
