@@ -4,10 +4,12 @@ import { Theme, makeStyles } from '@material-ui/core/styles'
 import { RootModule, Page } from '../../models/general/pages'
 import Drawer from '../UI/organisms/Drawer'
 import AppBar from '../UI/organisms/AppBar'
+import { drawerWidth, appBarHeight } from '../../common/constants/dimensions'
 
 const useStyles = makeStyles((theme: Theme) => ({
-  main: {
-    display: 'flex',
+  content: {
+    marginTop: appBarHeight,
+    marginLeft: drawerWidth,
   },
 }))
 
@@ -23,14 +25,18 @@ function PageLayout(prop: Prop) {
     .reduce((acc, element) => acc.concat(element), [])
 
   return (
-    <div className={classes.main}>
-      <AppBar />
+    <div>
       <Drawer rootModule={prop.rootModule} />
-      <Routes>
-        {pages.map((page: Page) => {
-          return <Route key={page.path} path={page.path} element={page.page} />
-        })}
-      </Routes>
+      <AppBar />
+      <div className={classes.content}>
+        <Routes>
+          {pages.map((page: Page) => {
+            return (
+              <Route key={page.path} path={page.path} element={page.page} />
+            )
+          })}
+        </Routes>
+      </div>
     </div>
   )
 }

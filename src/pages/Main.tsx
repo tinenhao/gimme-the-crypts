@@ -1,12 +1,14 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { RootModule } from '../models/general/pages'
-import OverviewIcon from '@mui/icons-material/Whatshot'
-import TrendsIcon from '@mui/icons-material/BarChart'
-import CoinsIcon from '@mui/icons-material/Paid'
-import ExchangeIcon from '@mui/icons-material/AccountBalance'
-import DefiIcon from '@mui/icons-material/Memory'
-import NFTIcon from '@mui/icons-material/CatchingPokemon'
+import {
+  Whatshot as OverviewIcon,
+  BarChart as TrendsIcon,
+  Paid as CoinsIcon,
+  AccountBalance as ExchangeIcon,
+  Memory as DefiIcon,
+  CatchingPokemon as NFTIcon,
+} from '@mui/icons-material'
 import Overview from './Menu/Overview'
 import Trends from './Menu/Trends'
 import Coins from './Others/Coins'
