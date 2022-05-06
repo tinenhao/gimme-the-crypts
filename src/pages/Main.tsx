@@ -22,7 +22,7 @@ const pages: RootModule[] = [
     pages: [
       {
         label: 'Overview',
-        path: '/overview',
+        path: '/',
         icon: <OverviewIcon />,
         page: <Overview />,
         index: 1,

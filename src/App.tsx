@@ -31,6 +31,12 @@ const theme: Theme = createTheme({
       primary: '#fdfdfd',
       secondary: '#303244',
     },
+    primary: {
+      main: '#0890fe',
+    },
+    secondary: {
+      main: '#4f46ba',
+    },
   },
   typography: {
     allVariants: {
