@@ -15,7 +15,7 @@ import Coins from './Others/Coins'
 import Exchange from './Others/Exchange'
 import Defi from './Others/Defi'
 import NFT from './Others/NFT'
-import PageLayout from '../components/layout/PageLayout'
+import PageLayout from '../components/template/PageLayout'
 
 const pages: RootModule[] = [
   {

@@ -5,13 +5,16 @@ import {
   Email as EmailIcon,
   LinkedIn as LinkedInIcon,
 } from '@mui/icons-material'
+import Tooltip from '../../template/Tooltip'
+import { stepClasses } from '@mui/material'
 
 interface Prop {
   type: 'email' | 'linkedin' | 'github'
 }
 
-interface Pair {
+interface Triple {
   link: string
+  title: string
   icon: JSX.Element
 }
 
@@ -19,32 +22,49 @@ const useStyles = makeStyles((theme: Theme) => ({
   main: {
     backgroundColor: theme.palette.background.paper,
     borderRadius: '15px',
+    '&:hover': {
+      transform: 'scale(1.15)',
+    },
   },
 }))
 
 function SideButton(prop: Prop) {
   const classes = useStyles()
   const dict = {
-    email: 'mailto:tinenhao@hotmail.com',
-    linkedin: 'https://www.linkedin.com/in/tinenhao/',
-    github: 'https://github.com/tinenhao/gimme-the-crypts',
+    emailLink: 'mailto:tinenhao@hotmail.com',
+    linkedinLink: 'https://www.linkedin.com/in/tinenhao/',
+    githubLink: 'https://github.com/tinenhao/gimme-the-crypts',
+    emailTitle: 'Drop me an email',
+    linkedinTitle: 'Connect with me',
+    githubTitle: 'View Project',
   }
 
-  const pair: Pair =
+  const triple: Triple =
     prop.type === 'email'
-      ? { link: dict.email, icon: <EmailIcon style={{ fill: 'white' }} /> }
+      ? {
+          link: dict.emailLink,
+          title: dict.emailTitle,
+          icon: <EmailIcon style={{ fill: 'white' }} />,
+        }
       : prop.type === 'github'
-      ? { link: dict.github, icon: <GitHubIcon style={{ fill: 'white' }} /> }
+      ? {
+          link: dict.githubLink,
+          title: dict.githubTitle,
+          icon: <GitHubIcon style={{ fill: 'white' }} />,
+        }
       : {
-          link: dict.linkedin,
+          link: dict.linkedinLink,
+          title: dict.linkedinTitle,
           icon: <LinkedInIcon style={{ fill: 'white' }} />,
         }
 
   return (
     <div className={classes.main}>
-      <IconButton onClick={(e) => (window.open(pair.link), '_blank')}>
-        {pair.icon}
-      </IconButton>
+      <Tooltip title={triple.title}>
+        <IconButton onClick={(e) => (window.open(triple.link), '_blank')}>
+          {triple.icon}
+        </IconButton>
+      </Tooltip>
     </div>
   )
 }

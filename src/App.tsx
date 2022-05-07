@@ -37,6 +37,9 @@ const theme: Theme = createTheme({
     secondary: {
       main: '#4f46ba',
     },
+    success: {
+      main: '#ff4267',
+    },
   },
   typography: {
     allVariants: {
