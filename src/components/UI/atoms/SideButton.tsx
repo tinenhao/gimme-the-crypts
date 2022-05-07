@@ -6,7 +6,6 @@ import {
   LinkedIn as LinkedInIcon,
 } from '@mui/icons-material'
 import Tooltip from '../../template/Tooltip'
-import { stepClasses } from '@mui/material'
 
 interface Prop {
   type: 'email' | 'linkedin' | 'github'
