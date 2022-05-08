@@ -19,7 +19,7 @@ import PageLayout from '../components/template/PageLayout'
 
 const pages: RootModule[] = [
   {
-    moduleName: 'Menu',
+    moduleName: 'Main',
     index: 1,
     pages: [
       {

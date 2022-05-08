@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       color: theme.palette.text.primary,
     },
   },
+  options: {
+    marginLeft: '12px',
+    width: '270px',
+  },
 }))
 
 function SearchBar() {
@@ -39,8 +43,10 @@ function SearchBar() {
     <Box>
       <Autocomplete
         clearOnBlur
+        clearOnEscape
         freeSolo
         options={coins}
+        classes={{ paper: classes.options }}
         className={classes.main}
         renderInput={(params) => (
           <TextField
