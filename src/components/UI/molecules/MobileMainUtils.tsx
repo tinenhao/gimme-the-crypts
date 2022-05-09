@@ -1,6 +1,11 @@
-import React from 'react'
-import { makeStyles, Theme, Box, IconButton } from '@material-ui/core'
-import { Menu as DrawerIcon, Search as AppBarIcon } from '@mui/icons-material'
+import React, { useState } from 'react'
+import { makeStyles, Theme, Box, IconButton, Slide } from '@material-ui/core'
+import {
+  Menu as DrawerIcon,
+  Search as AppBarIcon,
+  Clear as CloseIcon,
+} from '@mui/icons-material'
+import SearchBar from '../molecules/SearchBar'
 
 interface Prop {
   toggleDrawer: () => void
@@ -19,23 +24,48 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: 'scale(1.15)',
     },
   },
+  appBar: {
+    display: 'flex',
+    backgroundColor: theme.palette.background.default,
+    position: 'absolute',
+    width: '100%',
+    left: 15,
+    zIndex: 1,
+  },
 }))
 
 function MobileMainUtils(prop: Prop) {
   const classes = useStyles()
+  const [appBarOpen, setAppBarOpen] = useState<boolean>(false)
+
+  function handleDrawerClick() {
+    setAppBarOpen(!appBarOpen)
+  }
 
   return (
     <Box className={classes.main}>
-      <div className={classes.button}>
-        <IconButton onClick={prop.toggleDrawer}>
-          <DrawerIcon style={{ fill: 'white' }} />
-        </IconButton>
-      </div>
-      <div className={classes.button} style={{ marginLeft: 10 }}>
-        <IconButton>
-          <AppBarIcon style={{ fill: 'white' }} />
-        </IconButton>
-      </div>
+      <IconButton onClick={prop.toggleDrawer} className={classes.button}>
+        <DrawerIcon style={{ fill: 'white' }} />
+      </IconButton>
+      <IconButton
+        onClick={handleDrawerClick}
+        className={classes.button}
+        style={{ marginLeft: 10 }}
+      >
+        <AppBarIcon style={{ fill: 'white' }} />
+      </IconButton>
+      <Slide direction="down" in={appBarOpen} appear={false}>
+        <Box className={classes.appBar}>
+          <SearchBar />
+          <IconButton
+            className={classes.button}
+            style={{ marginLeft: 10 }}
+            onClick={handleDrawerClick}
+          >
+            <CloseIcon style={{ fill: 'white' }} />
+          </IconButton>
+        </Box>
+      </Slide>
     </Box>
   )
 }
