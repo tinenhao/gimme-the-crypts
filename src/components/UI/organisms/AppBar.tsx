@@ -25,7 +25,7 @@ function AppBar() {
   const classes = useStyles()
 
   return (
-    <MuiAppBar className={classes.main}>
+    <MuiAppBar className={classes.main} elevation={0}>
       <Toolbar className={classes.toolbar}>
         <SearchBar />
         <SideUtils />

@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& .MuiTextField-root': {
       height: '50px',
       width: '300px',
+      marginLeft: '10px',
       '& .MuiOutlinedInput-root': {
         borderRadius: '20px',
         padding: '6px 16px',
