@@ -150,34 +150,34 @@ function Overview() {
 
       <Hidden mdUp>
         <Grid container spacing={3}>
-          <Grid item xs={12} style={{ height: 300 }}>
+          <Grid item xs={12} style={{ height: 200 }}>
             <IndividualCoinCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 300 }}>
+          <Grid item xs={12} style={{ height: 200 }}>
             <IndividualCoinCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 300 }}>
+          <Grid item xs={12} style={{ height: 200 }}>
             <IndividualCoinCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 300 }}>
+          <Grid item xs={12} style={{ height: 200 }}>
             <IndividualCoinCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 'fit-content' }}>
+          <Grid item xs={12} style={{ height: 700 }}>
             <CoinListCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 300 }}>
+          <Grid item xs={12} style={{ height: 500 }}>
             <MarketCapCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 300 }}>
+          <Grid item xs={12} style={{ height: 500 }}>
             <DefiDominanceCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 200 }}>
+          <Grid item xs={12} style={{ height: 500 }}>
             <ExchangeRateCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 200 }}>
+          <Grid item xs={12} style={{ height: 500 }}>
             <HashRateCard />
           </Grid>
-          <Grid item xs={12} style={{ height: 200 }}>
+          <Grid item xs={12} style={{ height: 500 }}>
             <GasPriceCard />
           </Grid>
         </Grid>
