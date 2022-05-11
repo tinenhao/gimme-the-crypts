@@ -14,7 +14,7 @@ interface Prop {
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
-    background: 'transparent',
+    backgroundColor: theme.palette.background.default,
   },
   toolbar: {
     display: 'flex',

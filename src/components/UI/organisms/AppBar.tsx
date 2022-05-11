@@ -7,11 +7,11 @@ import {
 } from '@material-ui/core'
 import SideUtils from '../molecules/SideUtils'
 import SearchBar from '../molecules/SearchBar'
-import { drawerWidth } from '../../../common/constants/dimensions'
+import { drawerWidth } from '../../../common/dimensions'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
-    background: 'transparent',
+    backgroundColor: theme.palette.background.default,
   },
   toolbar: {
     display: 'flex',

@@ -11,7 +11,7 @@ import {
   appBarHeight,
   leftMargin,
   rightMargin,
-} from '../../common/constants/dimensions'
+} from '../../common/dimensions'
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {

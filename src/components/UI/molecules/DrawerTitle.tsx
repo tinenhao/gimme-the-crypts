@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Theme, Typography } from '@material-ui/core'
-import { appBarHeight, drawerWidth } from '../../../common/constants/dimensions'
+import { appBarHeight, drawerWidth } from '../../../common/dimensions'
 import Logo from '../atoms/Logo'
 
 const useStyles = makeStyles((theme: Theme) => ({

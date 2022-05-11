@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles, Theme, Drawer as MuiDrawer } from '@material-ui/core'
 import { RootModule } from '../../../models/general/pages'
-import { drawerWidth } from '../../../common/constants/dimensions'
+import { drawerWidth } from '../../../common/dimensions'
 import DrawerTitle from '../molecules/DrawerTitle'
 import DrawerContent from '../molecules/DrawerContent'
 
