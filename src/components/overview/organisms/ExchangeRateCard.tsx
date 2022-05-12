@@ -1,18 +1,18 @@
 import React from 'react'
 import { makeStyles, Theme } from '@material-ui/core'
-import CardLayout from '../template/CardLayout'
+import CardLayout from '../../template/CardLayout'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {},
 }))
 
-function GasPriceCard() {
+function ExchangeRateCard() {
   const classes = useStyles()
   return (
     <CardLayout>
-      <div> Gas Price Card </div>
+      <div> Exchange Rate Card </div>
     </CardLayout>
   )
 }
 
-export default GasPriceCard
+export default ExchangeRateCard

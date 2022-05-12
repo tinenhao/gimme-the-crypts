@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Theme } from '@material-ui/core'
-import CardLayout from '../template/CardLayout'
+import CardLayout from '../../template/CardLayout'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {},

@@ -1,12 +1,12 @@
 import React from 'react'
 import { makeStyles, Theme, useTheme, Grid, Hidden } from '@material-ui/core'
-import CoinListCard from '../../components/overview/CoinListCard'
-import DefiDominanceCard from '../../components/overview/DefiDominanceCard'
-import ExchangeRateCard from '../../components/overview/ExchangeRateCard'
-import GasPriceCard from '../../components/overview/GasPriceCard'
-import HashRateCard from '../../components/overview/HashRateCard'
-import IndividualCoinCard from '../../components/overview/IndividualCoinCard'
-import MarketCapCard from '../../components/overview/MarketCapCard'
+import CoinListCard from '../../components/overview/organisms/CoinListCard'
+import DefiDominanceCard from '../../components/overview/organisms/DefiDominanceCard'
+import ExchangeRateCard from '../../components/overview/organisms/ExchangeRateCard'
+import GasPriceCard from '../../components/overview/organisms/GasPriceCard'
+import HashRateCard from '../../components/overview/organisms/HashRateCard'
+import IndividualCoinCard from '../../components/overview/organisms/IndividualCoinCard'
+import MarketCapCard from '../../components/overview/organisms/MarketCapCard'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -33,16 +33,16 @@ function Overview() {
           <Grid item>
             <Grid container spacing={3}>
               <Grid item md={3} style={{ height: 230 }}>
-                <IndividualCoinCard />
+                <IndividualCoinCard rank={0} />
               </Grid>
               <Grid item md={3} style={{ height: 230 }}>
-                <IndividualCoinCard />
+                <IndividualCoinCard rank={1} />
               </Grid>
               <Grid item md={3} style={{ height: 230 }}>
-                <IndividualCoinCard />
+                <IndividualCoinCard rank={2} />
               </Grid>
               <Grid item md={3} style={{ height: 230 }}>
-                <IndividualCoinCard />
+                <IndividualCoinCard rank={3} />
               </Grid>
             </Grid>
           </Grid>
@@ -98,20 +98,20 @@ function Overview() {
           <Grid item>
             <Grid container spacing={3} style={{ height: 300 }}>
               <Grid item md={6}>
-                <IndividualCoinCard />
+                <IndividualCoinCard rank={0} />
               </Grid>
               <Grid item md={6} style={{ height: 300 }}>
-                <IndividualCoinCard />
+                <IndividualCoinCard rank={1} />
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
             <Grid container spacing={3} style={{ height: 300 }}>
               <Grid item md={6}>
-                <IndividualCoinCard />
+                <IndividualCoinCard rank={2} />
               </Grid>
               <Grid item md={6} style={{ height: 300 }}>
-                <IndividualCoinCard />
+                <IndividualCoinCard rank={3} />
               </Grid>
             </Grid>
           </Grid>
@@ -151,16 +151,16 @@ function Overview() {
       <Hidden mdUp>
         <Grid container spacing={3}>
           <Grid item xs={12} style={{ height: 200 }}>
-            <IndividualCoinCard />
+            <IndividualCoinCard rank={0} />
           </Grid>
           <Grid item xs={12} style={{ height: 200 }}>
-            <IndividualCoinCard />
+            <IndividualCoinCard rank={1} />
           </Grid>
           <Grid item xs={12} style={{ height: 200 }}>
-            <IndividualCoinCard />
+            <IndividualCoinCard rank={2} />
           </Grid>
           <Grid item xs={12} style={{ height: 200 }}>
-            <IndividualCoinCard />
+            <IndividualCoinCard rank={3} />
           </Grid>
           <Grid item xs={12} style={{ height: 700 }}>
             <CoinListCard />
