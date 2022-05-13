@@ -65,7 +65,7 @@ function IndividualCoinCard(prop: Prop) {
     } else if (Object.keys(coinMarketChart.value[1]).length !== 0) {
       setIsLoading3(false)
     }
-  }, [dispatch, coinMarketChart.status, coinMarketChart.value])
+  }, [dispatch, coinMarketChart.status, coinMarketChart.value, top4.length])
 
   return (
     <CardLayout>
