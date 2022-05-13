@@ -35,7 +35,7 @@ function TrendingSparkline(prop: Prop) {
     <ResponsiveContainer height={120} width="100%">
       <AreaChart
         data={chartdata}
-        margin={{ top: 0, right: 30, bottom: 0, left: 25 }}
+        margin={{ top: 0, right: 20, bottom: 0, left: 30 }}
       >
         <defs>
           <linearGradient
@@ -70,6 +70,7 @@ function TrendingSparkline(prop: Prop) {
           }
           fillOpacity={1}
           fill={`url(#${gain ? 'gain' : 'loss'})`}
+          animationDuration={2000}
         />
       </AreaChart>
     </ResponsiveContainer>

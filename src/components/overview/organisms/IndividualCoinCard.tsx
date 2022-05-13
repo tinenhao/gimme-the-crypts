@@ -8,6 +8,7 @@ import { fetchCoinMarketChartList } from '../../../features/coinMarketChartSlice
 import { TrendingCoin } from '../../../models/api/trending'
 import TrendingPrice from '../molecules/TrendingPrice'
 import TrendingSparkline from '../molecules/TrendingSparkline'
+import Spinner from '../../UI/atoms/Spinner'
 
 const useStyles = makeStyles((theme: Theme) => ({
   subheader: {
@@ -79,7 +80,9 @@ function IndividualCoinCard(prop: Prop) {
         style={{ paddingBottom: 8, paddingTop: 13 }}
       />
       {isLoading1 || isLoading2 || isLoading3 ? (
-        <div>Fetching data...</div>
+        <div style={{ marginTop: 25 }}>
+          <Spinner />
+        </div>
       ) : (
         <div className={classes.content}>
           <TrendingPrice

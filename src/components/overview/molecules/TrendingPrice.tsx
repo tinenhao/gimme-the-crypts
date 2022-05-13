@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { makeStyles, Theme, Typography, Box } from '@material-ui/core'
+import { makeStyles, Theme, Typography } from '@material-ui/core'
 import { TrendingCoin } from '../../../models/api/trending'
 import { Coin } from '../../../models/api/coin'
 import CoinHeader from '../atoms/CoinHeader'
