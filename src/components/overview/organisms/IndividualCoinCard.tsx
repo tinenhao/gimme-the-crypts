@@ -87,6 +87,7 @@ function IndividualCoinCard(prop: Prop) {
         <div className={classes.content}>
           <TrendingPrice
             trendingcoin={trendingCoins.value[prop.rank]}
+            data={coinMarketChart.value[1]}
             coins={coins.value}
           />
           <TrendingSparkline

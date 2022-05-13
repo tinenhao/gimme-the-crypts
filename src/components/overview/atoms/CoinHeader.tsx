@@ -25,12 +25,13 @@ interface Prop {
 
 function TrendingPrice(prop: Prop) {
   const classes = useStyles()
+  const coinTitle = RegExp(/[^\s]+/).exec(prop.coin.name)
 
   return (
     <div className={classes.main}>
       <Avatar src={prop.coin.large} style={{ marginTop: '3px' }} />
       <div className={classes.title}>
-        <Typography>{prop.coin.name}</Typography>
+        <Typography display="inline">{coinTitle}</Typography>
         <Typography className={classes.subtitle}>
           {prop.coin.symbol}/USD
         </Typography>
