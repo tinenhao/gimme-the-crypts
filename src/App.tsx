@@ -29,7 +29,7 @@ const theme: Theme = createTheme({
     },
     text: {
       primary: '#fdfdfd',
-      secondary: '#303244',
+      secondary: '#9d9fb0',
     },
     primary: {
       main: '#0890fe',
@@ -38,7 +38,12 @@ const theme: Theme = createTheme({
       main: '#4f46ba',
     },
     success: {
-      main: '#ff4267',
+      main: '#293e41',
+      light: '#68ca87',
+    },
+    error: {
+      main: '#40263a',
+      light: '#d16a6d',
     },
   },
   typography: {

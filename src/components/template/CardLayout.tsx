@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { makeStyles, Theme, Card } from '@material-ui/core'
 
 interface Prop {
-  children: ReactElement<any, any>
+  children: ReactElement<any, any> | ReactElement<any, any>[]
 }
 
 const useStyles = makeStyles((theme: Theme) => ({

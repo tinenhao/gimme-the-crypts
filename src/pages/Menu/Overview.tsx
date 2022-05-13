@@ -96,21 +96,21 @@ function Overview() {
       <Hidden smDown lgUp>
         <Grid container direction="column" spacing={3}>
           <Grid item>
-            <Grid container spacing={3} style={{ height: 300 }}>
+            <Grid container spacing={3} style={{ height: 230 }}>
               <Grid item md={6}>
                 <IndividualCoinCard rank={0} />
               </Grid>
-              <Grid item md={6} style={{ height: 300 }}>
+              <Grid item md={6} style={{ height: 230 }}>
                 <IndividualCoinCard rank={1} />
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
-            <Grid container spacing={3} style={{ height: 300 }}>
+            <Grid container spacing={3} style={{ height: 230 }}>
               <Grid item md={6}>
                 <IndividualCoinCard rank={2} />
               </Grid>
-              <Grid item md={6} style={{ height: 300 }}>
+              <Grid item md={6} style={{ height: 230 }}>
                 <IndividualCoinCard rank={3} />
               </Grid>
             </Grid>
@@ -150,16 +150,16 @@ function Overview() {
 
       <Hidden mdUp>
         <Grid container spacing={3}>
-          <Grid item xs={12} style={{ height: 200 }}>
+          <Grid item xs={12} style={{ height: 230 }}>
             <IndividualCoinCard rank={0} />
           </Grid>
-          <Grid item xs={12} style={{ height: 200 }}>
+          <Grid item xs={12} style={{ height: 230 }}>
             <IndividualCoinCard rank={1} />
           </Grid>
-          <Grid item xs={12} style={{ height: 200 }}>
+          <Grid item xs={12} style={{ height: 230 }}>
             <IndividualCoinCard rank={2} />
           </Grid>
-          <Grid item xs={12} style={{ height: 200 }}>
+          <Grid item xs={12} style={{ height: 230 }}>
             <IndividualCoinCard rank={3} />
           </Grid>
           <Grid item xs={12} style={{ height: 700 }}>
