@@ -69,31 +69,34 @@ function IndividualCoinCard(prop: Prop) {
 
   return (
     <CardLayout>
-      <CardHeader
-        title="Trending"
-        titleTypographyProps={{ variant: 'body1' }}
-        subheader={`Rank ${prop.rank + 1} on CoinGecko`}
-        subheaderTypographyProps={{
-          variant: 'caption',
-          className: classes.subheader,
-        }}
-        style={{ paddingBottom: 8, paddingTop: 13 }}
-      />
       {isLoading1 || isLoading2 || isLoading3 ? (
-        <div style={{ marginTop: 25 }}>
+        <div style={{ marginTop: 70 }}>
           <Spinner />
         </div>
       ) : (
-        <div className={classes.content}>
-          <TrendingPrice
-            trendingcoin={trendingCoins.value[prop.rank]}
-            data={coinMarketChart.value[1]}
-            coins={coins.value}
+        <div>
+          <CardHeader
+            title="Trending"
+            titleTypographyProps={{ variant: 'body1' }}
+            subheader={`Rank ${prop.rank + 1} on CoinGecko`}
+            subheaderTypographyProps={{
+              variant: 'caption',
+              className: classes.subheader,
+            }}
+            style={{ paddingBottom: 8, paddingTop: 13 }}
           />
-          <TrendingSparkline
-            data={coinMarketChart.value[1]}
-            coin={trendingCoins.value[prop.rank].id}
-          />
+
+          <div className={classes.content}>
+            <TrendingPrice
+              trendingcoin={trendingCoins.value[prop.rank]}
+              data={coinMarketChart.value[1]}
+              coins={coins.value}
+            />
+            <TrendingSparkline
+              data={coinMarketChart.value[1]}
+              coin={trendingCoins.value[prop.rank].id}
+            />
+          </div>
         </div>
       )}
     </CardLayout>

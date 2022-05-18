@@ -1,16 +1,94 @@
-import React from 'react'
-import { makeStyles, Theme } from '@material-ui/core'
+import React, { useState, useEffect } from 'react'
+import { makeStyles, Theme, useTheme, CardHeader } from '@material-ui/core'
+import DonutLargeIcon from '@mui/icons-material/DonutLarge'
 import CardLayout from '../../template/CardLayout'
+import { fetchGlobal } from '../../../features/globalSlice'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks'
+import PercentageChange from '../atoms/PercentageChange'
+import { Avatar } from '@mui/material'
+import Spinner from '../../UI/atoms/Spinner'
+import Donut from '../molecules/Donut'
 
 const useStyles = makeStyles((theme: Theme) => ({
-  main: {},
+  main: {
+    width: '100%',
+    height: '100%',
+  },
 }))
 
 function MarketCapCard() {
   const classes = useStyles()
+  const theme = useTheme()
+  const dispatch = useAppDispatch()
+  const global = useAppSelector((state) => state.global)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
+  useEffect(() => {
+    if (Object.keys(global.value).length === 0 && global.status === 'IDLE') {
+      dispatch(fetchGlobal())
+    } else if (Object.keys(global.value).length !== 0) {
+      setIsLoading(false)
+    }
+  }, [dispatch, global.status, global.value])
+
+  function getMarketCap() {
+    return (
+      (global.value.total_market_cap.usd / 1000000000000).toFixed(2) +
+      ' Trillion'
+    )
+  }
+
+  function getPercentage() {
+    return global.value.market_cap_change_percentage_24h_usd.toFixed(2)
+  }
+
+  function getNegative() {
+    return (
+      global.value.market_cap_change_percentage_24h_usd.toFixed(1).charAt(0) ===
+      '-'
+    )
+  }
+
   return (
     <CardLayout>
-      <div> Market Capitalization Card </div>
+      {isLoading ? (
+        <Spinner marginTop={30} />
+      ) : (
+        <div className={classes.main}>
+          <CardHeader
+            avatar={
+              <Avatar style={{ backgroundColor: theme.palette.text.secondary }}>
+                <DonutLargeIcon style={{ fill: 'black' }} />
+              </Avatar>
+            }
+            title="Market Cap"
+            titleTypographyProps={{
+              variant: 'body2',
+              color: 'textSecondary',
+            }}
+            subheader={getMarketCap()}
+            subheaderTypographyProps={{
+              variant: 'h6',
+              color: 'textPrimary',
+            }}
+            style={{ paddingBottom: 8, paddingTop: 13 }}
+            action={
+              <div style={{ marginTop: 10, marginRight: 8 }}>
+                <PercentageChange
+                  negative={getNegative()}
+                  percentageChange={getPercentage()}
+                />
+              </div>
+            }
+          />
+          <div className={classes.main}>
+            <Donut
+              marketCap={global.value.total_market_cap.usd}
+              percentages={global.value.market_cap_percentage}
+            />
+          </div>
+        </div>
+      )}
     </CardLayout>
   )
 }

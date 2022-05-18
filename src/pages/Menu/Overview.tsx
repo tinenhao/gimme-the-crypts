@@ -2,7 +2,6 @@ import React from 'react'
 import { makeStyles, Theme, useTheme, Grid, Hidden } from '@material-ui/core'
 import CoinListCard from '../../components/overview/organisms/CoinListCard'
 import DefiDominanceCard from '../../components/overview/organisms/DefiDominanceCard'
-import ExchangeRateCard from '../../components/overview/organisms/ExchangeRateCard'
 import GasPriceCard from '../../components/overview/organisms/GasPriceCard'
 import HashRateCard from '../../components/overview/organisms/HashRateCard'
 import IndividualCoinCard from '../../components/overview/organisms/IndividualCoinCard'
@@ -10,9 +9,10 @@ import MarketCapCard from '../../components/overview/organisms/MarketCapCard'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
-    height: '100%',
+    height: 1000,
   },
   wrapper: {
+    minHeight: 800,
     height: '100%',
   },
 }))
@@ -46,7 +46,7 @@ function Overview() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item style={{ height: `calc(100% - ${230}px)` }}>
+          <Grid item style={{ height: 700 }}>
             <Grid container spacing={3} style={{ height: `100%` }}>
               <Grid item md={4}>
                 <Grid
@@ -70,13 +70,10 @@ function Overview() {
                   className={classes.wrapper}
                   spacing={3}
                 >
-                  <Grid item style={{ height: '33.3%' }}>
-                    <ExchangeRateCard />
-                  </Grid>
-                  <Grid item style={{ height: '33.3%' }}>
+                  <Grid item style={{ height: '50%' }}>
                     <GasPriceCard />
                   </Grid>
-                  <Grid item style={{ height: '33.3%' }}>
+                  <Grid item style={{ height: '50%' }}>
                     <HashRateCard />
                   </Grid>
                 </Grid>
@@ -84,6 +81,7 @@ function Overview() {
               <Grid
                 item
                 md={4}
+                className={classes.wrapper}
                 style={{ height: `calc(100% - ${theme.spacing(3)}px)` }}
               >
                 <CoinListCard />
@@ -137,9 +135,6 @@ function Overview() {
           </Grid>
           <Grid item>
             <Grid container spacing={3} style={{ height: 500 }}>
-              <Grid item md={6}>
-                <ExchangeRateCard />
-              </Grid>
               <Grid item md={6} style={{ height: 500 }}>
                 <CoinListCard />
               </Grid>
@@ -170,9 +165,6 @@ function Overview() {
           </Grid>
           <Grid item xs={12} style={{ height: 500 }}>
             <DefiDominanceCard />
-          </Grid>
-          <Grid item xs={12} style={{ height: 500 }}>
-            <ExchangeRateCard />
           </Grid>
           <Grid item xs={12} style={{ height: 500 }}>
             <HashRateCard />

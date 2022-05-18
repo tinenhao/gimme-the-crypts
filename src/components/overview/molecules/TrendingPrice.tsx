@@ -1,10 +1,10 @@
 import React from 'react'
-import clsx from 'clsx'
 import { makeStyles, Theme, Typography } from '@material-ui/core'
 import { TrendingCoin } from '../../../models/api/trending'
 import { Coin } from '../../../models/api/coin'
 import { CoinMarketChart } from '../../../models/api/coinMarketChart'
 import CoinHeader from '../atoms/CoinHeader'
+import PercentageChange from '../atoms/PercentageChange'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -14,22 +14,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   price: {
     marginLeft: '20px',
     fontSize: 25,
-  },
-  change: {
-    marginLeft: '30px',
-    marginTop: '4px',
-    width: '105px',
-    height: '40px',
-    borderRadius: '15px',
-    paddingTop: '7px',
-  },
-  positive: {
-    backgroundColor: theme.palette.success.main,
-    color: theme.palette.success.light,
-  },
-  negative: {
-    backgroundColor: theme.palette.error.main,
-    color: theme.palette.error.light,
   },
 }))
 
@@ -63,16 +47,10 @@ function TrendingPrice(prop: Prop) {
       <CoinHeader coin={prop.trendingcoin} />
       <Typography className={classes.price}>US${price}</Typography>
       {exist && (
-        <Typography
-          className={clsx(classes.change, {
-            [classes.positive]: !negative,
-            [classes.negative]: negative,
-          })}
-          variant="body1"
-          align="center"
-        >
-          {negative ? percentageChange : '+' + percentageChange}%
-        </Typography>
+        <PercentageChange
+          negative={negative}
+          percentageChange={percentageChange}
+        />
       )}
     </div>
   )

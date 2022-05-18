@@ -32,10 +32,10 @@ const theme: Theme = createTheme({
       secondary: '#9d9fb0',
     },
     primary: {
-      main: '#0890fe',
+      main: '#2768a0',
     },
     secondary: {
-      main: '#4f46ba',
+      main: '#f5b94c',
     },
     success: {
       main: '#293e41',

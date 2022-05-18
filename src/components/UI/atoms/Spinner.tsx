@@ -15,12 +15,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-function Spinner() {
+interface Prop {
+  marginTop?: number
+}
+
+function Spinner(prop: Prop) {
   const classes = useStyles()
   const theme = useTheme()
 
   return (
-    <div className={classes.main}>
+    <div className={classes.main} style={{ marginTop: `${prop.marginTop}%` }}>
       <Box>
         <CircularProgress
           style={{ marginLeft: '40px', color: theme.palette.text.secondary }}
