@@ -9,6 +9,7 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  Legend,
 } from 'recharts'
 import moment from 'moment'
 
@@ -76,7 +77,7 @@ function DominanceChart(prop: Prop) {
 
   return (
     <ResponsiveContainer height="75%" width="95%">
-      <AreaChart data={chartData} margin={{ top: 5 }}>
+      <AreaChart data={chartData} margin={{ top: 10 }}>
         <defs>
           <linearGradient id="ethereum" x1="0" y1="0" x2="0" y2="1">
             <stop
@@ -146,6 +147,7 @@ function DominanceChart(prop: Prop) {
           tickFormatter={(tick) => tickXFormatter(tick)}
         />
         <YAxis tickFormatter={(tick) => tickYFormatter(tick)} />
+        <Legend />
         <Tooltip
           formatter={(value: number, name: string) => tooltipFormatter(value)}
           labelFormatter={(label) => dateFormatter(label)}
