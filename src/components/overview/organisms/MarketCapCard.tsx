@@ -14,6 +14,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     height: '100%',
   },
+  utils: {
+    marginTop: 10,
+    marginRight: 8,
+  },
 }))
 
 function MarketCapCard() {
@@ -52,7 +56,7 @@ function MarketCapCard() {
   return (
     <CardLayout>
       {isLoading ? (
-        <Spinner marginTop={30} />
+        <Spinner marginTop={40} />
       ) : (
         <div className={classes.main}>
           <CardHeader
@@ -73,7 +77,7 @@ function MarketCapCard() {
             }}
             style={{ paddingBottom: 8, paddingTop: 13 }}
             action={
-              <div style={{ marginTop: 10, marginRight: 8 }}>
+              <div className={classes.utils}>
                 <PercentageChange
                   negative={getNegative()}
                   percentageChange={getPercentage()}

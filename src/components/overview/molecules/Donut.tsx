@@ -26,7 +26,7 @@ function Donut(prop: Prop) {
 
   function tooltipFormatter(percentage: number) {
     const marketCap = ((percentage * prop.marketCap) / 100000000000).toFixed(2)
-    return marketCap + ' Billion (' + percentage.toFixed(2) + '%)'
+    return 'US$' + marketCap + ' Billion (' + percentage.toFixed(2) + '%)'
   }
 
   return (
