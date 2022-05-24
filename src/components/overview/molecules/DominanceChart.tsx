@@ -41,11 +41,11 @@ function DominanceChart(prop: Prop) {
     const avax = prop.coinsData['avalanche-2'][prop.type][time][1]
     return {
       time: time,
-      ethereum: eth,
-      cardano: ada,
-      solana: sol,
-      polkadot: dot,
-      avalanche: avax,
+      Ethereum: eth,
+      Cardano: ada,
+      Solana: sol,
+      Polkadot: dot,
+      Avalanche: avax,
     }
   })
 
@@ -158,7 +158,7 @@ function DominanceChart(prop: Prop) {
         />
         <Area
           type="monotone"
-          dataKey="avalanche"
+          dataKey="Avalanche"
           stroke={coinColors['avalanche']}
           strokeWidth={2}
           fillOpacity={1}
@@ -166,7 +166,7 @@ function DominanceChart(prop: Prop) {
         />
         <Area
           type="monotone"
-          dataKey="cardano"
+          dataKey="Cardano"
           stroke={coinColors['cardano']}
           strokeWidth={2}
           fillOpacity={1}
@@ -174,7 +174,7 @@ function DominanceChart(prop: Prop) {
         />
         <Area
           type="monotone"
-          dataKey="ethereum"
+          dataKey="Ethereum"
           stroke={coinColors['ethereum']}
           strokeWidth={2}
           fillOpacity={1}
@@ -182,7 +182,7 @@ function DominanceChart(prop: Prop) {
         />
         <Area
           type="monotone"
-          dataKey="polkadot"
+          dataKey="Polkadot"
           stroke={coinColors['polkadot']}
           strokeWidth={2}
           fillOpacity={1}
@@ -190,7 +190,7 @@ function DominanceChart(prop: Prop) {
         />
         <Area
           type="monotone"
-          dataKey="solana"
+          dataKey="Solana"
           stroke={coinColors['solana']}
           strokeWidth={2}
           fillOpacity={1}

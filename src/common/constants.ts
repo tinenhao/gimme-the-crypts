@@ -7,9 +7,9 @@ export const http = rateLimit(axios.create(), {
 })
 
 export const API_CONFIG: (
-  server: 'coinGecko' | 'ethGasStation' | 'alternative.me' | 'blockchain.com',
+  server: 'coinGecko' | 'owlracle' | 'alternative.me' | 'blockchain.com',
 ) => AxiosRequestConfig = (
-  server: 'coinGecko' | 'ethGasStation' | 'alternative.me' | 'blockchain.com',
+  server: 'coinGecko' | 'owlracle' | 'alternative.me' | 'blockchain.com',
 ) => {
   switch (server) {
     case 'coinGecko':
@@ -25,9 +25,9 @@ export const API_CONFIG: (
             'max-age=63072000; includeSubDomains; preload',
         },
       }
-    case 'ethGasStation':
+    case 'owlracle':
       return {
-        baseURL: 'https://ethgasstation.info',
+        baseURL: 'https://owlracle.info/eth',
         responseType: 'json',
         method: 'GET',
       }

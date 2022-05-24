@@ -45,6 +45,9 @@ const theme: Theme = createTheme({
       main: '#40263a',
       light: '#d16a6d',
     },
+    info: {
+      main: '#353652',
+    },
   },
   typography: {
     allVariants: {

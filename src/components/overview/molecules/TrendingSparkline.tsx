@@ -64,7 +64,7 @@ function TrendingSparkline(prop: Prop) {
         <Area
           type="monotone"
           dataKey={'price'}
-          strokeWidth={2}
+          strokeWidth={3}
           stroke={
             gain ? theme.palette.success.light : theme.palette.error.light
           }
