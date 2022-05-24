@@ -9,10 +9,13 @@ import {
 } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchGasPrice } from '../../../features/gasPriceEstimateSlice'
+import { fetchGasPriceHistory } from '../../../features/gasPriceHistorySlice'
 import EvStationIcon from '@mui/icons-material/EvStation'
 import CardLayout from '../../template/CardLayout'
 import Spinner from '../../UI/atoms/Spinner'
 import GasPrice from '../molecules/GasPrices'
+import GasPriceHistory from '../molecules/GasPriceHistory'
+import moment from 'moment'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -32,9 +35,14 @@ function GasPriceCard() {
   const theme = useTheme()
   const dispatch = useAppDispatch()
   const gasPriceEstimation = useAppSelector((state) => state.gasPriceEstimation)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const gasPriceHistory = useAppSelector((state) => state.gasPriceHistory)
+  const [isLoading1, setIsLoading1] = useState<boolean>(true)
+  const [isLoading2, setIsLoading2] = useState<boolean>(true)
   const [dataType, setDataType] = useState<number>(0)
   const titles = ['estimate', 'history']
+
+  const endDate = moment().unix()
+  const startDate = moment().subtract(1, 'year').unix()
 
   useEffect(() => {
     if (
@@ -43,13 +51,24 @@ function GasPriceCard() {
     ) {
       dispatch(fetchGasPrice())
     } else if (Object.keys(gasPriceEstimation.value).length !== 0) {
-      setIsLoading(false)
+      setIsLoading1(false)
     }
   }, [dispatch, gasPriceEstimation.status, gasPriceEstimation.value])
 
+  useEffect(() => {
+    if (
+      gasPriceHistory.value.length === 0 &&
+      gasPriceHistory.status === 'IDLE'
+    ) {
+      dispatch(fetchGasPriceHistory({ startDate: startDate, endDate: endDate }))
+    } else if (gasPriceHistory.value.length !== 0) {
+      setIsLoading2(false)
+    }
+  }, [dispatch, gasPriceHistory.status, gasPriceHistory.value])
+
   return (
     <CardLayout>
-      {isLoading ? (
+      {isLoading1 && isLoading2 ? (
         <Spinner marginTop={35} />
       ) : (
         <div className={classes.main}>
@@ -79,7 +98,11 @@ function GasPriceCard() {
               </Button>
             }
           />
-          <GasPrice data={gasPriceEstimation.value} />
+          {dataType % 2 === 0 ? (
+            <GasPrice data={gasPriceEstimation.value} />
+          ) : (
+            <GasPriceHistory data={gasPriceHistory.value} />
+          )}
         </div>
       )}
     </CardLayout>

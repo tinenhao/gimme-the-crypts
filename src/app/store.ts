@@ -4,6 +4,7 @@ import coinReducer from '../features/coinSlice'
 import coinMarketChartReducer from '../features/coinMarketChartSlice'
 import globalReducer from '../features/globalSlice'
 import gasPriceEstimationReducer from '../features/gasPriceEstimateSlice'
+import gasPriceHistoryReducer from '../features/gasPriceHistorySlice'
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     coinMarketChart: coinMarketChartReducer,
     global: globalReducer,
     gasPriceEstimation: gasPriceEstimationReducer,
+    gasPriceHistory: gasPriceHistoryReducer,
   },
 })
 

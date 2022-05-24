@@ -28,4 +28,6 @@ export const coinGecko = {
 
 export const owlracle = {
   gasPriceEstimation: `/gas?accept=50%2C80%2C100&blocks=1000&apikey=${owlracle_API_key}`,
+  gasPriceHistory: (startDate: number, endDate: number) =>
+    `/history?apikey=48f432cdbb73459dba8203365a8dc3cf&from=${startDate}&to=${endDate}&candles=365&timeframe=1d`,
 }

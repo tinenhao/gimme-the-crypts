@@ -68,9 +68,8 @@ function GasSpeed(prop: Prop) {
       <Typography className={classes.word} style={{ marginTop: 5 }}>
         {prop.gasPrice.toFixed(0)} GWEI
       </Typography>
-      <Typography className={classes.word}>
-        US$ {prop.txPrice.toFixed(2)}
-      </Typography>
+      <Typography>US$</Typography>
+      <Typography>{prop.txPrice.toFixed(2)}</Typography>
     </div>
   )
 }

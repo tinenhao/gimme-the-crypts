@@ -24,7 +24,6 @@ interface Prop {
 function GasPrice(prop: Prop) {
   const classes = useStyles()
   const theme = useTheme()
-  console.log(prop.data)
 
   return (
     <div className={classes.main}>
