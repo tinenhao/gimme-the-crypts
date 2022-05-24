@@ -1,6 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import { makeStyles, Theme, Typography } from '@material-ui/core'
+import Tooltip from '../../template/Tooltip'
 
 const useStyles = makeStyles((theme: Theme) => ({
   change: {
@@ -30,16 +31,18 @@ function PercentageChange(prop: Prop) {
   const classes = useStyles()
 
   return (
-    <Typography
-      className={clsx(classes.change, {
-        [classes.positive]: !prop.negative,
-        [classes.negative]: prop.negative,
-      })}
-      variant="body1"
-      align="center"
-    >
-      {prop.negative ? prop.percentageChange : '+' + prop.percentageChange}%
-    </Typography>
+    <Tooltip title="Change in the last 24 hours">
+      <Typography
+        className={clsx(classes.change, {
+          [classes.positive]: !prop.negative,
+          [classes.negative]: prop.negative,
+        })}
+        variant="body1"
+        align="center"
+      >
+        {prop.negative ? prop.percentageChange : '+' + prop.percentageChange}%
+      </Typography>
+    </Tooltip>
   )
 }
 

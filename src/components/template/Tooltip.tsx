@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: '11px',
     fontFamily: 'erbaum',
     borderRadius: '15px',
+    marginTop: 5,
   },
 }))
 
