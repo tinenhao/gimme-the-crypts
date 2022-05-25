@@ -86,12 +86,7 @@ function GasPriceHistory(prop: Prop) {
             />
           </linearGradient>
         </defs>
-        <XAxis
-          dataKey="time"
-          tickCount={5}
-          type="number"
-          tickFormatter={(tick) => tickXFormatter(tick)}
-        />
+        <XAxis dataKey="time" tickFormatter={(tick) => tickXFormatter(tick)} />
         <YAxis
           yAxisId="hashRate"
           tickFormatter={(tick) => tickYFormatter(tick)}
