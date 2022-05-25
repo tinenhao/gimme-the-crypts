@@ -10,6 +10,7 @@ import {
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchBTCHashRateAndPrice } from '../../../features/btcHashRateSlice'
 import BtcHash from '../molecules/BtcHash'
+import BtcPools from '../molecules/BtcPools'
 import HandymanIcon from '@mui/icons-material/Handyman'
 import CardLayout from '../../template/CardLayout'
 import Spinner from '../../UI/atoms/Spinner'
@@ -34,7 +35,7 @@ function HashRateCard() {
   const btcHashRate = useAppSelector((state) => state.btcHashRate)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [dataType, setDataType] = useState<number>(0)
-  const subheaders = ['hash rate', 'mining pools']
+  const subheaders = ['hash rate', 'mining pools (24h)']
   const buttonTitle = ['hash', 'pools']
 
   useEffect(() => {
@@ -93,7 +94,7 @@ function HashRateCard() {
               hashRate={btcHashRate.value.hashRate}
             />
           ) : (
-            <div>test2</div>
+            <BtcPools data={btcHashRate.value.pools} />
           )}
         </div>
       )}
