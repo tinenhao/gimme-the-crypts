@@ -31,3 +31,9 @@ export const owlracle = {
   gasPriceHistory: (startDate: number, endDate: number) =>
     `/history?apikey=48f432cdbb73459dba8203365a8dc3cf&from=${startDate}&to=${endDate}&candles=365&timeframe=1d`,
 }
+
+export const blockchainCom = {
+  hashRate: `/charts/hash-rate?rollingAverage=1d&timespan=1year&sampled=true&cors=true`,
+  bitcoinPrice: `/charts/market-price?rollingAverage=1d&timespan=1year&sampled=true&cors=true`,
+  pools: `/pools?timespan=7days&cors=true`,
+}
