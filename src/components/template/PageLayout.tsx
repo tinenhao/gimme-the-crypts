@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: appBarHeight,
     marginLeft: drawerWidth + leftMargin,
     marginRight: rightMargin,
+    overflow: 'auto',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
     [theme.breakpoints.down('sm')]: {
       marginLeft: leftMargin,
       marginRight: rightMargin,

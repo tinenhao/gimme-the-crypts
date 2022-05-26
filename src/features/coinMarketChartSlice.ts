@@ -9,15 +9,13 @@ import {
 import { RootState } from '../app/store'
 
 const initialState = {
-  value: {
-    1: {},
-    7: {},
-    30: {},
-    90: {},
-    365: {},
-    730: {},
-    max: {},
-  },
+  value1: {},
+  value7: {},
+  value30: {},
+  value90: {},
+  value365: {},
+  value730: {},
+  valueMax: {},
   selectedDayRange: 1,
   selectedDataType: 'prices',
   status: 'IDLE',
@@ -50,9 +48,9 @@ export const fetchCoinMarketChartList = createAsyncThunk(
     }
 
     return {
-      ...state.coinMarketChart.value,
-      [param.dayRange]: accResponse,
-    } as CoinMarketChartList
+      dayRange: param.dayRange,
+      data: accResponse,
+    }
   },
 )
 
@@ -67,7 +65,29 @@ const coinMarketChartListSlice = createSlice({
       })
       .addCase(fetchCoinMarketChartList.fulfilled, (state, action) => {
         state.status = 'IDLE'
-        state.value = action.payload
+        switch (action.payload.dayRange) {
+          case 1:
+            state.value1 = action.payload.data
+            break
+          case 7:
+            state.value7 = action.payload.data
+            break
+          case 30:
+            state.value30 = action.payload.data
+            break
+          case 90:
+            state.value90 = action.payload.data
+            break
+          case 365:
+            state.value365 = action.payload.data
+            break
+          case 730:
+            state.value730 = action.payload.data
+            break
+          case 'max':
+            state.valueMax = action.payload.data
+            break
+        }
       })
       .addCase(fetchCoinMarketChartList.rejected, (state) => {
         state.status = 'FAILED'

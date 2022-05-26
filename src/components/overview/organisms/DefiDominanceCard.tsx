@@ -40,20 +40,17 @@ function DefiDominanceCard() {
   const type = ['market_caps', 'total_volumes', 'prices']
 
   useEffect(() => {
-    if (
-      Object.keys(coinMarketChart.value[365]).length === 0 &&
-      coinMarketChart.status === 'IDLE'
-    ) {
+    if (Object.keys(coinMarketChart.value365).length === 0) {
       dispatch(
         fetchCoinMarketChartList({
           coinId: coins,
           dayRange: 365,
         }),
       )
-    } else if (Object.keys(coinMarketChart.value[365]).length !== 0) {
+    } else if (Object.keys(coinMarketChart.value365).length !== 0) {
       setIsLoading(false)
     }
-  }, [dispatch, coinMarketChart.status, coinMarketChart.value])
+  }, [dispatch, coinMarketChart.status, coinMarketChart.value365])
 
   return (
     <CardLayout>
@@ -89,7 +86,7 @@ function DefiDominanceCard() {
           />
           <DominanceChart
             type={type[dataType % 3] as CoinMarketChartDataTypes}
-            coinsData={coinMarketChart.value[365]}
+            coinsData={coinMarketChart.value365}
           />
         </div>
       )}

@@ -32,7 +32,7 @@ function TrendingSparkline(prop: Prop) {
   const gain = chartdata[0].price < chartdata[23].price
 
   return (
-    <ResponsiveContainer height={120} width="100%">
+    <ResponsiveContainer height="100%" width="100%">
       <AreaChart
         data={chartdata}
         margin={{ top: 0, right: 20, bottom: 0, left: 30 }}
@@ -53,7 +53,7 @@ function TrendingSparkline(prop: Prop) {
               stopOpacity={0.8}
             />
             <stop
-              offset="95%"
+              offset="85%"
               stopColor={
                 gain ? theme.palette.success.light : theme.palette.error.light
               }

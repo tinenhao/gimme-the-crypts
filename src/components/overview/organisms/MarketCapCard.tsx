@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, Theme, useTheme, CardHeader } from '@material-ui/core'
+import {
+  makeStyles,
+  Theme,
+  useTheme,
+  CardHeader,
+  Avatar,
+} from '@material-ui/core'
 import DonutLargeIcon from '@mui/icons-material/DonutLarge'
 import CardLayout from '../../template/CardLayout'
 import { fetchGlobal } from '../../../features/globalSlice'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import PercentageChange from '../atoms/PercentageChange'
-import { Avatar } from '@mui/material'
 import Spinner from '../../UI/atoms/Spinner'
 import Donut from '../molecules/Donut'
 

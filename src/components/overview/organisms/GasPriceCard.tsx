@@ -68,7 +68,7 @@ function GasPriceCard() {
 
   return (
     <CardLayout>
-      {isLoading1 && isLoading2 ? (
+      {isLoading1 || isLoading2 ? (
         <Spinner marginTop={35} />
       ) : (
         <div className={classes.main}>

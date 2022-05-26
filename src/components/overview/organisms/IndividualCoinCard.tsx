@@ -11,11 +11,15 @@ import TrendingSparkline from '../molecules/TrendingSparkline'
 import Spinner from '../../UI/atoms/Spinner'
 
 const useStyles = makeStyles((theme: Theme) => ({
+  main: {
+    height: '100%',
+  },
   subheader: {
     color: theme.palette.text.secondary,
   },
   content: {
     display: 'flex',
+    height: '65%',
   },
 }))
 
@@ -51,21 +55,17 @@ function IndividualCoinCard(prop: Prop) {
   }, [dispatch, coins.status, coins.value])
 
   useEffect(() => {
-    if (
-      top4.length !== 0 &&
-      Object.keys(coinMarketChart.value[1]).length === 0 &&
-      coinMarketChart.status === 'IDLE'
-    ) {
+    if (top4.length !== 0 && Object.keys(coinMarketChart.value1).length === 0) {
       dispatch(
         fetchCoinMarketChartList({
           coinId: top4.map((element) => element.id),
           dayRange: 1,
         }),
       )
-    } else if (Object.keys(coinMarketChart.value[1]).length !== 0) {
+    } else if (Object.keys(coinMarketChart.value1).length !== 0) {
       setIsLoading3(false)
     }
-  }, [dispatch, coinMarketChart.status, coinMarketChart.value, top4.length])
+  }, [dispatch, coinMarketChart.status, coinMarketChart.value1, top4.length])
 
   return (
     <CardLayout>
@@ -74,7 +74,7 @@ function IndividualCoinCard(prop: Prop) {
           <Spinner />
         </div>
       ) : (
-        <div>
+        <div className={classes.main}>
           <CardHeader
             title="Trending"
             titleTypographyProps={{ variant: 'body1' }}
@@ -89,11 +89,11 @@ function IndividualCoinCard(prop: Prop) {
           <div className={classes.content}>
             <TrendingPrice
               trendingcoin={trendingCoins.value[prop.rank]}
-              data={coinMarketChart.value[1]}
+              data={coinMarketChart.value1}
               coins={coins.value}
             />
             <TrendingSparkline
-              data={coinMarketChart.value[1]}
+              data={coinMarketChart.value1}
               coin={trendingCoins.value[prop.rank].id}
             />
           </div>
