@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme } from '@material-ui/core'
+import { useTheme } from '@material-ui/core'
 import { rootModule } from '../../../models/api/btcHashRate'
 import {
   Area,
@@ -12,15 +12,12 @@ import {
 } from 'recharts'
 import moment from 'moment'
 
-const useStyles = makeStyles((theme: Theme) => ({}))
-
 interface Prop {
   hashRate: rootModule
   btcPrice: rootModule
 }
 
 function GasPriceHistory(prop: Prop) {
-  const classes = useStyles()
   const theme = useTheme()
   const chartData = prop.btcPrice.values.map((element, index) => {
     if (prop.hashRate.values[index] !== undefined)

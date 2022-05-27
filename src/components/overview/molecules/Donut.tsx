@@ -1,10 +1,8 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme } from '@material-ui/core'
+import { useTheme } from '@material-ui/core'
 import { marketCapPercentage } from '../../../models/api/global'
 import { Pie, PieChart, ResponsiveContainer, Tooltip, Cell } from 'recharts'
 import chroma from 'chroma-js'
-
-const useStyles = makeStyles((theme: Theme) => ({}))
 
 interface Prop {
   marketCap: number
@@ -12,7 +10,6 @@ interface Prop {
 }
 
 function Donut(prop: Prop) {
-  const classes = useStyles()
   const theme = useTheme()
   const coins = Object.keys(prop.percentages)
   const others = 100 - coins.reduce((x, y) => x + prop.percentages[y], 0)
@@ -66,7 +63,7 @@ function Donut(prop: Prop) {
           ))}
         </Pie>
         <Tooltip
-          formatter={(value: number, name: string) => tooltipFormatter(value)}
+          formatter={(value: number) => tooltipFormatter(value)}
           itemStyle={{ color: theme.palette.text.primary }}
           contentStyle={{
             borderRadius: 15,

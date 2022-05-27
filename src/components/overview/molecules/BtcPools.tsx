@@ -1,17 +1,14 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme } from '@material-ui/core'
+import { useTheme } from '@material-ui/core'
 import { pools } from '../../../models/api/btcHashRate'
 import { Pie, PieChart, ResponsiveContainer, Tooltip, Cell } from 'recharts'
 import chroma from 'chroma-js'
-
-const useStyles = makeStyles((theme: Theme) => ({}))
 
 interface Prop {
   data: pools
 }
 
 function GasPriceHistory(prop: Prop) {
-  const classes = useStyles()
   const theme = useTheme()
   let totalBlocks = 0
   const keys = Object.keys(prop.data)
