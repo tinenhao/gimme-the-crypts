@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 15,
     marginTop: 10,
     paddingBottom: 5,
-    width: 180,
+    width: 130,
   },
   title: {
     marginLeft: 10,

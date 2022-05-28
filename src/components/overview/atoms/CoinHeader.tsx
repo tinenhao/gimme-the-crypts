@@ -32,7 +32,7 @@ function TrendingPrice(prop: Prop) {
       <Avatar src={prop.coin.large} style={{ marginTop: '3px' }} />
       <div className={classes.title}>
         <Typography noWrap>{prop.coin.name}</Typography>
-        <Typography className={classes.subtitle}>
+        <Typography noWrap className={classes.subtitle}>
           {prop.coin.symbol}/USD
         </Typography>
       </div>

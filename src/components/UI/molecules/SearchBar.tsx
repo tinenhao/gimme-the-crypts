@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import {
   makeStyles,
   Theme,
@@ -6,8 +7,10 @@ import {
   InputAdornment,
   TextField,
 } from '@material-ui/core'
+import { fetchSupportedCoins } from '../../../features/supportedCoinsSlice'
 import { Search as SearchIcon } from '@mui/icons-material'
 import { Autocomplete } from '@material-ui/lab'
+import { SupportedCoin } from '../../../models/api/supportedCoins'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -32,13 +35,22 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   options: {
     marginLeft: '12px',
-    width: '270px',
+  },
+  rec: {
+    overflow: 'hidden',
   },
 }))
 
 function SearchBar() {
   const classes = useStyles()
-  const coins = ['Bitcoin', 'Ethereum']
+  const dispatch = useAppDispatch()
+  const supportedCoins = useAppSelector((state) => state.supportedCoins)
+
+  useEffect(() => {
+    if (supportedCoins.value.length === 0) {
+      dispatch(fetchSupportedCoins())
+    }
+  }, [dispatch, supportedCoins.value, supportedCoins.status])
 
   return (
     <Box>
@@ -46,9 +58,15 @@ function SearchBar() {
         clearOnBlur
         clearOnEscape
         freeSolo
-        options={coins}
-        classes={{ paper: classes.options }}
+        options={supportedCoins.value}
+        getOptionLabel={(coin: SupportedCoin) => coin.name}
+        classes={{ paper: classes.options, option: classes.rec }}
         className={classes.main}
+        filterOptions={(coinList: SupportedCoin[], state) =>
+          coinList.filter((coin: SupportedCoin) =>
+            coin.name.toLowerCase().startsWith(state.inputValue.toLowerCase()),
+          )
+        }
         renderInput={(params) => (
           <TextField
             {...params}

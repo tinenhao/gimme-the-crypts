@@ -8,9 +8,11 @@ import {
   AccountBalance as ExchangeIcon,
   Memory as DefiIcon,
   CatchingPokemon as NFTIcon,
+  CurrencyExchange as CurrencyIcon,
 } from '@mui/icons-material'
 import Overview from './Menu/Overview'
 import Trends from './Menu/Trends'
+import Currency from './Menu/Currency'
 import Coins from './Others/Coins'
 import Exchange from './Others/Exchange'
 import Defi from './Others/Defi'
@@ -35,6 +37,13 @@ const pages: RootModule[] = [
         icon: <TrendsIcon />,
         page: <Trends />,
         index: 2,
+      },
+      {
+        label: 'Currency',
+        path: '/currency',
+        icon: <CurrencyIcon />,
+        page: <Currency />,
+        index: 3,
       },
     ],
   },

@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   chart: {
     width: '100%',
     height: '100%',
-    maxWidth: 150,
+    margin: 'auto',
+    maxWidth: 180,
   },
 }))
 

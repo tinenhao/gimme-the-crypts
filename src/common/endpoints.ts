@@ -24,6 +24,7 @@ export const coinGecko = {
     `coins/${coinId}/market_chart?vs_currency=usd&days=${days}&interval=${interval}`,
   trending: `search/trending`,
   global: `global`,
+  supportedCoins: `coins/list`,
 }
 
 export const owlracle = {
