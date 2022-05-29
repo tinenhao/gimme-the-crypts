@@ -37,6 +37,7 @@ function DefiDominanceCard() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [dataType, setDataType] = useState<number>(0)
   const titles = ['Market', 'Volume', 'Prices']
+  const button = ['Market Capitalization', 'Trading Volume', 'Coin Price']
   const type = ['market_caps', 'total_volumes', 'prices']
 
   useEffect(() => {
@@ -69,7 +70,7 @@ function DefiDominanceCard() {
               variant: 'h6',
               color: 'textPrimary',
             }}
-            subheader={titles[dataType % 3] + ' over past year'}
+            subheader={'by ' + button[dataType % 3]}
             subheaderTypographyProps={{
               variant: 'caption',
               color: 'textSecondary',
