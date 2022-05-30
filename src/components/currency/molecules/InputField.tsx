@@ -15,6 +15,7 @@ import {
   handleDialog,
   updateValue,
 } from '../../../features/currencyConverterSlice'
+import CoinTitle from '../atoms/CoinTitle'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -68,31 +69,11 @@ function InputField(prop: Prop) {
   if (prop.type === 'From') {
     currencyConverter.coinFrom.symbol === undefined
       ? (display = <Typography variant="body2">Select Coin</Typography>)
-      : (display = (
-          <Box style={{ display: 'flex' }}>
-            <Avatar
-              style={{ height: 30, width: 30, marginRight: 8 }}
-              src={currencyConverter.coinFrom.image}
-            />
-            <Typography style={{ marginTop: 3 }}>
-              {currencyConverter.coinFrom.symbol}
-            </Typography>
-          </Box>
-        ))
+      : (display = <CoinTitle type="From" />)
   } else {
     currencyConverter.coinTo.symbol === undefined
       ? (display = <Typography variant="body2">Select Coin</Typography>)
-      : (display = (
-          <Box style={{ display: 'flex' }}>
-            <Avatar
-              style={{ height: 30, width: 30, marginRight: 8 }}
-              src={currencyConverter.coinTo.image}
-            />
-            <Typography style={{ marginTop: 3 }}>
-              {currencyConverter.coinTo.symbol}
-            </Typography>
-          </Box>
-        ))
+      : (display = <CoinTitle type="To" />)
   }
 
   return (

@@ -1,6 +1,5 @@
 import React from 'react'
 import { makeStyles, Theme, Box } from '@material-ui/core'
-import { useAppSelector } from '../../app/hooks'
 import ExchangeGraph from '../../components/currency/organisms/ExchangeGraph'
 import ExchangeCurrency from '../../components/currency/organisms/ExchangeCurrency'
 import ChooseCurrencyDialog from '../../components/currency/molecules/ChooseCurrencyDialog'
@@ -37,7 +36,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function Currency() {
   const classes = useStyles()
-  const currencyConverter = useAppSelector((state) => state.currencyConverter)
 
   return (
     <div className={classes.main}>

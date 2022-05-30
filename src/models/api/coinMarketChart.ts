@@ -18,3 +18,8 @@ export type CoinMarketChartList = {
     [key: string]: CoinMarketChart
   }
 }
+
+export interface Dataformat {
+  time: number
+  price: number
+}

@@ -25,13 +25,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface Prop {
   negative: boolean
   percentageChange: string
+  noTooltip?: boolean
 }
 
 function PercentageChange(prop: Prop) {
   const classes = useStyles()
 
   return (
-    <Tooltip title="Change in the last 24 hours">
+    <Tooltip title={prop.noTooltip ? '' : 'Change in the last 24 hours'}>
       <Typography
         className={clsx(classes.change, {
           [classes.positive]: !prop.negative,

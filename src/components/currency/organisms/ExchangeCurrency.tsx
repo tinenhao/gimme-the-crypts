@@ -47,7 +47,7 @@ function ExchangeCurrency() {
   const price = (
     currencyConverter.coinFrom.current_price /
     currencyConverter.coinTo.current_price
-  ).toFixed(4)
+  ).toFixed(5)
 
   const display =
     currencyConverter.coinFrom.current_price === undefined ||

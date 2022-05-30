@@ -1,13 +1,7 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme } from '@material-ui/core'
+import { useTheme } from '@material-ui/core'
 import { CoinMarketChart } from '../../../models/api/coinMarketChart'
-import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts'
-
-const useStyles = makeStyles((theme: Theme) => ({
-  tooltip: {
-    backgroundColor: 'black',
-  },
-}))
+import { Area, AreaChart, ResponsiveContainer } from 'recharts'
 
 interface Prop {
   data: Record<string, unknown>
@@ -21,7 +15,6 @@ interface DataFormat {
 
 function TrendingSparkline(prop: Prop) {
   const theme = useTheme()
-  const classes = useStyles()
   const data: CoinMarketChart = prop.data[prop.coin] as CoinMarketChart
   const chartdata = data.prices.map((element) => {
     const datapoint = {} as DataFormat

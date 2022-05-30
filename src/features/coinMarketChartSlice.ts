@@ -2,11 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { coinGecko as API } from '../common/endpoints'
 import { API_CONFIG as config, http } from '../common/constants'
-import {
-  AvailableDayRanges,
-  CoinMarketChartList,
-} from '../models/api/coinMarketChart'
-import { RootState } from '../app/store'
+import { AvailableDayRanges } from '../models/api/coinMarketChart'
 
 const initialState = {
   value1: {},
@@ -16,8 +12,6 @@ const initialState = {
   value365: {},
   value730: {},
   valueMax: {},
-  selectedDayRange: 1,
-  selectedDataType: 'prices',
   status: 'IDLE',
 }
 
@@ -28,9 +22,8 @@ interface Param {
 
 export const fetchCoinMarketChartList = createAsyncThunk(
   'coinMarketChart',
-  async (param: Param, { getState }) => {
+  async (param: Param) => {
     const canceler = axios.CancelToken.source()
-    const state = getState() as RootState
     const accResponse = {} as any
 
     for (let i = 0; i < param.coinId.length; i++) {
