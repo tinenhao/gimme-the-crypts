@@ -23,10 +23,15 @@ interface Params {
   coinTo: Coin
 }
 
+let canceler = axios.CancelToken.source()
+
 export const fetchMarketData = createAsyncThunk(
   'currencyConverter',
   async (params: Params) => {
-    const canceler = axios.CancelToken.source()
+    if (typeof canceler != typeof undefined) {
+      canceler.cancel('Operation canceled due to new request.')
+    }
+    canceler = axios.CancelToken.source()
     const accResponse = []
     const dayRange = [1, 7, 30, 90, 365]
 
@@ -53,6 +58,8 @@ export const fetchMarketData = createAsyncThunk(
 
       const coinFromPrices = coinFromResponse.data.prices
       const coinToPrices = coinToResponse.data.prices
+      console.log(params.coinFrom)
+      console.log(params.coinTo)
       const arr =
         coinFromPrices.length < coinToPrices.length
           ? coinFromPrices
@@ -63,6 +70,7 @@ export const fetchMarketData = createAsyncThunk(
           price: coinFromPrices[index][1] / coinToPrices[index][1],
         }
       })
+
       accResponse[i] = prices
     }
     return accResponse
@@ -88,6 +96,9 @@ const currencyConverterSlice = createSlice({
         state.coinTo = action.payload
       }
       state.value = []
+    },
+    cancelPrevious() {
+      canceler.cancel()
     },
     updateValue(state, action) {
       const multiplier =
@@ -141,6 +152,7 @@ const currencyConverterSlice = createSlice({
 })
 
 export const {
+  cancelPrevious,
   handleDialog,
   updateSearchValue,
   updateCoin,

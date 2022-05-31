@@ -79,7 +79,6 @@ function ExchangeGraph() {
   useEffect(() => {
     if (
       currencyConverter.value.length === 0 &&
-      currencyConverter.status === 'IDLE' &&
       currencyConverter.coinFrom.symbol !== undefined &&
       currencyConverter.coinTo.symbol !== undefined
     ) {
@@ -92,12 +91,7 @@ function ExchangeGraph() {
         }),
       )
     }
-  }, [
-    dispatch,
-    currencyConverter.coinFrom,
-    currencyConverter.coinTo,
-    currencyConverter.status,
-  ])
+  }, [dispatch, currencyConverter.coinFrom, currencyConverter.coinTo])
 
   return (
     <div className={classes.main}>
@@ -117,11 +111,11 @@ function ExchangeGraph() {
         <div style={{ height: '85%', width: '100%' }}>
           <Box style={{ display: 'flex' }}>
             <Box style={{ display: 'flex', marginTop: 10 }}>
-              <CoinTitle type="From" />
+              <CoinTitle type="To" />
               <Typography variant="h5" className={classes.divider}>
                 /
               </Typography>
-              <CoinTitle type="To" />
+              <CoinTitle type="From" />
             </Box>
             {currencyConverter.value.length !== 0 && (
               <PercentageChange
