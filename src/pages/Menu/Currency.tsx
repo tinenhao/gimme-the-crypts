@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: 580,
     height: '100%',
     [theme.breakpoints.down('md')]: {
+      height: 500,
       width: '100%',
     },
   },
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100%',
     [theme.breakpoints.down('md')]: {
       width: '100%',
+      marginTop: 45,
     },
   },
 }))

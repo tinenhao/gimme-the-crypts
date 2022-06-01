@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-function WorstCorrelation() {
+function NegativeCorrelation() {
   const classes = useStyles()
   const theme = useTheme()
 
@@ -28,15 +28,15 @@ function WorstCorrelation() {
               style={{ backgroundColor: theme.palette.text.secondary }}
             ></Avatar>
           }
-          title="Worst Correlation"
+          title="- Correlation"
           titleTypographyProps={{
-            variant: 'body2',
-            color: 'textSecondary',
+            variant: 'h6',
+            color: 'textPrimary',
           }}
           subheader="test"
           subheaderTypographyProps={{
-            variant: 'h6',
-            color: 'textPrimary',
+            variant: 'body2',
+            color: 'textSecondary',
           }}
           style={{ paddingBottom: 8, paddingTop: 13 }}
         />
@@ -45,4 +45,4 @@ function WorstCorrelation() {
   )
 }
 
-export default WorstCorrelation
+export default NegativeCorrelation

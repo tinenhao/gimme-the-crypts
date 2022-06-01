@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontFamily: 'erbaum',
     borderRadius: '15px',
     marginTop: 5,
+    textAlign: 'center',
   },
 }))
 

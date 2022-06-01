@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-function TopCorrelation() {
+function PositiveCorrelation() {
   const classes = useStyles()
   const theme = useTheme()
 
@@ -28,15 +28,15 @@ function TopCorrelation() {
               style={{ backgroundColor: theme.palette.text.secondary }}
             ></Avatar>
           }
-          title="Top Correlation"
+          title="+ Correlation"
           titleTypographyProps={{
-            variant: 'body2',
-            color: 'textSecondary',
+            variant: 'h6',
+            color: 'textPrimary',
           }}
           subheader="test"
           subheaderTypographyProps={{
-            variant: 'h6',
-            color: 'textPrimary',
+            variant: 'body2',
+            color: 'textSecondary',
           }}
           style={{ paddingBottom: 8, paddingTop: 13 }}
         />
@@ -45,4 +45,4 @@ function TopCorrelation() {
   )
 }
 
-export default TopCorrelation
+export default PositiveCorrelation

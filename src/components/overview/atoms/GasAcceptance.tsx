@@ -37,7 +37,9 @@ function GasAcceptance(prop: Prop) {
 
   return (
     <Tooltip
-      title={`${speeds[prop.rank].title} chance that transaction passes`}
+      title={`${
+        speeds[prop.rank].title
+      } of blocks accepting transaction with the suggested fee`}
     >
       <div className={classes.main} style={{ color: speeds[prop.rank].color }}>
         {speeds[prop.rank].title}

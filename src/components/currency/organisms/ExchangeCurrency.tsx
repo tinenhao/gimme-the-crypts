@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   content: {
     paddingLeft: 18,
     paddingRight: 18,
+    paddingBottom: 20,
     width: '100%',
   },
   title: {

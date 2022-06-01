@@ -7,6 +7,7 @@ import {
   Avatar,
 } from '@material-ui/core'
 import CardLayout from '../../template/CardLayout'
+import TimeframeToolbar from '../atoms/TimeframeToolbar'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -30,15 +31,16 @@ function MainCorrelation() {
           }
           title="Main Correlation"
           titleTypographyProps={{
-            variant: 'body2',
-            color: 'textSecondary',
-          }}
-          subheader="test"
-          subheaderTypographyProps={{
             variant: 'h6',
             color: 'textPrimary',
           }}
+          subheader="test"
+          subheaderTypographyProps={{
+            variant: 'body2',
+            color: 'textSecondary',
+          }}
           style={{ paddingBottom: 8, paddingTop: 13 }}
+          action={<TimeframeToolbar />}
         />
       </div>
     </CardLayout>
