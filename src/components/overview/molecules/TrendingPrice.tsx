@@ -25,6 +25,7 @@ interface Prop {
 
 function TrendingPrice(prop: Prop) {
   const classes = useStyles()
+  console.log(prop.data)
 
   const bitcoin = prop.coins.find((element) => element.id === 'bitcoin') as Coin
   const price = parseFloat(
@@ -35,7 +36,7 @@ function TrendingPrice(prop: Prop) {
     prop.trendingcoin.id
   ] as CoinMarketChart
   const percentageChange = (
-    ((data.prices[23][1] - data.prices[0][1]) * 100) /
+    ((data.prices[data.prices.length - 1][1] - data.prices[0][1]) * 100) /
     data.prices[0][1]
   ).toFixed(2)
 

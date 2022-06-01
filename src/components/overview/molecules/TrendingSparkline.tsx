@@ -22,7 +22,7 @@ function TrendingSparkline(prop: Prop) {
     datapoint.price = element[1]
     return datapoint
   })
-  const gain = chartdata[0].price < chartdata[23].price
+  const gain = chartdata[0].price < chartdata[chartdata.length - 1].price
 
   return (
     <ResponsiveContainer height="100%" width="100%">

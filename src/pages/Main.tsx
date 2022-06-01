@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { RootModule } from '../models/general/pages'
 import {
   Whatshot as OverviewIcon,
-  BarChart as TrendsIcon,
+  SwapHorizontalCircle as CorrelationIcon,
   Paid as CoinsIcon,
   AccountBalance as ExchangeIcon,
   Memory as DefiIcon,
@@ -11,7 +11,7 @@ import {
   CurrencyExchange as CurrencyIcon,
 } from '@mui/icons-material'
 import Overview from './Menu/Overview'
-import Trends from './Menu/Trends'
+import Correlation from './Menu/Correlation'
 import Currency from './Menu/Currency'
 import Coins from './Others/Coins'
 import Exchange from './Others/Exchange'
@@ -32,10 +32,10 @@ const pages: RootModule[] = [
         index: 1,
       },
       {
-        label: 'Trends',
-        path: '/trends',
-        icon: <TrendsIcon />,
-        page: <Trends />,
+        label: 'Correlation',
+        path: '/correlation',
+        icon: <CorrelationIcon />,
+        page: <Correlation />,
         index: 2,
       },
       {

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   graph: {
-    width: 600,
+    width: 580,
     height: '100%',
     [theme.breakpoints.down('md')]: {
       width: '100%',

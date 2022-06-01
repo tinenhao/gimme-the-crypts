@@ -58,8 +58,6 @@ export const fetchMarketData = createAsyncThunk(
 
       const coinFromPrices = coinFromResponse.data.prices
       const coinToPrices = coinToResponse.data.prices
-      console.log(params.coinFrom)
-      console.log(params.coinTo)
       const arr =
         coinFromPrices.length < coinToPrices.length
           ? coinFromPrices

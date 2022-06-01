@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, Theme, Box, Typography, Avatar } from '@material-ui/core'
+import {
+  makeStyles,
+  Theme,
+  Box,
+  Typography,
+  Avatar,
+  Hidden,
+} from '@material-ui/core'
 import { ToggleButton } from '@material-ui/lab'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchMarketData } from '../../../features/currencyConverterSlice'
@@ -83,7 +90,7 @@ function ExchangeGraph() {
       currencyConverter.coinTo.symbol !== undefined
     ) {
       setProgress(0)
-      setPeriod(150)
+      setPeriod(170)
       dispatch(
         fetchMarketData({
           coinFrom: currencyConverter.coinFrom,
@@ -92,6 +99,51 @@ function ExchangeGraph() {
       )
     }
   }, [dispatch, currencyConverter.coinFrom, currencyConverter.coinTo])
+
+  const toggleButtons = (
+    <Box>
+      <ToggleButton
+        value={0}
+        selected={timeframe === 0}
+        className={classes.buttons}
+        onClick={() => setTimeframe(0)}
+      >
+        1D
+      </ToggleButton>
+      <ToggleButton
+        value={1}
+        selected={timeframe === 1}
+        className={classes.buttons}
+        onClick={() => setTimeframe(1)}
+      >
+        1W
+      </ToggleButton>
+      <ToggleButton
+        value={2}
+        selected={timeframe === 2}
+        className={classes.buttons}
+        onClick={() => setTimeframe(2)}
+      >
+        1M
+      </ToggleButton>
+      <ToggleButton
+        value={3}
+        selected={timeframe === 3}
+        className={classes.buttons}
+        onClick={() => setTimeframe(3)}
+      >
+        3M
+      </ToggleButton>
+      <ToggleButton
+        value={4}
+        selected={timeframe === 4}
+        className={classes.buttons}
+        onClick={() => setTimeframe(4)}
+      >
+        1Y
+      </ToggleButton>
+    </Box>
+  )
 
   return (
     <div className={classes.main}>
@@ -133,49 +185,9 @@ function ExchangeGraph() {
             >
               {price}
             </Typography>
-            <Box>
-              <ToggleButton
-                value={0}
-                selected={timeframe === 0}
-                className={classes.buttons}
-                onClick={() => setTimeframe(0)}
-              >
-                1D
-              </ToggleButton>
-              <ToggleButton
-                value={1}
-                selected={timeframe === 1}
-                className={classes.buttons}
-                onClick={() => setTimeframe(1)}
-              >
-                1W
-              </ToggleButton>
-              <ToggleButton
-                value={2}
-                selected={timeframe === 2}
-                className={classes.buttons}
-                onClick={() => setTimeframe(2)}
-              >
-                1M
-              </ToggleButton>
-              <ToggleButton
-                value={3}
-                selected={timeframe === 3}
-                className={classes.buttons}
-                onClick={() => setTimeframe(3)}
-              >
-                3M
-              </ToggleButton>
-              <ToggleButton
-                value={4}
-                selected={timeframe === 4}
-                className={classes.buttons}
-                onClick={() => setTimeframe(4)}
-              >
-                1Y
-              </ToggleButton>
-            </Box>
+            <Hidden mdDown>{toggleButtons}</Hidden>
           </Box>
+          <Hidden lgUp>{toggleButtons}</Hidden>
           {currencyConverter.value.length === 0 ? (
             <Spinner marginTop={23} determinate={true} progress={progress} />
           ) : (
