@@ -34,10 +34,6 @@ function PriceChart(prop: Prop) {
     }
   }
 
-  function tooltipFormatter(value: number) {
-    return value.toFixed(5)
-  }
-
   function dateFormatter(day: number) {
     if (prop.timeframe === 4 || prop.timeframe === 3 || prop.timeframe === 2) {
       return moment(day).format('Do MMM YYYY')
@@ -50,10 +46,7 @@ function PriceChart(prop: Prop) {
     <ResponsiveContainer height="100%" width="100%">
       <LineChart data={prop.data} margin={{ top: 12 }}>
         <Tooltip
-          formatter={(value: number) => [
-            tooltipFormatter(value),
-            'Exchange Rate',
-          ]}
+          formatter={(value: number) => [value, 'Exchange Rate']}
           labelFormatter={(label) => dateFormatter(label)}
           contentStyle={{
             borderRadius: 15,

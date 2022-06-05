@@ -8,6 +8,7 @@ import gasPriceHistoryReducer from '../features/gasPriceHistorySlice'
 import btchHashRateReducer from '../features/btcHashRateSlice'
 import supportedCoinsReducer from '../features/supportedCoinsSlice'
 import currencyConverterReducer from '../features/currencyConverterSlice'
+import correlationReducer from '../features/correlationSlice'
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     btcHashRate: btchHashRateReducer,
     supportedCoins: supportedCoinsReducer,
     currencyConverter: currencyConverterReducer,
+    correlation: correlationReducer,
   },
 })
 

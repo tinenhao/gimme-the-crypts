@@ -25,7 +25,6 @@ interface Prop {
 
 function TrendingPrice(prop: Prop) {
   const classes = useStyles()
-  console.log(prop.data)
 
   const bitcoin = prop.coins.find((element) => element.id === 'bitcoin') as Coin
   const price = parseFloat(

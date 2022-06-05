@@ -6,6 +6,7 @@ import {
   CardHeader,
   Avatar,
 } from '@material-ui/core'
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt'
 import CardLayout from '../../template/CardLayout'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -24,9 +25,9 @@ function PositiveCorrelation() {
       <div className={classes.main}>
         <CardHeader
           avatar={
-            <Avatar
-              style={{ backgroundColor: theme.palette.text.secondary }}
-            ></Avatar>
+            <Avatar style={{ backgroundColor: theme.palette.text.secondary }}>
+              <ThumbUpAltIcon />
+            </Avatar>
           }
           title="+ Correlation"
           titleTypographyProps={{

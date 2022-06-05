@@ -28,7 +28,14 @@ function DominanceChart(prop: Prop) {
     ethereum: '#f0d46f',
   }
 
-  const arr = Object.keys(prop.coinsData['ethereum']['prices'])
+  let arr = Object.keys(prop.coinsData['ethereum'][prop.type])
+  const keys = Object.keys(prop.coinsData)
+  for (const key in keys) {
+    if (Object.keys(prop.coinsData[keys[key]][prop.type]).length < arr.length) {
+      arr = Object.keys(prop.coinsData[keys[key]][prop.type])
+    }
+  }
+
   const chartData = arr.map((element) => {
     const time = parseInt(element)
     const eth = prop.coinsData['ethereum'][prop.type][time][1]

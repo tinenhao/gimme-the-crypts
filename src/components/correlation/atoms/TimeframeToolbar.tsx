@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { makeStyles, Theme } from '@material-ui/core'
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks'
+import { setTimeframe } from '../../../features/correlationSlice'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -27,28 +29,29 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function TimeframeToolbar() {
   const classes = useStyles()
-  const [dataType, setDataType] = useState<number>(0)
+  const dispatch = useAppDispatch()
+  const correlation = useAppSelector((state) => state.correlation)
 
   return (
     <ToggleButtonGroup
-      value={dataType}
+      value={correlation.timeframe}
       className={classes.main}
       color={'textPrimary'}
       classes={{ grouped: classes.buttons }}
     >
-      <ToggleButton value={0} onClick={() => setDataType(0)}>
+      <ToggleButton value={0} onClick={() => dispatch(setTimeframe(0))}>
         1D
       </ToggleButton>
-      <ToggleButton value={1} onClick={() => setDataType(1)}>
+      <ToggleButton value={1} onClick={() => dispatch(setTimeframe(1))}>
         1W
       </ToggleButton>
-      <ToggleButton value={2} onClick={() => setDataType(2)}>
+      <ToggleButton value={2} onClick={() => dispatch(setTimeframe(2))}>
         1M
       </ToggleButton>
-      <ToggleButton value={3} onClick={() => setDataType(3)}>
+      <ToggleButton value={3} onClick={() => dispatch(setTimeframe(3))}>
         3M
       </ToggleButton>
-      <ToggleButton value={4} onClick={() => setDataType(4)}>
+      <ToggleButton value={4} onClick={() => dispatch(setTimeframe(4))}>
         1Y
       </ToggleButton>
     </ToggleButtonGroup>

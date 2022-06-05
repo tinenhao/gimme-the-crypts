@@ -3,8 +3,7 @@ import axios from 'axios'
 import { coinGecko as API } from '../common/endpoints'
 import { API_CONFIG as config, http } from '../common/constants'
 import { Coin } from '../models/api/coin'
-import { Dataformat } from '../models/api/coinMarketChart'
-import { AvailableDayRanges } from '../models/api/coinMarketChart'
+import { Dataformat, AvailableDayRanges } from '../models/api/coinMarketChart'
 
 const initialState = {
   dialog: false,
