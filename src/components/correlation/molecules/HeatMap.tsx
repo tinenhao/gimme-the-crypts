@@ -53,6 +53,12 @@ function HeatMap() {
       id: 'CorrelationHeatMap',
       fontFamily: 'Erbaum',
       color: theme.palette.text.primary,
+      toolbar: {
+        show: false,
+      },
+      animations: {
+        speed: 100,
+      },
     },
     dataLabels: {
       enabled: false,

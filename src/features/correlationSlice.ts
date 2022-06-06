@@ -11,6 +11,7 @@ const initialState = {
   timeframe: 0,
   coinsNum: 10,
   correlationValues: [] as number[][][],
+  progress: [0, 0, 0, 0, 0],
   value: [] as number[][][],
   status: 'IDLE',
 }
@@ -71,6 +72,11 @@ const correlationSlice = createSlice({
         state.coinsNum -= 1
       }
     },
+    incrementProgress(state) {
+      if (state.progress[state.timeframe] < 100) {
+        state.progress[state.timeframe] += 1
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -97,6 +103,7 @@ export const {
   setCoinsNum,
   incrementCoinsNum,
   decrementCoinsNum,
+  incrementProgress,
 } = correlationSlice.actions
 
 export default correlationSlice.reducer

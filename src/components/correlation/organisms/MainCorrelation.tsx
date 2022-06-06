@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
   makeStyles,
   Theme,
   useTheme,
   CardHeader,
   Avatar,
+  Box,
 } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import {
   fetchTop50Prices,
   updateCorrelationValues,
+  incrementProgress,
 } from '../../../features/correlationSlice'
 import { correlationCalculator } from '../../../common/correlationCalculator'
 import MapIcon from '@mui/icons-material/Map'
@@ -17,6 +19,7 @@ import CardLayout from '../../template/CardLayout'
 import TimeframeToolbar from '../atoms/TimeframeToolbar'
 import HeatmapUtils from '../molecules/HeatmapUtils'
 import HeatMap from '../molecules/HeatMap'
+import Spinner from '../../UI/atoms/Spinner'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -36,6 +39,16 @@ function MainCorrelation() {
   const topCoins = useAppSelector((state) => state.coin)
   const correlation = useAppSelector((state) => state.correlation)
   const arr = [] as number[][]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      dispatch(incrementProgress())
+    }, 1750)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
 
   useEffect(() => {
     if (
@@ -111,8 +124,18 @@ function MainCorrelation() {
           style={{ paddingBottom: 8, paddingTop: 13 }}
           action={<TimeframeToolbar />}
         />
-        <HeatmapUtils />
-        <HeatMap />
+        {correlation.correlationValues[correlation.timeframe] === undefined ? (
+          <Spinner
+            marginTop={30}
+            determinate={true}
+            progress={correlation.progress[correlation.timeframe]}
+          />
+        ) : (
+          <Box height="100%">
+            <HeatmapUtils />
+            <HeatMap />
+          </Box>
+        )}
       </div>
     </CardLayout>
   )

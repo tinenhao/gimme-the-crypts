@@ -1,12 +1,12 @@
 import React from 'react'
 import { makeStyles, Theme, useTheme, Grid, Hidden } from '@material-ui/core'
 import MainCorrelation from '../../components/correlation/organisms/MainCorrelation'
-import PositiveCorrelation from '../../components/correlation/organisms/PositiveCorrelation'
-import NegativeCorrelation from '../../components/correlation/organisms/NegativeCorrelation'
+import SideCorrelation from '../../components/correlation/organisms/SideCorrelation'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
     height: '100%',
+    maxHeight: 1000,
   },
 }))
 
@@ -33,10 +33,10 @@ function Trends() {
               className={classes.main}
             >
               <Grid item style={{ height: '50%' }}>
-                <PositiveCorrelation />
+                <SideCorrelation type="Positive" />
               </Grid>
               <Grid item style={{ height: '50%' }}>
-                <NegativeCorrelation />
+                <SideCorrelation type="Negative" />
               </Grid>
             </Grid>
           </Grid>
@@ -48,10 +48,10 @@ function Trends() {
           <Grid item md={12}>
             <Grid container spacing={3}>
               <Grid item md={6} style={{ height: 400 }}>
-                <PositiveCorrelation />
+                <SideCorrelation type="Positive" />
               </Grid>
               <Grid item md={6} style={{ height: 400 }}>
-                <NegativeCorrelation />
+                <SideCorrelation type="Negative" />
               </Grid>
             </Grid>
           </Grid>
@@ -64,10 +64,10 @@ function Trends() {
       <Hidden mdUp>
         <Grid container spacing={3}>
           <Grid item xs={12} style={{ height: 400 }}>
-            <PositiveCorrelation />
+            <SideCorrelation type="Positive" />
           </Grid>
           <Grid item xs={12} style={{ height: 400 }}>
-            <NegativeCorrelation />
+            <SideCorrelation type="Negative" />
           </Grid>
           <Grid item xs={12} style={{ height: 800 }}>
             <MainCorrelation />
