@@ -3,10 +3,8 @@ import { useAppSelector } from '../../../app/hooks'
 import {
   makeStyles,
   Theme,
-  useTheme,
   List,
   Avatar,
-  Box,
   Typography,
   ListItem,
 } from '@material-ui/core'
@@ -51,7 +49,6 @@ interface Prop {
 
 function CorrelationList(prop: Prop) {
   const classes = useStyles()
-  const theme = useTheme()
   const coins = useAppSelector((state) => state.coin).value
   const correlation = useAppSelector((state) => state.correlation)
   const correlationValues = correlation.correlationValues[correlation.timeframe]

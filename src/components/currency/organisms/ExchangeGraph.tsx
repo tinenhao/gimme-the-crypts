@@ -54,7 +54,6 @@ function ExchangeGraph() {
   const currencyConverter = useAppSelector((state) => state.currencyConverter)
   const [timeframe, setTimeframe] = useState<number>(0)
   const [progress, setProgress] = useState<number>(0)
-  const [period, setPeriod] = useState(900)
   const price = (
     currencyConverter.coinFrom.current_price /
     currencyConverter.coinTo.current_price
@@ -76,7 +75,7 @@ function ExchangeGraph() {
       setProgress((prevProgress) =>
         prevProgress < 100 ? prevProgress + 1 : prevProgress,
       )
-    }, period)
+    }, 50)
 
     return () => {
       clearInterval(timer)
@@ -90,7 +89,6 @@ function ExchangeGraph() {
       currencyConverter.coinTo.symbol !== undefined
     ) {
       setProgress(0)
-      setPeriod(170)
       dispatch(
         fetchMarketData({
           coinFrom: currencyConverter.coinFrom,

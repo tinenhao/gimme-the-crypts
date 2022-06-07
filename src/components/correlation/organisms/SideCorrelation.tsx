@@ -2,11 +2,11 @@ import React from 'react'
 import { useAppSelector } from '../../../app/hooks'
 import {
   makeStyles,
-  Theme,
   useTheme,
   CardHeader,
   Avatar,
   List,
+  Hidden,
 } from '@material-ui/core'
 import {
   ThumbDownAlt as NegativeIcon,
@@ -16,7 +16,7 @@ import CardLayout from '../../template/CardLayout'
 import CoinPair from '../atoms/CoinPair'
 import Spinner from '../../UI/atoms/Spinner'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     width: '100%',
     height: '90%',
@@ -97,11 +97,22 @@ function SideCorrelation(prop: Prop) {
           style={{ paddingBottom: 8, paddingTop: 13 }}
         />
         {correlation.correlationValues[correlation.timeframe] === undefined ? (
-          <Spinner
-            marginTop={25}
-            determinate={true}
-            progress={correlation.progress[correlation.timeframe]}
-          />
+          <div>
+            <Hidden smDown>
+              <Spinner
+                marginTop={25}
+                determinate={true}
+                progress={correlation.progress[correlation.timeframe]}
+              />
+            </Hidden>
+            <Hidden mdUp>
+              <Spinner
+                marginTop={10}
+                determinate={true}
+                progress={correlation.progress[correlation.timeframe]}
+              />
+            </Hidden>
+          </div>
         ) : (
           <List disablePadding className={classes.content}>
             {top15Pairs.map((element, index) => {

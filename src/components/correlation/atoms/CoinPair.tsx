@@ -2,14 +2,13 @@ import React from 'react'
 import { useAppSelector } from '../../../app/hooks'
 import {
   makeStyles,
-  Theme,
   useTheme,
   Avatar,
   Box,
   Typography,
 } from '@material-ui/core'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     width: '100%',
     height: 50,

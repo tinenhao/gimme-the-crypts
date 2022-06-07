@@ -2,8 +2,8 @@ import rateLimit from 'axios-rate-limit'
 import axios, { AxiosRequestConfig } from 'axios'
 
 export const http = rateLimit(axios.create(), {
-  maxRequests: 1,
-  perMilliseconds: 1500,
+  maxRequests: 4,
+  perMilliseconds: 1000,
 })
 
 export const API_CONFIG: (
@@ -17,13 +17,6 @@ export const API_CONFIG: (
         baseURL: 'https://api.coingecko.com/api/v3',
         responseType: 'json',
         method: 'GET',
-        headers: {
-          'X-XSS-Protection': '1; mode=block',
-          'X-Frame-Options': 'DENY',
-          'X-Content-Type-Options': 'nosniff',
-          'Strict-Transport-Security':
-            'max-age=63072000; includeSubDomains; preload',
-        },
       }
     case 'owlracle':
       return {
