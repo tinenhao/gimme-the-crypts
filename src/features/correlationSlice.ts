@@ -9,7 +9,9 @@ import {
 
 const initialState = {
   timeframe: 0,
+  coinSelected: 'Bitcoin',
   coinsNum: 10,
+  heatmap: true,
   correlationValues: [] as number[][][],
   progress: [0, 0, 0, 0, 0],
   value: [] as number[][][],
@@ -77,6 +79,12 @@ const correlationSlice = createSlice({
         state.progress[state.timeframe] += 1
       }
     },
+    changeState(state) {
+      state.heatmap = !state.heatmap
+    },
+    setCoin(state, action) {
+      state.coinSelected = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -104,6 +112,8 @@ export const {
   incrementCoinsNum,
   decrementCoinsNum,
   incrementProgress,
+  changeState,
+  setCoin,
 } = correlationSlice.actions
 
 export default correlationSlice.reducer

@@ -32,29 +32,31 @@ function CoinPair(prop: Prop) {
 
   return (
     <div className={classes.main}>
-      <Typography style={{ marginTop: 3 }}>{prop.rank}</Typography>
+      <Typography style={{ marginTop: 3, width: 20 }}>{prop.rank}</Typography>
       <Box style={{ display: 'flex' }}>
         <Avatar
           style={{ height: 30, width: 30, marginRight: 8 }}
           src={coins[prop.firstCoin].image}
         />
-        <Typography style={{ marginTop: 3 }}>
+        <Typography style={{ marginTop: 3, width: 55, textAlign: 'center' }}>
           {coins[prop.firstCoin].symbol.toUpperCase()}
         </Typography>
       </Box>
-      <Typography style={{ marginTop: 3 }}>vs</Typography>
+      <Typography style={{ marginTop: 3, width: 20 }}>vs</Typography>
       <Box style={{ display: 'flex' }}>
         <Avatar
           style={{ height: 30, width: 30, marginRight: 8 }}
           src={coins[prop.secondCoin].image}
         />
-        <Typography style={{ marginTop: 3 }}>
+        <Typography style={{ marginTop: 3, width: 55, textAlign: 'center' }}>
           {coins[prop.secondCoin].symbol.toUpperCase()}
         </Typography>
       </Box>
       <Typography
         style={{
           marginTop: 3,
+          textAlign: 'center',
+          width: 55,
           color:
             prop.value < 0
               ? theme.palette.error.light

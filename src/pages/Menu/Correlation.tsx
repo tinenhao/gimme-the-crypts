@@ -20,12 +20,13 @@ function Trends() {
         <Grid container spacing={3}>
           <Grid
             item
-            md={9}
+            lg={8}
+            xl={9}
             style={{ height: `calc(100% - ${theme.spacing(3)}px)` }}
           >
             <MainCorrelation />
           </Grid>
-          <Grid item md={3}>
+          <Grid item lg={4} xl={3}>
             <Grid
               container
               direction="column"

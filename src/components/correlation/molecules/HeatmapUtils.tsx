@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { makeStyles, Theme, Box, Button, Typography } from '@material-ui/core'
-import { useAppSelector } from '../../../app/hooks'
+import { useAppSelector, useAppDispatch } from '../../../app/hooks'
+import { changeState } from '../../../features/correlationSlice'
 import Slider from '../atoms/Slider'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function HeatmapUtils() {
   const classes = useStyles()
+  const dispatch = useAppDispatch()
   const correlation = useAppSelector((state) => state.correlation)
 
   return (
@@ -33,7 +35,12 @@ function HeatmapUtils() {
         </Typography>
         <Slider />
       </Box>
-      <Button className={classes.button}>HeatMap</Button>
+      <Button
+        className={classes.button}
+        onClick={() => dispatch(changeState())}
+      >
+        HeatMap
+      </Button>
     </div>
   )
 }

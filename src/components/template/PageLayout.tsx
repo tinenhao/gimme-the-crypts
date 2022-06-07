@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: appBarHeight,
     marginLeft: drawerWidth + leftMargin,
     marginRight: rightMargin,
-    overflow: 'auto',
+    overflowX: 'hidden',
+    overflowY: 'auto',
     '&::-webkit-scrollbar': {
       display: 'none',
     },

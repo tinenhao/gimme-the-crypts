@@ -19,6 +19,8 @@ import CardLayout from '../../template/CardLayout'
 import TimeframeToolbar from '../atoms/TimeframeToolbar'
 import HeatmapUtils from '../molecules/HeatmapUtils'
 import HeatMap from '../molecules/HeatMap'
+import IndividualUtils from '../molecules/IndividualUtils'
+import IndividualCorrelation from '../molecules/IndividualCorrelation'
 import Spinner from '../../UI/atoms/Spinner'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -43,7 +45,7 @@ function MainCorrelation() {
   useEffect(() => {
     const timer = setInterval(() => {
       dispatch(incrementProgress())
-    }, 1750)
+    }, 2000)
 
     return () => {
       clearInterval(timer)
@@ -132,8 +134,17 @@ function MainCorrelation() {
           />
         ) : (
           <Box height="100%">
-            <HeatmapUtils />
-            <HeatMap />
+            {correlation.heatmap ? (
+              <Box height="100%">
+                <HeatmapUtils />
+                <HeatMap />
+              </Box>
+            ) : (
+              <Box height="100%">
+                <IndividualUtils />
+                <IndividualCorrelation />
+              </Box>
+            )}
           </Box>
         )}
       </div>
