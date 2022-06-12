@@ -14,6 +14,7 @@ import Overview from './Menu/Overview'
 import Correlation from './Menu/Correlation'
 import Currency from './Menu/Currency'
 import Coins from './Others/Coins'
+import IndividualCoins from './Others/IndividualCoins'
 import Exchange from './Others/Exchange'
 import Defi from './Others/Defi'
 import NFT from './Others/NFT'
@@ -57,6 +58,10 @@ const pages: RootModule[] = [
         icon: <CoinsIcon />,
         page: <Coins />,
         index: 3,
+        subpage: {
+          path: 'coinId',
+          page: <IndividualCoins />,
+        },
       },
       {
         label: 'Exchange',

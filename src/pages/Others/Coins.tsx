@@ -5,7 +5,7 @@ import CoinListCard from '../../components/coins/organisms/CoinListCard'
 const useStyles = makeStyles(() => ({
   main: {
     width: '100%',
-    height: '100%',
+    height: '97%',
   },
 }))
 

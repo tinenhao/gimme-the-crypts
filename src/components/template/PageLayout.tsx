@@ -64,6 +64,17 @@ function PageLayout(prop: Prop) {
       </Hidden>
       <div className={classes.content}>
         <Routes>
+          {pages
+            .filter((page: Page) => page.subpage)
+            .map((page: Page) => {
+              return (
+                <Route
+                  key={`${page.path}/:${page.subpage?.path}`}
+                  path={`${page.path}/:${page.subpage?.path}`}
+                  element={page.subpage?.page}
+                />
+              )
+            })}
           {pages.map((page: Page) => {
             return (
               <Route key={page.path} path={page.path} element={page.page} />

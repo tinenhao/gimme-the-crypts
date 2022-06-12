@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   makeStyles,
   Theme,
@@ -25,6 +26,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflowY: 'scroll',
     '&::-webkit-scrollbar': {
       display: 'none',
+    },
+    '& .MuiTableRow-root:hover .MuiTableCell-root': {
+      backgroundColor: theme.palette.info.main,
+      cursor: 'pointer',
     },
   },
   stickyColumn: {
@@ -69,6 +74,7 @@ interface Prop {
 function CoinListTable(prop: Prop) {
   const classes = useStyles()
   const theme = useTheme()
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const coins = useAppSelector((state) => state.coin)
   const temp = [...coins.value]
@@ -121,7 +127,12 @@ function CoinListTable(prop: Prop) {
             const gain1m = coin.price_change_percentage_30d_in_currency > 0
             const gain1y = coin.price_change_percentage_1y_in_currency > 0
             return (
-              <TableRow key={index} style={{ height: 100 }}>
+              <TableRow
+                key={index}
+                style={{ height: 100 }}
+                hover
+                onClick={() => navigate(`/coins/${coin.id}`)}
+              >
                 <TableCell className={classes.stickyColumn} style={{ left: 0 }}>
                   <Typography variant="body2" style={{ marginLeft: 3 }}>
                     {coin.market_cap_rank}

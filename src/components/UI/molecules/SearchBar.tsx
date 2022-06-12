@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
+import { useNavigate } from 'react-router-dom'
 import {
   makeStyles,
   Theme,
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 function SearchBar() {
   const classes = useStyles()
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const supportedCoins = useAppSelector((state) => state.supportedCoins)
 
   useEffect(() => {
@@ -51,6 +53,15 @@ function SearchBar() {
       dispatch(fetchSupportedCoins())
     }
   }, [dispatch, supportedCoins.value, supportedCoins.status])
+
+  function handleOnChange(
+    event: React.ChangeEvent<Record<string, unknown>>,
+    value: any,
+  ) {
+    if (value !== null) {
+      navigate(`/coins/${value.id}`)
+    }
+  }
 
   return (
     <Box>
@@ -60,6 +71,7 @@ function SearchBar() {
         freeSolo
         options={supportedCoins.value}
         getOptionLabel={(coin: SupportedCoin) => coin.name}
+        onChange={handleOnChange}
         classes={{ paper: classes.options, option: classes.rec }}
         className={classes.main}
         filterOptions={(coinList: SupportedCoin[], state) =>
