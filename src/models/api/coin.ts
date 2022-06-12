@@ -5,7 +5,7 @@ export type CoinSortOrder =
   | 'market_cap_desc'
 
 export interface CoinSparkline {
-  sparkline: number[]
+  price: number[]
 }
 
 export interface Coin {
@@ -35,8 +35,16 @@ export interface Coin {
   atl_date: number
   roi: any
   last_updated: string
-  sparkline?: CoinSparkline
-  price_change_percentage_7d_in_currency?: number
-  price_change_percentage_24h_in_currency?: number
+  sparkline_in_7d: CoinSparkline
+  price_change_percentage_7d_in_currency: number
+  price_change_percentage_24h_in_currency: number
   price_change_percentage_30d_in_currency: number
+  price_change_percentage_1y_in_currency: number
+}
+
+export interface CoinListTableHead {
+  id: string
+  label: string
+  sticky: boolean
+  minWidth: number
 }

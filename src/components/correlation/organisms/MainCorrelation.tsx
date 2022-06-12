@@ -45,7 +45,7 @@ function MainCorrelation() {
   useEffect(() => {
     const timer = setInterval(() => {
       dispatch(incrementProgress())
-    }, 400)
+    }, 550)
 
     return () => {
       clearInterval(timer)

@@ -15,7 +15,7 @@ export const coinGecko = {
     perPage: number,
     sparkline: boolean,
   ) =>
-    `coins/markets?vs_currency=usd&order=${sortingKey}&per_page=${perPage}&page=${page}&sparkline=${sparkline}&price_change_percentage=30d`,
+    `coins/markets?vs_currency=usd&order=${sortingKey}&per_page=${perPage}&page=${page}&sparkline=${sparkline}&price_change_percentage=24h%2C7d%2C30d%2C1y`,
   coinMarketChart: (
     coinId: string,
     days: AvailableDayRanges,

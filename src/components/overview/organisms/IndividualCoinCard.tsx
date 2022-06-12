@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   content: {
     display: 'flex',
     height: '65%',
+    paddingRight: 20,
   },
 }))
 
@@ -93,8 +94,9 @@ function IndividualCoinCard(prop: Prop) {
               coins={coins.value}
             />
             <TrendingSparkline
-              data={coinMarketChart.value1}
-              coin={trendingCoins.value[prop.rank].id}
+              data={
+                coinMarketChart.value1[trendingCoins.value[prop.rank].id].prices
+              }
             />
           </div>
         </div>

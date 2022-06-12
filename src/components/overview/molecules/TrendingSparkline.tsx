@@ -1,11 +1,10 @@
 import React from 'react'
 import { useTheme } from '@material-ui/core'
-import { CoinMarketChart } from '../../../models/api/coinMarketChart'
-import { Area, AreaChart, ResponsiveContainer } from 'recharts'
+import { Area, AreaChart, ResponsiveContainer, YAxis } from 'recharts'
 
 interface Prop {
-  data: Record<string, unknown>
-  coin: string
+  data: [number, number][]
+  positive?: boolean
 }
 
 interface DataFormat {
@@ -15,20 +14,22 @@ interface DataFormat {
 
 function TrendingSparkline(prop: Prop) {
   const theme = useTheme()
-  const data: CoinMarketChart = prop.data[prop.coin] as CoinMarketChart
-  const chartdata = data.prices.map((element) => {
+  const chartdata = prop.data.map((element) => {
     const datapoint = {} as DataFormat
     datapoint.date = element[0]
     datapoint.price = element[1]
     return datapoint
   })
-  const gain = chartdata[0].price < chartdata[chartdata.length - 1].price
+  const gain =
+    prop.positive !== undefined
+      ? prop.positive
+      : chartdata[0].price < chartdata[chartdata.length - 1].price
 
   return (
     <ResponsiveContainer height="100%" width="100%">
       <AreaChart
         data={chartdata}
-        margin={{ top: 0, right: 20, bottom: 0, left: 30 }}
+        margin={{ top: 0, right: 0, bottom: 0, left: 30 }}
       >
         <defs>
           <linearGradient
@@ -46,7 +47,7 @@ function TrendingSparkline(prop: Prop) {
               stopOpacity={0.8}
             />
             <stop
-              offset="85%"
+              offset={'75%'}
               stopColor={
                 gain ? theme.palette.success.light : theme.palette.error.light
               }
@@ -54,10 +55,17 @@ function TrendingSparkline(prop: Prop) {
             />
           </linearGradient>
         </defs>
+        <YAxis
+          hide
+          domain={[
+            (dataMin: number) => dataMin * 0.95,
+            (dataMax: number) => dataMax * 1.05,
+          ]}
+        />
         <Area
           type="monotone"
           dataKey={'price'}
-          strokeWidth={3}
+          strokeWidth={2}
           stroke={
             gain ? theme.palette.success.light : theme.palette.error.light
           }

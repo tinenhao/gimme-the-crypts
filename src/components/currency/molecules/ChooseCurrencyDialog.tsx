@@ -1,12 +1,7 @@
 import React from 'react'
 import {
   makeStyles,
-  Theme,
-  useTheme,
-  Dialog,
-  DialogTitle,
   DialogContent,
-  IconButton,
   Typography,
   Box,
   List,
@@ -15,25 +10,16 @@ import {
   ListItemText,
   Avatar,
 } from '@material-ui/core'
-import CloseIcon from '@mui/icons-material/Close'
 import { Coin } from '../../../models/api/coin'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import {
   handleDialog,
   updateCoin,
 } from '../../../features/currencyConverterSlice'
+import DialogLayout from '../../template/DialogLayout'
 import SearchBar from '../atoms/SearchBar'
 
-const useStyles = makeStyles((theme: Theme) => ({
-  main: {
-    height: 700,
-    width: 400,
-    borderRadius: 30,
-  },
-  title: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
+const useStyles = makeStyles(() => ({
   content: {
     overflow: 'auto',
     '&::-webkit-scrollbar': {
@@ -44,12 +30,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function ChooseCurrencyDialog() {
   const classes = useStyles()
-  const theme = useTheme()
   const dispatch = useAppDispatch()
   const currencyConverter = useAppSelector((state) => state.currencyConverter)
   const coins = useAppSelector((state) => state.coin)
   const searchValue = currencyConverter.searchValue
-  const temp = [...coins.value]
+  const temp = [...coins.value].splice(0, 250)
   const coinArr = temp
     .sort(sortAlphebetical)
     .filter(
@@ -73,24 +58,20 @@ function ChooseCurrencyDialog() {
   }
 
   return (
-    <Dialog
+    <DialogLayout
+      title="Select a Token"
       open={currencyConverter.dialog}
       onClose={() => dispatch(handleDialog(''))}
-      classes={{ paper: classes.main }}
-      scroll="paper"
-    >
-      <DialogTitle>
-        <Box className={classes.title}>
-          <Typography style={{ marginTop: 13 }}>Select a Token</Typography>
-          <IconButton onClick={() => dispatch(handleDialog(''))}>
-            <CloseIcon style={{ fill: theme.palette.text.primary }} />
-          </IconButton>
+      header={
+        <Box>
+          {' '}
+          <SearchBar />
+          <Typography variant="body2" style={{ marginTop: 20, marginLeft: 15 }}>
+            Token Name
+          </Typography>
         </Box>
-        <SearchBar />
-        <Typography variant="body2" style={{ marginTop: 20, marginLeft: 15 }}>
-          Token Name
-        </Typography>
-      </DialogTitle>
+      }
+    >
       <DialogContent className={classes.content}>
         <List>
           {coinArr.map((coin) => {
@@ -112,7 +93,7 @@ function ChooseCurrencyDialog() {
           })}
         </List>
       </DialogContent>
-    </Dialog>
+    </DialogLayout>
   )
 }
 

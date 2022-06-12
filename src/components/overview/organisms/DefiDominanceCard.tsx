@@ -21,9 +21,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100%',
   },
   button: {
-    marginTop: 18,
+    marginTop: 15,
     marginRight: 8,
-    backgroundColor: theme.palette.primary.main,
+    borderColor: theme.palette.text.primary,
+    borderWidth: 2,
     color: theme.palette.text.primary,
   },
 }))
@@ -78,6 +79,7 @@ function DefiDominanceCard() {
             style={{ paddingBottom: 8, paddingTop: 13 }}
             action={
               <Button
+                variant="outlined"
                 className={classes.button}
                 onClick={() => setDataType(dataType + 1)}
               >

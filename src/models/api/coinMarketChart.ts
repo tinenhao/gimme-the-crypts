@@ -14,9 +14,7 @@ export interface CoinMarketChart {
 }
 
 export type CoinMarketChartList = {
-  [key in AvailableDayRanges]: {
-    [key: string]: CoinMarketChart
-  }
+  [key: string]: CoinMarketChart
 }
 
 export interface Dataformat {

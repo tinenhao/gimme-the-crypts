@@ -1,11 +1,13 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme, Typography } from '@material-ui/core'
+import { makeStyles, useTheme, Typography } from '@material-ui/core'
+import { formatPrice } from '../../../common/number'
 import { Coin } from '../../../models/api/coin'
+import { CoinMarketChart } from '../../../models/api/coinMarketChart'
 import CoinName from '../atoms/CoinName'
 import TrendingSparkline from './TrendingSparkline'
 import Tooltip from '../../template/Tooltip'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     height: 70,
     display: 'flex',
@@ -35,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface Prop {
   rank: number
   coin: Coin
-  coinMarketChart: Record<string, unknown>
+  coinMarketChart: Record<string, CoinMarketChart>
 }
 
 function CoinItem(prop: Prop) {
@@ -43,23 +45,16 @@ function CoinItem(prop: Prop) {
   const theme = useTheme()
   const negative = prop.coin.price_change_percentage_30d_in_currency < 0
 
-  function formatPrice(price: number) {
-    if (price <= 1) {
-      return price.toFixed(3)
-    } else if (price > 10000) {
-      return price.toFixed(0)
-    } else {
-      return price.toFixed(2)
-    }
-  }
-
   return (
     <div className={classes.main}>
       <Typography className={classes.text}>{prop.rank + 1}</Typography>
       <CoinName coin={prop.coin} />
       {Object.keys(prop.coinMarketChart).length !== 0 && (
         <div className={classes.chart}>
-          <TrendingSparkline coin={prop.coin.id} data={prop.coinMarketChart} />
+          <TrendingSparkline
+            data={prop.coinMarketChart[prop.coin.id].prices}
+            positive={!negative}
+          />
         </div>
       )}
       <div className={classes.price}>
@@ -72,6 +67,7 @@ function CoinItem(prop: Prop) {
                 : theme.palette.success.light,
             }}
           >
+            {!negative ? '+' : ''}
             {prop.coin.price_change_percentage_30d_in_currency.toFixed(2)}%
           </Typography>
         </Tooltip>
