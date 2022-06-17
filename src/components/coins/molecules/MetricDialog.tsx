@@ -3,12 +3,8 @@ import {
   makeStyles,
   DialogContent,
   Typography,
-  Box,
   List,
   ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Avatar,
   Checkbox,
 } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
@@ -33,7 +29,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-function ChooseCurrencyDialog() {
+function MetricDialog() {
   const classes = useStyles()
   const dispatch = useAppDispatch()
   const coins = useAppSelector((state) => state.coin)
@@ -80,4 +76,4 @@ function ChooseCurrencyDialog() {
   )
 }
 
-export default ChooseCurrencyDialog
+export default MetricDialog

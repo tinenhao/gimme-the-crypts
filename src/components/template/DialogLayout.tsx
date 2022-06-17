@@ -10,28 +10,31 @@ import {
 } from '@material-ui/core'
 import CloseIcon from '@mui/icons-material/Close'
 
-const useStyles = makeStyles(() => ({
-  main: {
-    height: 700,
-    width: 400,
-    borderRadius: 30,
-  },
-  title: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-}))
+const useStyles = (prop: Props) =>
+  makeStyles(() => ({
+    main: {
+      height: prop.height ? prop.height : 700,
+      width: 400,
+      borderRadius: 30,
+      paddingBottom: 25,
+    },
+    title: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+  }))
 
 interface Props {
   open: boolean
   title: string
   onClose: () => void
+  height?: number
   header?: ReactElement<any, any> | ReactElement<any, any>[]
   children: ReactElement<any, any> | ReactElement<any, any>[]
 }
 
 function DialogLayout(prop: Props) {
-  const classes = useStyles()
+  const classes = useStyles(prop)()
   const theme = useTheme()
 
   return (

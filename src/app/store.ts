@@ -9,6 +9,7 @@ import btchHashRateReducer from '../features/btcHashRateSlice'
 import supportedCoinsReducer from '../features/supportedCoinsSlice'
 import currencyConverterReducer from '../features/currencyConverterSlice'
 import correlationReducer from '../features/correlationSlice'
+import individualCoinReducer from '../features/individualCoinSlice'
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     supportedCoins: supportedCoinsReducer,
     currencyConverter: currencyConverterReducer,
     correlation: correlationReducer,
+    individualCoin: individualCoinReducer,
   },
 })
 

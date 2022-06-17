@@ -56,7 +56,7 @@ function PriceChart(prop: Prop) {
         <YAxis type="number" domain={['auto', 'auto']} />
         <XAxis
           dataKey="time"
-          domain={['auto', 'auto']}
+          domain={['dataMin', 'dataMax']}
           type="number"
           tickFormatter={(tick) => tickXFormatter(tick)}
         />

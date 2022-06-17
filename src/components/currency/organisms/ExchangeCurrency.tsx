@@ -45,16 +45,15 @@ function ExchangeCurrency() {
   const classes = useStyles()
   const dispatch = useAppDispatch()
   const currencyConverter = useAppSelector((state) => state.currencyConverter)
-  const price = (
+  const price =
     currencyConverter.coinFrom.current_price /
     currencyConverter.coinTo.current_price
-  ).toFixed(5)
 
   const display =
     currencyConverter.coinFrom.current_price === undefined ||
     currencyConverter.coinTo.current_price === undefined
       ? ''
-      : price +
+      : (price > 1000000 ? price.toExponential(4) : price.toFixed(5)) +
         ' ' +
         currencyConverter.coinTo.symbol.toUpperCase() +
         ' per ' +

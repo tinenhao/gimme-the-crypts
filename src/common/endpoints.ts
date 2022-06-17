@@ -9,6 +9,8 @@ const owlracle_API_key = '48f432cdbb73459dba8203365a8dc3cf'
 const owlracle_API_secret_key = '9f24d18ece0a492db4fa214e0874f749'
 
 export const coinGecko = {
+  individualCoin: (id: string) =>
+    `coins/${id}?localization=false&tickers=false`,
   coins: (
     sortingKey: CoinSortOrder,
     page: number,

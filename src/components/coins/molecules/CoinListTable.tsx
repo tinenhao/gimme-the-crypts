@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '&::-webkit-scrollbar': {
       display: 'none',
     },
-    '& .MuiTableRow-root:hover .MuiTableCell-root': {
+    '& .MuiTableBody-root .MuiTableRow-root:hover .MuiTableCell-root': {
       backgroundColor: theme.palette.info.main,
       cursor: 'pointer',
     },

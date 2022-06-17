@@ -8,7 +8,6 @@ import {
   TextField,
   Divider,
   Button,
-  Avatar,
 } from '@material-ui/core'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import {

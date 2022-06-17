@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     height: '100%',
     margin: 'auto',
-    maxWidth: 180,
+    maxWidth: 150,
   },
 }))
 
