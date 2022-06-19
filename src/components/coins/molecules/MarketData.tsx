@@ -8,7 +8,7 @@ import {
   ListItem,
 } from '@material-ui/core'
 import { IndividualCoin } from '../../../models/api/individualCoin'
-import { handleNotExist } from '../../../common/number'
+import { handleNotExist, convert2dp } from '../../../common/number'
 import moment from 'moment'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -35,11 +35,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   item: {
     display: 'flex',
     justifyContent: 'space-between',
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: 0,
+    },
   },
 }))
 
 interface Prop {
   coin: IndividualCoin
+  mobile?: boolean
 }
 
 function MarketData(prop: Prop) {
@@ -52,13 +56,15 @@ function MarketData(prop: Prop) {
       text: 'Price',
       value: `US$ ${handleNotExist(
         prop.coin.market_data.current_price['usd'],
+        true,
       )}`,
     },
     {
       title: false,
       text: 'Price Change 24H',
-      value: `US$ ${convert2dp(
-        handleNotExist(prop.coin.market_data.price_change_24h),
+      value: `US$ ${handleNotExist(
+        prop.coin.market_data.price_change_24h,
+        true,
       )}`,
     },
     {
@@ -72,12 +78,18 @@ function MarketData(prop: Prop) {
     {
       title: false,
       text: '24H Low',
-      value: `US$ ${handleNotExist(prop.coin.market_data.low_24h['usd'])}`,
+      value: `US$ ${handleNotExist(
+        prop.coin.market_data.low_24h['usd'],
+        true,
+      )}`,
     },
     {
       title: false,
       text: '24H High',
-      value: `US$ ${handleNotExist(prop.coin.market_data.high_24h['usd'])}`,
+      value: `US$ ${handleNotExist(
+        prop.coin.market_data.high_24h['usd'],
+        true,
+      )}`,
     },
     {
       title: false,
@@ -89,14 +101,16 @@ function MarketData(prop: Prop) {
       text: 'Market Cap',
       value: `US$ ${handleNotExist(
         prop.coin.market_data.market_cap['usd'],
-      ).toLocaleString()}`,
+        true,
+      )}`,
     },
     {
       title: false,
       text: 'Volume',
       value: `US$ ${handleNotExist(
         prop.coin.market_data.total_volume['usd'],
-      ).toLocaleString()}`,
+        true,
+      )}`,
     },
     { title: true, text: `${prop.coin.symbol.toUpperCase()} Price History` },
     {
@@ -142,9 +156,7 @@ function MarketData(prop: Prop) {
     {
       title: false,
       text: 'All Time High',
-      value: `US$ ${convert2dp(
-        handleNotExist(prop.coin.market_data.ath['usd']),
-      )}`,
+      value: `US$ ${handleNotExist(prop.coin.market_data.ath['usd'], true)}`,
     },
     {
       title: false,
@@ -183,29 +195,132 @@ function MarketData(prop: Prop) {
         prop.coin.market_data.max_supply,
       ).toLocaleString()} ${prop.coin.symbol.toUpperCase()}`,
     },
+    {
+      title: true,
+      mobile: true,
+      text: `${prop.coin.symbol.toUpperCase()} Community Data`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Community Score',
+      value: `${handleNotExist(prop.coin.community_score)}%`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Reddit Active Acc (48H)',
+      value: `${handleNotExist(
+        prop.coin.community_data.reddit_accounts_active_48h,
+        true,
+      )}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Reddit Subscribers',
+      value: `${handleNotExist(
+        prop.coin.community_data.reddit_subscribers,
+        true,
+      )}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Reddit Avg Comments (48H)',
+      value: `${handleNotExist(
+        prop.coin.community_data.reddit_average_comments_48h,
+        true,
+      )}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Reddit Avg Posts (48H)',
+      value: `${handleNotExist(
+        prop.coin.community_data.reddit_average_posts_48h,
+        true,
+      )}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Facebook Likes',
+      value: `${handleNotExist(prop.coin.community_data.facebook_likes, true)}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Twitter Followers',
+      value: `${handleNotExist(
+        prop.coin.community_data.twitter_followers,
+        true,
+      )}`,
+    },
+    {
+      title: true,
+      mobile: true,
+      text: `${prop.coin.symbol.toUpperCase()} Developer Data`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Stars',
+      value: `${handleNotExist(prop.coin.developer_data.stars, true)}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Watchers',
+      value: `${handleNotExist(prop.coin.developer_data.subscribers, true)}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Forks',
+      value: `${handleNotExist(prop.coin.developer_data.forks, true)}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Contributors',
+      value: `${handleNotExist(
+        prop.coin.developer_data.pull_request_contributors,
+        true,
+      )}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Merged PRs',
+      value: `${handleNotExist(
+        prop.coin.developer_data.pull_requests_merged,
+        true,
+      )}`,
+    },
+    {
+      title: false,
+      mobile: true,
+      text: 'Closed Issues',
+      value: `${handleNotExist(prop.coin.developer_data.closed_issues, true)}`,
+    },
   ]
-
-  function convert2dp(num: any) {
-    if (num !== '-') {
-      return num.toFixed(2)
-    }
-    return num
-  }
+  const data = prop.mobile ? titles : titles.filter((title) => !title.mobile)
 
   function convertTime(num: any) {
     if (num !== '-') {
-      return moment(num).format('Do MMM YYYY HH') + '00'
+      return moment(num).format('Do MMM YYYY HHMM')
     }
     return num
   }
 
   return (
     <div className={classes.main}>
-      <List className={classes.content}>
-        {titles.map((element) => {
+      <List className={prop.mobile ? undefined : classes.content}>
+        {data.map((element) => {
           if (element.title) {
             return (
-              <ListItem>
+              <ListItem className={classes.item}>
                 <Typography color="textSecondary">{element.text}</Typography>
               </ListItem>
             )

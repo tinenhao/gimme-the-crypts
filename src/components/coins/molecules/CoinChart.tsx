@@ -10,6 +10,11 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
+import {
+  formatPrice,
+  formatMarketCap,
+  formatYAxis,
+} from '../../../common/number'
 import moment from 'moment'
 
 function CoinChart() {
@@ -43,15 +48,14 @@ function CoinChart() {
     if (types[coin.data] === 'prices') {
       return tick.toString()
     }
-    return (tick / 1000000000).toFixed(0) + 'B'
+    return formatYAxis(tick)
   }
 
   function tooltipFormatter(value: number) {
     if (types[coin.data] === 'prices') {
-      return 'US$' + value.toFixed(2)
+      return 'US$' + formatPrice(value)
     }
-    const marketCap = (value / 1000000000).toFixed(2)
-    return 'US$' + marketCap + ' Billion'
+    return 'US$' + formatMarketCap(value)
   }
 
   function dateFormatter(date: string) {

@@ -14,6 +14,7 @@ const initialState = {
   selectedCoin: 'USD',
   timeframe: 0,
   data: 0,
+  mobileStatsDialog: false,
   currencyDialog: false,
   coinFromValue: parseInt(''),
   coinToValue: parseInt(''),
@@ -73,6 +74,9 @@ const IndividualCoinSlice = createSlice({
     },
     handleCurrencyDialog(state) {
       state.currencyDialog = !state.currencyDialog
+    },
+    handleMobileStatsDialog(state) {
+      state.mobileStatsDialog = !state.mobileStatsDialog
     },
     setCurrency(state, action) {
       state.selectedCoin = action.payload
@@ -137,6 +141,7 @@ const IndividualCoinSlice = createSlice({
 export const {
   handleDialog,
   handleCurrencyDialog,
+  handleMobileStatsDialog,
   setCurrency,
   updateValue,
   setTimeframe,

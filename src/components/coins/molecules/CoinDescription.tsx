@@ -21,7 +21,7 @@ interface Prop {
 function CoinDescription(prop: Prop) {
   const classes = useStyles()
 
-  return (
+  return prop.description !== '' ? (
     <Typography
       variant="body1"
       align="justify"
@@ -33,6 +33,8 @@ function CoinDescription(prop: Prop) {
         ),
       }}
     />
+  ) : (
+    <Typography>No available data</Typography>
   )
 }
 

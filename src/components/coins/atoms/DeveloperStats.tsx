@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-evenly',
   },
   text: {
-    minWidth: 150,
+    minWidth: 105,
   },
 }))
 

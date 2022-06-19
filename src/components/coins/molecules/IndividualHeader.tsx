@@ -11,7 +11,7 @@ import {
 import { useAppDispatch } from '../../../app/hooks'
 import { IndividualCoin } from '../../../models/api/individualCoin'
 import { handleDialog } from '../../../features/individualCoinSlice'
-import { formatPrice, handleNotExist } from '../../../common/number'
+import { formatPrice, handleNotExist, convert2dp } from '../../../common/number'
 import CategoriesDialog from '../atoms/CategoriesDialog'
 import PercentageChange from '../../overview/atoms/PercentageChange'
 
@@ -60,7 +60,7 @@ interface Prop {
   coin: IndividualCoin
 }
 
-function CoinListCard(prop: Prop) {
+function IndividualHeader(prop: Prop) {
   const classes = useStyles()
   const theme = useTheme()
   const dispatch = useAppDispatch()
@@ -174,8 +174,8 @@ function CoinListCard(prop: Prop) {
             US${formatPrice(prop.coin.market_data.current_price['usd'])}
           </Typography>
           <PercentageChange
-            percentageChange={handleNotExist(
-              prop.coin.market_data.price_change_percentage_24h,
+            percentageChange={convert2dp(
+              handleNotExist(prop.coin.market_data.price_change_percentage_24h),
             )}
             negative={prop.coin.market_data.price_change_percentage_24h < 0}
           />
@@ -197,9 +197,11 @@ function CoinListCard(prop: Prop) {
             {prop.coin.market_data.market_cap_change_percentage_24h_in_currency[
               'btc'
             ] > 0 && '+'}
-            {handleNotExist(
-              prop.coin.market_data
-                .market_cap_change_percentage_24h_in_currency['btc'],
+            {convert2dp(
+              handleNotExist(
+                prop.coin.market_data
+                  .market_cap_change_percentage_24h_in_currency['btc'],
+              ),
             )}
             %
           </Typography>
@@ -228,4 +230,4 @@ function CoinListCard(prop: Prop) {
   )
 }
 
-export default CoinListCard
+export default IndividualHeader
