@@ -4,30 +4,35 @@ import { OpenInNewRounded } from '@mui/icons-material'
 import { formatMarketCap, handleNotExist } from '../../../common/number'
 import { useAppSelector } from '../../../app/hooks'
 
-const useStyles = makeStyles((theme: Theme) => ({
-  main: {
-    width: '30%',
-    minWidth: 350,
-    height: '100%',
-    borderRadius: 20,
-    padding: 15,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    backgroundColor: theme.palette.info.main,
-  },
-  title: {
-    marginLeft: 10,
-    marginTop: 8,
-    cursor: 'pointer',
-    '&:hover': {
-      color: theme.palette.text.secondary,
+const useStyles = (prop: Prop) =>
+  makeStyles((theme: Theme) => ({
+    main: {
+      width: '30%',
+      height: '100%',
+      minWidth: prop.mobile ? 300 : 340,
+      borderRadius: 20,
+      padding: 15,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      backgroundColor: theme.palette.info.main,
     },
-  },
-}))
+    title: {
+      marginLeft: 10,
+      marginTop: 8,
+      cursor: 'pointer',
+      '&:hover': {
+        color: theme.palette.text.secondary,
+      },
+    },
+  }))
 
-function ExchangeDetails() {
-  const classes = useStyles()
+interface Prop {
+  mobile?: boolean
+}
+
+function ExchangeDetails(prop: Prop) {
+  const classes = useStyles(prop)()
   const exchange = useAppSelector((state) => state.exchange)
   const btcPrice =
     useAppSelector((state) => state.coin).value.find(
@@ -58,11 +63,14 @@ function ExchangeDetails() {
       <Box display="flex">
         <Avatar
           src={exchangeSelected.image}
-          style={{ width: 50, height: 50 }}
+          style={{
+            width: prop.mobile ? 40 : 50,
+            height: prop.mobile ? 40 : 50,
+          }}
         />
         <Typography
           className={classes.title}
-          variant="h5"
+          variant={prop.mobile ? 'h6' : 'h5'}
           noWrap
           onClick={() => (window.open(exchangeSelected.url), '_blank')}
         >
@@ -73,8 +81,12 @@ function ExchangeDetails() {
       {data.map((element, index) => {
         return (
           <Box display="flex" justifyContent="space-between" key={index}>
-            <Typography>{element.title}</Typography>
-            <Typography>{element.value}</Typography>
+            <Typography variant={prop.mobile ? 'body2' : 'body1'}>
+              {element.title}
+            </Typography>
+            <Typography variant={prop.mobile ? 'body2' : 'body1'}>
+              {element.value}
+            </Typography>
           </Box>
         )
       })}

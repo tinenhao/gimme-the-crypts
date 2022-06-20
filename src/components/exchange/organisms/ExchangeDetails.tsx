@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Box } from '@material-ui/core'
+import { Box, Hidden } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchCoins } from '../../../features/coinSlice'
 import CardLayout from '../../template/CardLayout'
@@ -21,16 +21,21 @@ function ExchangeDetails() {
     <CardLayout>
       {exchange.exchangeList.length !== 0 ? (
         <Box display="flex" height="100%" width="100%" padding={2}>
-          <ExchangeStats />
-          <Box
-            display="flex"
-            flexDirection="column"
-            width="100%"
-            marginLeft={2}
-          >
-            <ChartToolbar type="volume" />
-            <ExchangeVolumeGraph />
-          </Box>
+          <Hidden smUp>
+            <ExchangeStats mobile />
+          </Hidden>
+          <Hidden xsDown>
+            <ExchangeStats />
+            <Box
+              display="flex"
+              flexDirection="column"
+              width="100%"
+              marginLeft={2}
+            >
+              <ChartToolbar type="volume" />
+              <ExchangeVolumeGraph />
+            </Box>
+          </Hidden>
         </Box>
       ) : (
         <div />
