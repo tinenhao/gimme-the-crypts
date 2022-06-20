@@ -38,7 +38,7 @@ function CoinChart() {
       coin.timeframe === 2 ||
       coin.timeframe === 1
     ) {
-      return moment(tick).format('MM/DD')
+      return moment(tick).format('DD/MM')
     } else {
       return moment(tick).format('HH') + '00'
     }

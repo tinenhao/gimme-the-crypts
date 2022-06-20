@@ -21,6 +21,8 @@ export const formatMarketCap = (marketCap: number) => {
     return (marketCap / 1000000000).toFixed(2) + 'B'
   } else if (marketCap > 1000000) {
     return (marketCap / 1000000).toFixed(2) + 'M'
+  } else if (marketCap > 10000) {
+    return (marketCap / 1000).toFixed(2) + 'K'
   } else return marketCap.toFixed(2)
 }
 
@@ -31,7 +33,10 @@ export const formatYAxis = (marketCap: number) => {
     return marketCap / 1000000000 + 'B'
   } else if (marketCap > 1000000) {
     return marketCap / 1000000 + 'M'
-  } else return marketCap.toFixed(2)
+  } else if (marketCap > 10000) {
+    return marketCap / 1000 + 'K'
+  }
+  return marketCap.toFixed(0)
 }
 
 export const handleNotExist = (num: any, formatLocaleString?: boolean) => {

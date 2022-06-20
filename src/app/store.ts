@@ -10,6 +10,7 @@ import supportedCoinsReducer from '../features/supportedCoinsSlice'
 import currencyConverterReducer from '../features/currencyConverterSlice'
 import correlationReducer from '../features/correlationSlice'
 import individualCoinReducer from '../features/individualCoinSlice'
+import exchangeReducer from '../features/exchangeSlice'
 
 export const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ export const store = configureStore({
     currencyConverter: currencyConverterReducer,
     correlation: correlationReducer,
     individualCoin: individualCoinReducer,
+    exchange: exchangeReducer,
   },
 })
 

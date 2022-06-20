@@ -27,6 +27,9 @@ export const coinGecko = {
   trending: `search/trending`,
   global: `global`,
   supportedCoins: `coins/list`,
+  exchange: (page: number) => `exchanges/?per_page=100&page=${page}`,
+  exchangeVolume: (id: string, days: number) =>
+    `exchanges/${id}/volume_chart?days=${days}`,
 }
 
 export const owlracle = {

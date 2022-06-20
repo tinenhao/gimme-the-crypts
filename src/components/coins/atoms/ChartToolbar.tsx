@@ -1,11 +1,12 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme } from '@material-ui/core'
+import { makeStyles, Theme } from '@material-ui/core'
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import {
   setTimeframe,
   setDataType,
 } from '../../../features/individualCoinSlice'
+import { setDisplayTimeframe } from '../../../features/exchangeSlice'
 
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
@@ -29,20 +30,26 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 interface Prop {
-  type: 'time' | 'type'
+  type: 'time' | 'type' | 'volume'
 }
 
 function ChartToolbar(prop: Prop) {
   const classes = useStyles()
   const dispatch = useAppDispatch()
-  const theme = useTheme()
   const IndividualCoin = useAppSelector((state) => state.individualCoin)
+  const exchange = useAppSelector((state) => state.exchange)
   const toggleValue =
-    prop.type === 'time' ? IndividualCoin.timeframe : IndividualCoin.data
+    prop.type === 'time'
+      ? IndividualCoin.timeframe
+      : prop.type === 'type'
+      ? IndividualCoin.data
+      : exchange.displayTimeframe
   const title =
     prop.type === 'type'
       ? ['Price', 'Market Cap', 'Volume']
-      : ['1D', '7D', '1M', '3M', '1Y', '3Y', 'Max']
+      : prop.type === 'time'
+      ? ['1D', '7D', '1M', '3M', '1Y', '3Y', 'Max']
+      : ['1D', '7D', '1M', '3M', '1Y']
 
   return (
     <ToggleButtonGroup
@@ -59,7 +66,9 @@ function ChartToolbar(prop: Prop) {
             onClick={() =>
               prop.type === 'time'
                 ? dispatch(setTimeframe(index))
-                : dispatch(setDataType(index))
+                : prop.type === 'type'
+                ? dispatch(setDataType(index))
+                : dispatch(setDisplayTimeframe(index))
             }
           >
             {element}

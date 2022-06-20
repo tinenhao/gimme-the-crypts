@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   makeStyles,
   DialogContent,
@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core'
 import { Coin } from '../../../models/api/coin'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
+import { fetchCoins } from '../../../features/coinSlice'
 import {
   handleDialog,
   updateCoin,
@@ -42,6 +43,12 @@ function ChooseCurrencyDialog() {
         coin.symbol.toUpperCase().startsWith(searchValue.toUpperCase()) ||
         coin.name.toUpperCase().startsWith(searchValue.toUpperCase()),
     )
+
+  useEffect(() => {
+    if (coinArr.length === 0) {
+      dispatch(fetchCoins())
+    }
+  }, [])
 
   function sortAlphebetical(a: Coin, b: Coin) {
     if (a.symbol > b.symbol) {
