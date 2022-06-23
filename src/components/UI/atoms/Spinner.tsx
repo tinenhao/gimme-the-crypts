@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 interface Prop {
-  marginTop?: number
   determinate?: boolean
   progress?: number
 }
@@ -25,9 +24,10 @@ function Spinner(prop: Prop) {
   const classes = useStyles()
   const theme = useTheme()
   const progress = prop.progress ? prop.progress : 0
+  const title = ['Fetching Data...', 'Almost Ready']
 
   return (
-    <div className={classes.main} style={{ marginTop: `${prop.marginTop}%` }}>
+    <div className={classes.main}>
       <Box>
         {prop.determinate ? (
           <Box
@@ -66,7 +66,7 @@ function Spinner(prop: Prop) {
         <Typography
           style={{ marginTop: '5px', color: theme.palette.text.secondary }}
         >
-          Fetching Data...
+          {title[Math.floor((prop.progress || 0) / 100)]}
         </Typography>
       </Box>
     </div>

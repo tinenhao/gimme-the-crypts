@@ -9,6 +9,7 @@ import {
   List,
   Divider,
   Button,
+  Box,
 } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { Coin } from '../../../models/api/coin'
@@ -71,7 +72,16 @@ function CoinListCard() {
   return (
     <CardLayout>
       {isLoading1 ? (
-        <Spinner marginTop={80} />
+        <Box
+          height="100%"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Spinner />
+        </Box>
       ) : (
         <div style={{ height: '100%' }}>
           <CardHeader

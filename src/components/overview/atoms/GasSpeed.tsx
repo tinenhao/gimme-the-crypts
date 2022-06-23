@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: 100,
     margin: 'auto',
   },
-  word: {
-    padding: 5,
-  },
 }))
 
 interface Prop {
@@ -65,10 +62,11 @@ function GasSpeed(prop: Prop) {
           {speeds[prop.rank].title} Risk
         </Typography>
       </Box>
-      <Typography className={classes.word} style={{ marginTop: 5 }}>
-        {prop.gasPrice.toFixed(0)} GWEI
+      <Typography style={{ marginTop: 5 }}>
+        {prop.gasPrice.toFixed(0)}
       </Typography>
-      <Typography>US$</Typography>
+      <Typography color="textSecondary">GWEI</Typography>
+      <Typography color="textSecondary">US$</Typography>
       <Typography>{prop.txPrice.toFixed(2)}</Typography>
     </div>
   )

@@ -6,6 +6,7 @@ import {
   CardHeader,
   Avatar,
   Button,
+  Box,
 } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchBTCHashRateAndPrice } from '../../../features/btcHashRateSlice'
@@ -60,7 +61,16 @@ function HashRateCard() {
   return (
     <CardLayout>
       {isLoading ? (
-        <Spinner marginTop={35} />
+        <Box
+          height="100%"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Spinner />
+        </Box>
       ) : (
         <div className={classes.main}>
           <CardHeader

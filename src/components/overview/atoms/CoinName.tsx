@@ -6,9 +6,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   main: {
     display: 'flex',
     marginLeft: 15,
-    marginTop: 10,
+    marginTop: 14,
     paddingBottom: 5,
-    width: 130,
+    width: 140,
   },
   title: {
     marginLeft: 10,
@@ -32,12 +32,15 @@ function CoinName(prop: Prop) {
 
   return (
     <div className={classes.main}>
-      <Avatar src={prop.coin.image} style={{ marginTop: '3px' }} />
+      <Avatar
+        src={prop.coin.image}
+        style={{ marginTop: '3px', width: 30, height: 30 }}
+      />
       <div className={classes.title}>
-        <Typography noWrap display="inline">
+        <Typography variant="body2" noWrap display="inline">
           {prop.coin.name}
         </Typography>
-        <Typography className={classes.subtitle}>
+        <Typography variant="body2" className={classes.subtitle}>
           {prop.coin.symbol.toUpperCase()}/USD
         </Typography>
       </div>

@@ -6,6 +6,7 @@ import {
   CardHeader,
   Avatar,
   Button,
+  Box,
 } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchCoinMarketChartList } from '../../../features/coinMarketChartSlice'
@@ -38,7 +39,7 @@ function DefiDominanceCard() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [dataType, setDataType] = useState<number>(0)
   const titles = ['Market', 'Volume', 'Prices']
-  const button = ['Market Capitalization', 'Trading Volume', 'Coin Price']
+  const button = ['Market Cap', 'Trading Volume', 'Coin Price']
   const type = ['market_caps', 'total_volumes', 'prices']
 
   useEffect(() => {
@@ -57,7 +58,16 @@ function DefiDominanceCard() {
   return (
     <CardLayout>
       {isLoading ? (
-        <Spinner marginTop={35} />
+        <Box
+          height="100%"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Spinner />
+        </Box>
       ) : (
         <div className={classes.main}>
           <CardHeader
@@ -66,12 +76,12 @@ function DefiDominanceCard() {
                 <EmojiEventsIcon style={{ fill: 'black' }} />
               </Avatar>
             }
-            title="Defi Dominance"
+            title="Defi"
             titleTypographyProps={{
               variant: 'h6',
               color: 'textPrimary',
             }}
-            subheader={'by ' + button[dataType % 3]}
+            subheader={button[dataType % 3]}
             subheaderTypographyProps={{
               variant: 'caption',
               color: 'textSecondary',

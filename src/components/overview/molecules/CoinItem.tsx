@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, useTheme, Typography } from '@material-ui/core'
+import { makeStyles, useTheme, Typography, Hidden } from '@material-ui/core'
 import { formatPrice } from '../../../common/number'
 import { Coin } from '../../../models/api/coin'
 import { CoinMarketChart } from '../../../models/api/coinMarketChart'
@@ -23,14 +23,15 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'right',
-    marginTop: 8,
+    marginTop: 14,
     marginLeft: 'auto',
+    width: 125,
   },
   chart: {
     width: '100%',
     height: '100%',
     margin: 'auto',
-    maxWidth: 150,
+    maxWidth: 140,
   },
 }))
 
@@ -50,17 +51,22 @@ function CoinItem(prop: Prop) {
       <Typography className={classes.text}>{prop.rank + 1}</Typography>
       <CoinName coin={prop.coin} />
       {Object.keys(prop.coinMarketChart).length !== 0 && (
-        <div className={classes.chart}>
-          <TrendingSparkline
-            data={prop.coinMarketChart[prop.coin.id].prices}
-            positive={!negative}
-          />
-        </div>
+        <Hidden only={['xs', 'lg']}>
+          <div className={classes.chart}>
+            <TrendingSparkline
+              data={prop.coinMarketChart[prop.coin.id].prices}
+              positive={!negative}
+            />
+          </div>
+        </Hidden>
       )}
       <div className={classes.price}>
-        <Typography>US${formatPrice(prop.coin.current_price)}</Typography>
+        <Typography variant="body2">
+          US${formatPrice(prop.coin.current_price)}
+        </Typography>
         <Tooltip title="price change in the last 30 days">
           <Typography
+            variant="body2"
             style={{
               color: negative
                 ? theme.palette.error.light

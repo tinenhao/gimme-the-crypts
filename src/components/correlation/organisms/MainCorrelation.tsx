@@ -64,13 +64,7 @@ function MainCorrelation() {
         }),
       )
     }
-  }, [
-    dispatch,
-    correlation.value,
-    correlation.status,
-    topCoins.value.length,
-    correlation.timeframe,
-  ])
+  }, [correlation.timeframe])
 
   useEffect(() => {
     for (let a = 0; a < 5; a++) {
@@ -101,9 +95,6 @@ function MainCorrelation() {
     }
   }, [correlation.value])
 
-  console.log(correlation.status)
-  console.log(correlation.correlationValues)
-
   return (
     <CardLayout>
       <div className={classes.main}>
@@ -127,11 +118,19 @@ function MainCorrelation() {
           action={<TimeframeToolbar />}
         />
         {correlation.correlationValues[correlation.timeframe] === undefined ? (
-          <Spinner
-            marginTop={30}
-            determinate={true}
-            progress={correlation.progress[correlation.timeframe]}
-          />
+          <Box
+            height={`calc(100% - ${80}px)`}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <Spinner
+              determinate={true}
+              progress={correlation.progress[correlation.timeframe]}
+            />
+          </Box>
         ) : (
           <Box height="100%">
             {correlation.heatmap ? (

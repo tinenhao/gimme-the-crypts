@@ -5,6 +5,7 @@ import {
   useTheme,
   CardHeader,
   Avatar,
+  Box,
 } from '@material-ui/core'
 import DonutLargeIcon from '@mui/icons-material/DonutLarge'
 import CardLayout from '../../template/CardLayout'
@@ -41,10 +42,7 @@ function MarketCapCard() {
   }, [dispatch, global.status, global.value])
 
   function getMarketCap() {
-    return (
-      (global.value.total_market_cap.usd / 1000000000000).toFixed(2) +
-      ' Trillion'
-    )
+    return (global.value.total_market_cap.usd / 1000000000000).toFixed(2) + ' T'
   }
 
   function getPercentage() {
@@ -61,7 +59,16 @@ function MarketCapCard() {
   return (
     <CardLayout>
       {isLoading ? (
-        <Spinner marginTop={40} />
+        <Box
+          height="100%"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Spinner />
+        </Box>
       ) : (
         <div className={classes.main}>
           <CardHeader

@@ -187,7 +187,16 @@ function ExchangeGraph() {
           </Box>
           <Hidden lgUp>{toggleButtons}</Hidden>
           {currencyConverter.value.length === 0 ? (
-            <Spinner marginTop={23} determinate={true} progress={progress} />
+            <Box
+              height="100%"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+              }}
+            >
+              <Spinner determinate={true} progress={progress} />
+            </Box>
           ) : (
             <PriceChart
               data={currencyConverter.value[timeframe]}

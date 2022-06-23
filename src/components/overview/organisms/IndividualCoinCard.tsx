@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { makeStyles, Theme, CardHeader } from '@material-ui/core'
+import { makeStyles, Theme, CardHeader, Box } from '@material-ui/core'
 import CardLayout from '../../template/CardLayout'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchTrendingCoins } from '../../../features/trendingSlice'
@@ -71,9 +71,16 @@ function IndividualCoinCard(prop: Prop) {
   return (
     <CardLayout>
       {isLoading1 || isLoading2 || isLoading3 ? (
-        <div style={{ marginTop: 70 }}>
+        <Box
+          height="100%"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
           <Spinner />
-        </div>
+        </Box>
       ) : (
         <div className={classes.main}>
           <CardHeader

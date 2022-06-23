@@ -92,8 +92,8 @@ function Overview() {
       </Hidden>
 
       <Hidden smDown lgUp>
-        <Grid container direction="column" spacing={3}>
-          <Grid item>
+        <Grid container spacing={3}>
+          <Grid item md={12}>
             <Grid container spacing={3} style={{ height: 230 }}>
               <Grid item md={6}>
                 <IndividualCoinCard rank={0} />
@@ -103,7 +103,7 @@ function Overview() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item md={12}>
             <Grid container spacing={3} style={{ height: 230 }}>
               <Grid item md={6}>
                 <IndividualCoinCard rank={2} />
@@ -113,32 +113,20 @@ function Overview() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
-            <Grid container spacing={3} style={{ height: 500 }}>
-              <Grid item md={6}>
-                <MarketCapCard />
-              </Grid>
-              <Grid item md={6} style={{ height: 500 }}>
-                <DefiDominanceCard />
-              </Grid>
-            </Grid>
+          <Grid item md={12} style={{ height: 500 }}>
+            <MarketCapCard />
           </Grid>
-          <Grid item>
-            <Grid container spacing={3} style={{ height: 500 }}>
-              <Grid item md={6}>
-                <GasPriceCard />
-              </Grid>
-              <Grid item md={6} style={{ height: 500 }}>
-                <HashRateCard />
-              </Grid>
-            </Grid>
+          <Grid item xs={12} style={{ height: 500 }}>
+            <DefiDominanceCard />
           </Grid>
-          <Grid item>
-            <Grid container spacing={3} style={{ height: 500 }}>
-              <Grid item md={6} style={{ height: 500 }}>
-                <CoinListCard />
-              </Grid>
-            </Grid>
+          <Grid item xs={12} style={{ height: 500 }}>
+            <HashRateCard />
+          </Grid>
+          <Grid item xs={12} style={{ height: 500 }}>
+            <GasPriceCard />
+          </Grid>
+          <Grid item xs={12} style={{ height: 700 }}>
+            <CoinListCard />
           </Grid>
         </Grid>
       </Hidden>

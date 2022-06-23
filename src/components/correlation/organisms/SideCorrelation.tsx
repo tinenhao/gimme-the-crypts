@@ -6,7 +6,7 @@ import {
   CardHeader,
   Avatar,
   List,
-  Hidden,
+  Box,
 } from '@material-ui/core'
 import {
   ThumbDownAlt as NegativeIcon,
@@ -97,22 +97,19 @@ function SideCorrelation(prop: Prop) {
           style={{ paddingBottom: 8, paddingTop: 13 }}
         />
         {correlation.correlationValues[correlation.timeframe] === undefined ? (
-          <div>
-            <Hidden smDown>
-              <Spinner
-                marginTop={25}
-                determinate={true}
-                progress={correlation.progress[correlation.timeframe]}
-              />
-            </Hidden>
-            <Hidden mdUp>
-              <Spinner
-                marginTop={10}
-                determinate={true}
-                progress={correlation.progress[correlation.timeframe]}
-              />
-            </Hidden>
-          </div>
+          <Box
+            height={`calc(100% - ${80}px)`}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <Spinner
+              determinate={true}
+              progress={correlation.progress[correlation.timeframe]}
+            />
+          </Box>
         ) : (
           <List disablePadding className={classes.content}>
             {top15Pairs.map((element, index) => {

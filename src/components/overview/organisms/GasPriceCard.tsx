@@ -6,6 +6,7 @@ import {
   CardHeader,
   Avatar,
   Button,
+  Box,
 } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchGasPrice } from '../../../features/gasPriceEstimateSlice'
@@ -67,10 +68,22 @@ function GasPriceCard() {
     }
   }, [dispatch, gasPriceHistory.status, gasPriceHistory.value])
 
+  console.log(gasPriceEstimation)
+  console.log(gasPriceHistory)
+
   return (
     <CardLayout>
       {isLoading1 || isLoading2 ? (
-        <Spinner marginTop={35} />
+        <Box
+          height="100%"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Spinner />
+        </Box>
       ) : (
         <div className={classes.main}>
           <CardHeader
