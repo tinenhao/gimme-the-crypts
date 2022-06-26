@@ -54,3 +54,11 @@ export const convert2dp = (num: any) => {
   }
   return num
 }
+
+export const formatPercentage = (percentage: number) => {
+  if (percentage === null || percentage === undefined) {
+    return '-'
+  } else {
+    return percentage.toFixed(2) + '%'
+  }
+}

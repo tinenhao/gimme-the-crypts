@@ -43,3 +43,10 @@ export const blockchainCom = {
   bitcoinPrice: `/charts/market-price?rollingAverage=1d&timespan=1year&sampled=true&cors=true`,
   pools: `/pools?timespan=7days&cors=true`,
 }
+
+export const defiLlama = {
+  protocolList: `protocols`,
+  protocol: (id: string) => `protocol/${id}`,
+  tvlChart: `charts`,
+  chainList: `chains`,
+}

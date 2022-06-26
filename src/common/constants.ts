@@ -7,9 +7,19 @@ export const http = rateLimit(axios.create(), {
 })
 
 export const API_CONFIG: (
-  server: 'coinGecko' | 'owlracle' | 'alternative.me' | 'blockchain.com',
+  server:
+    | 'coinGecko'
+    | 'owlracle'
+    | 'alternative.me'
+    | 'blockchain.com'
+    | 'defiLlama',
 ) => AxiosRequestConfig = (
-  server: 'coinGecko' | 'owlracle' | 'alternative.me' | 'blockchain.com',
+  server:
+    | 'coinGecko'
+    | 'owlracle'
+    | 'alternative.me'
+    | 'blockchain.com'
+    | 'defiLlama',
 ) => {
   switch (server) {
     case 'coinGecko':
@@ -33,6 +43,12 @@ export const API_CONFIG: (
     case 'blockchain.com':
       return {
         baseURL: 'https://api.blockchain.info',
+        responseType: 'json',
+        method: 'GET',
+      }
+    case 'defiLlama':
+      return {
+        baseURL: 'https://api.llama.fi',
         responseType: 'json',
         method: 'GET',
       }

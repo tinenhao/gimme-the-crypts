@@ -5,7 +5,7 @@ import ExchangeList from '../../components/exchange/organisms/ExchangeList'
 
 const useStyles = makeStyles(() => ({
   main: {
-    height: '100%',
+    height: '98%',
     width: '100%',
     display: 'flex',
     flexDirection: 'column',

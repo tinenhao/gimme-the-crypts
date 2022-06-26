@@ -68,9 +68,6 @@ function GasPriceCard() {
     }
   }, [dispatch, gasPriceHistory.status, gasPriceHistory.value])
 
-  console.log(gasPriceEstimation)
-  console.log(gasPriceHistory)
-
   return (
     <CardLayout>
       {isLoading1 || isLoading2 ? (
