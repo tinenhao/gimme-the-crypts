@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles, Theme, useTheme } from '@material-ui/core'
 import { useAppSelector } from '../../../app/hooks'
 import Chart from 'react-apexcharts'

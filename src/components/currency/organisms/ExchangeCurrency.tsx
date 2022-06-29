@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   makeStyles,
-  Theme,
   CardHeader,
   IconButton,
   Typography,
@@ -12,7 +11,7 @@ import CardLayout from '../../template/CardLayout'
 import InputField from '../molecules/InputField'
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     height: '100%',
   },

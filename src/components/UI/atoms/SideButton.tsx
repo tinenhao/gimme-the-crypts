@@ -60,7 +60,7 @@ function SideButton(prop: Prop) {
   return (
     <div className={classes.main}>
       <Tooltip title={triple.title}>
-        <IconButton onClick={(e) => (window.open(triple.link), '_blank')}>
+        <IconButton onClick={() => (window.open(triple.link), '_blank')}>
           {triple.icon}
         </IconButton>
       </Tooltip>

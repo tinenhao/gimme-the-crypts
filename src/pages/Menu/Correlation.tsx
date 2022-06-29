@@ -1,9 +1,9 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme, Grid, Hidden } from '@material-ui/core'
+import { makeStyles, useTheme, Grid, Hidden } from '@material-ui/core'
 import MainCorrelation from '../../components/correlation/organisms/MainCorrelation'
 import SideCorrelation from '../../components/correlation/organisms/SideCorrelation'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     height: '100%',
     maxHeight: 1000,

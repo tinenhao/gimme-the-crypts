@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { makeStyles, Theme, Avatar, Typography } from '@material-ui/core'
 import { TrendingCoin } from '../../../models/api/trending'
 

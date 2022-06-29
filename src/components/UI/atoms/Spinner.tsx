@@ -1,14 +1,13 @@
 import React from 'react'
 import {
   makeStyles,
-  Theme,
   useTheme,
   CircularProgress,
   Typography,
   Box,
 } from '@material-ui/core'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     display: 'flex',
     justifyContent: 'center',

@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   makeStyles,
-  Theme,
   useTheme,
   CardHeader,
   Avatar,
@@ -16,7 +15,7 @@ import DeveloperStats from '../atoms/DeveloperStats'
 import CommitData from '../atoms/CommitData'
 import CommitChart from '../atoms/CommitChart'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     width: '65%',
     height: '100%',

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
   makeStyles,
-  Theme,
   useTheme,
   CardHeader,
   Avatar,
@@ -15,7 +14,7 @@ import PercentageChange from '../atoms/PercentageChange'
 import Spinner from '../../UI/atoms/Spinner'
 import Donut from '../molecules/Donut'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     width: '100%',
     height: '100%',

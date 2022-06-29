@@ -2,7 +2,6 @@ import React from 'react'
 import {
   makeStyles,
   Theme,
-  useTheme,
   Box,
   Avatar,
   Typography,
@@ -45,7 +44,6 @@ interface Prop {
 
 function MobileIndividualHeader(prop: Prop) {
   const classes = useStyles()
-  const theme = useTheme()
   const lowest =
     prop.coin.market_data.low_24h['usd'] <
     prop.coin.market_data.current_price['usd']

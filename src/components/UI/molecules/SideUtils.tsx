@@ -1,8 +1,8 @@
 import React from 'react'
-import { makeStyles, Theme, Box } from '@material-ui/core'
+import { makeStyles, Box } from '@material-ui/core'
 import SideButton from '../atoms/SideButton'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     display: 'flex',
     justifyContent: 'space-evenly',

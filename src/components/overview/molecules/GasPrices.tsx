@@ -1,10 +1,10 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 import { gasPriceEstimation } from '../../../models/api/gasPriceEstimation'
 import GasSpeed from '../atoms/GasSpeed'
 import GasAcceptance from '../atoms/GasAcceptance'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     display: 'flex',
     justifyContent: 'space-evenly',
@@ -23,7 +23,6 @@ interface Prop {
 
 function GasPrice(prop: Prop) {
   const classes = useStyles()
-  const theme = useTheme()
 
   return (
     <div className={classes.main}>

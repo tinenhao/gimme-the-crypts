@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme, Grid, Hidden } from '@material-ui/core'
+import { makeStyles, useTheme, Grid, Hidden } from '@material-ui/core'
 import CoinListCard from '../../components/overview/organisms/CoinListCard'
 import DefiDominanceCard from '../../components/overview/organisms/DefiDominanceCard'
 import GasPriceCard from '../../components/overview/organisms/GasPriceCard'
@@ -7,7 +7,7 @@ import HashRateCard from '../../components/overview/organisms/HashRateCard'
 import IndividualCoinCard from '../../components/overview/organisms/IndividualCoinCard'
 import MarketCapCard from '../../components/overview/organisms/MarketCapCard'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     height: 1000,
   },

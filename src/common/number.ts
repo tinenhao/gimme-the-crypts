@@ -14,29 +14,31 @@ export const formatPrice = (price: number) => {
   }
 }
 
-export const formatMarketCap = (marketCap: number) => {
+export const formatMarketCap = (data: number) => {
+  const marketCap = Math.abs(data)
   if (marketCap > 1000000000000) {
-    return (marketCap / 1000000000000).toFixed(2) + 'T'
+    return (data / 1000000000000).toFixed(2) + 'T'
   } else if (marketCap > 1000000000) {
-    return (marketCap / 1000000000).toFixed(2) + 'B'
+    return (data / 1000000000).toFixed(2) + 'B'
   } else if (marketCap > 1000000) {
-    return (marketCap / 1000000).toFixed(2) + 'M'
+    return (data / 1000000).toFixed(2) + 'M'
   } else if (marketCap > 10000) {
-    return (marketCap / 1000).toFixed(2) + 'K'
-  } else return marketCap.toFixed(2)
+    return (data / 1000).toFixed(2) + 'K'
+  } else return data.toFixed(2)
 }
 
-export const formatYAxis = (marketCap: number) => {
+export const formatYAxis = (data: number) => {
+  const marketCap = Math.abs(data)
   if (marketCap > 1000000000000) {
-    return marketCap / 1000000000000 + 'T'
+    return data / 1000000000000 + 'T'
   } else if (marketCap > 1000000000) {
-    return marketCap / 1000000000 + 'B'
+    return data / 1000000000 + 'B'
   } else if (marketCap > 1000000) {
-    return marketCap / 1000000 + 'M'
+    return data / 1000000 + 'M'
   } else if (marketCap > 10000) {
-    return marketCap / 1000 + 'K'
+    return data / 1000 + 'K'
   }
-  return marketCap.toFixed(0)
+  return data.toFixed(0)
 }
 
 export const handleNotExist = (num: any, formatLocaleString?: boolean) => {

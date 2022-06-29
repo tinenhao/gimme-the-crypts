@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme, CardHeader } from '@material-ui/core'
+import { makeStyles, Theme, CardHeader } from '@material-ui/core'
 import CardLayout from '../../template/CardLayout'
 import ProtocolDonut from '../atoms/ProtocolDonut'
 

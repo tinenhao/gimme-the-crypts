@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../../app/hooks'
 import {
   makeStyles,
@@ -40,6 +41,7 @@ interface Prop {
 function DefiTableBody(prop: Prop) {
   const classes = useStyles()
   const theme = useTheme()
+  const navigate = useNavigate()
   const defi = useAppSelector((state) => state.defiProtocol)
   const coins = useAppSelector((state) => state.coin)
   const defiList = [...defi.protocolList]
@@ -80,10 +82,18 @@ function DefiTableBody(prop: Prop) {
           }
 
           return (
-            <TableRow key={index} style={{ height: 70 }} hover>
+            <TableRow
+              key={index}
+              style={{ height: 70 }}
+              hover
+              onClick={() => navigate(`/defi/${data.slug}`)}
+            >
               <TableCell className={classes.stickyColumn}>
                 <Box display="flex">
-                  <Typography variant="body2" style={{ marginTop: 4 }}>
+                  <Typography
+                    variant="body2"
+                    style={{ marginTop: 4, width: 25 }}
+                  >
                     {index + 1}
                   </Typography>
                   <Avatar

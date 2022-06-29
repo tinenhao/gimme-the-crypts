@@ -53,7 +53,8 @@ export const fetchProtocolDetails = createAsyncThunk(
       url: API.protocol(param.id),
       cancelToken: canceler.token,
     })
-    return response.data
+
+    return { ...response.data, color: '' }
   },
 )
 
@@ -79,6 +80,12 @@ const protocolSlice = createSlice({
         state.sortKey = action.payload
         state.sortOrder = 'desc'
       }
+    },
+    restart(state) {
+      state.protocol = {} as protocolDetails
+    },
+    setColor(state, action) {
+      state.protocol.color = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -108,7 +115,7 @@ const protocolSlice = createSlice({
       })
       .addCase(fetchProtocolDetails.fulfilled, (state, action) => {
         state.statusProtocol = 'IDLE'
-        state.protocolList = action.payload
+        state.protocol = action.payload
       })
       .addCase(fetchProtocolDetails.rejected, (state) => {
         state.statusProtocol = 'FAILED'
@@ -126,6 +133,6 @@ const protocolSlice = createSlice({
   },
 })
 
-export const { setSortKey } = protocolSlice.actions
+export const { setSortKey, setColor, restart } = protocolSlice.actions
 
 export default protocolSlice.reducer

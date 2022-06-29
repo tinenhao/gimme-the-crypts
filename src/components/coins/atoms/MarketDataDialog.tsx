@@ -1,19 +1,12 @@
 import React from 'react'
-import {
-  makeStyles,
-  DialogContent,
-  Typography,
-  List,
-  ListItem,
-  Theme,
-} from '@material-ui/core'
+import { makeStyles, DialogContent } from '@material-ui/core'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { handleMobileStatsDialog } from '../../../features/individualCoinSlice'
 import DialogLayout from '../../template/DialogLayout'
 import { IndividualCoin } from '../../../models/api/individualCoin'
 import MarketData from '../molecules/MarketData'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   content: {
     overflow: 'auto',
     '&::-webkit-scrollbar': {

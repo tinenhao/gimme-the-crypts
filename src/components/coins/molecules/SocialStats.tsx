@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   makeStyles,
-  Theme,
   useTheme,
   CardHeader,
   Avatar,
@@ -13,7 +12,7 @@ import { IndividualCoin } from '../../../models/api/individualCoin'
 import { handleNotExist } from '../../../common/number'
 import { Facebook, Twitter, Reddit } from '@mui/icons-material'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     width: '100%',
     height: '100%',

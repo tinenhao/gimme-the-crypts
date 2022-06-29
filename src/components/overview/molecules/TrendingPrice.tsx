@@ -1,12 +1,12 @@
 import React from 'react'
-import { makeStyles, Theme, Typography } from '@material-ui/core'
+import { makeStyles, Typography } from '@material-ui/core'
 import { TrendingCoin } from '../../../models/api/trending'
 import { Coin } from '../../../models/api/coin'
 import { CoinMarketChart } from '../../../models/api/coinMarketChart'
 import CoinHeader from '../atoms/CoinHeader'
 import PercentageChange from '../atoms/PercentageChange'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     display: 'flex',
     flexDirection: 'column',

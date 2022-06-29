@@ -1,9 +1,9 @@
 import React from 'react'
-import { makeStyles, Theme, Typography } from '@material-ui/core'
-import { appBarHeight, drawerWidth } from '../../../common/dimensions'
+import { makeStyles, Typography } from '@material-ui/core'
+import { appBarHeight } from '../../../common/dimensions'
 import Logo from '../atoms/Logo'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     display: 'flex',
     height: appBarHeight,

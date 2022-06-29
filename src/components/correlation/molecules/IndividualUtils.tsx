@@ -2,7 +2,6 @@ import React from 'react'
 import {
   makeStyles,
   Theme,
-  useTheme,
   Box,
   Button,
   FormControl,
@@ -49,7 +48,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function IndividualUtils() {
   const classes = useStyles()
-  const theme = useTheme()
   const dispatch = useAppDispatch()
   const coins = useAppSelector((state) => state.coin)
   const correlation = useAppSelector((state) => state.correlation)

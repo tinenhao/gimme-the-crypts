@@ -67,6 +67,7 @@ export interface protocolDetails {
   tvl: chartData[]
   twitter: string
   url: string
+  color: string
 }
 
 export interface chain {

@@ -5,7 +5,6 @@ import {
   useTheme,
   CardHeader,
   Typography,
-  CardContent,
 } from '@material-ui/core'
 import { useAppSelector } from '../../../app/hooks'
 import { formatMarketCap } from '../../../common/number'

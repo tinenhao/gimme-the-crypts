@@ -59,7 +59,10 @@ function Defi() {
     }
   }, [dispatch, coins.status, coins.value, coins.page])
 
-  return isLoading1 || isLoading2 || isLoading3 ? (
+  return isLoading1 ||
+    isLoading2 ||
+    isLoading3 ||
+    defi.protocol.color === '' ? (
     <Box
       height="100%"
       width="100%"

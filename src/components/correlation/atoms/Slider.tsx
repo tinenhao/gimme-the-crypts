@@ -2,7 +2,6 @@ import React from 'react'
 import {
   makeStyles,
   Theme,
-  useTheme,
   Slider as MuiSlider,
   IconButton,
 } from '@material-ui/core'
@@ -49,7 +48,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function Slider() {
   const classes = useStyles()
-  const theme = useTheme()
   const dispatch = useAppDispatch()
   const correlation = useAppSelector((state) => state.correlation)
 

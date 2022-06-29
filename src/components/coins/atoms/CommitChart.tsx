@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme, Typography } from '@material-ui/core'
+import { makeStyles, useTheme, Typography } from '@material-ui/core'
 import {
   Bar,
   BarChart,
@@ -10,7 +10,7 @@ import {
 } from 'recharts'
 import moment from 'moment'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   main: {
     width: '100%',
     height: '50%',

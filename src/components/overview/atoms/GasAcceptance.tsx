@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { makeStyles, Theme, Box, Typography } from '@material-ui/core'
+import React from 'react'
+import { makeStyles, Theme } from '@material-ui/core'
 import Tooltip from '../../../components/template/Tooltip'
 
 const useStyles = makeStyles((theme: Theme) => ({

@@ -17,6 +17,7 @@ import Coins from './Others/Coins'
 import IndividualCoins from './Others/IndividualCoins'
 import Exchange from './Others/Exchange'
 import Defi from './Others/Defi'
+import IndividualDefiProtocol from './Others/IndividualDefiProtocol'
 import NFT from './Others/NFT'
 import PageLayout from '../components/template/PageLayout'
 
@@ -76,6 +77,10 @@ const pages: RootModule[] = [
         icon: <DefiIcon />,
         page: <Defi />,
         index: 5,
+        subpage: {
+          path: 'defiID',
+          page: <IndividualDefiProtocol />,
+        },
       },
       {
         label: 'NFT',

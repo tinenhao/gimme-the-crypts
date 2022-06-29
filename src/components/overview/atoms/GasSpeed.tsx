@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { makeStyles, Theme, Box, Typography } from '@material-ui/core'
 import {
   GppGood as LowRiskIcon,

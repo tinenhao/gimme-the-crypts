@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Theme, useTheme } from '@material-ui/core'
+import { useTheme } from '@material-ui/core'
 import { gasPriceData } from '../../../models/api/gasPriceHistory'
 import {
   Area,
@@ -12,14 +12,11 @@ import {
 } from 'recharts'
 import moment from 'moment'
 
-const useStyles = makeStyles((theme: Theme) => ({}))
-
 interface Prop {
   data: gasPriceData[]
 }
 
 function GasPriceHistory(prop: Prop) {
-  const classes = useStyles()
   const theme = useTheme()
   const chartData = prop.data.map((element, index) => {
     return {
@@ -112,7 +109,7 @@ function GasPriceHistory(prop: Prop) {
         <YAxis tickFormatter={(tick) => tickYFormatter(tick)} />
         <Legend />
         <Tooltip
-          formatter={(value: number, name: string) => tooltipFormatter(value)}
+          formatter={(value: number) => tooltipFormatter(value)}
           labelFormatter={(label) => dateFormatter(label)}
           contentStyle={{
             borderRadius: 15,
