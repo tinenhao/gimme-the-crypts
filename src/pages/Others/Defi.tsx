@@ -5,6 +5,7 @@ import {
   fetchProtocolList,
   fetchTVLData,
   fetchChainList,
+  fetchChainTVL,
 } from '../../features/defiProtocolSlice'
 import { fetchCoins, addPage } from '../../features/coinSlice'
 import DefiTable from '../../components/Defi/organisms/DefiTable'
@@ -51,6 +52,24 @@ function Defi() {
       setIsLoading3(false)
     }
   }, [dispatch, defi.statusChainList, defi.chainList])
+
+  useEffect(() => {
+    if (
+      defi.statusChainTVL === 'IDLE' &&
+      defi.chainList.length !== 0 &&
+      defi.chainTVLList.length !== 9
+    ) {
+      const chainList = [...defi.chainList]
+        .sort((a, b) => b.tvl - a.tvl)
+        .splice(0, 9)
+        .map((chain) => chain.name)
+      for (let i = 0; i < chainList.length; i++) {
+        dispatch(fetchChainTVL({ id: chainList[i] }))
+      }
+    }
+  }, [defi.chainList])
+
+  console.log(defi.chainTVLList)
 
   useEffect(() => {
     if (coins.status === 'IDLE' && coins.page <= 2) {

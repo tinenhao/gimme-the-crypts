@@ -5,15 +5,28 @@ import { formatMarketCap } from '../../../common/number'
 import { Pie, PieChart, ResponsiveContainer, Tooltip, Cell } from 'recharts'
 import chroma from 'chroma-js'
 
-function ProtocolDonut() {
+interface Prop {
+  type: number
+}
+
+function ProtocolDonut(prop: Prop) {
   const theme = useTheme()
   const defi = useAppSelector((state) => state.defiProtocol)
   const tvl = defi.TVLChart[defi.TVLChart.length - 1].totalLiquidityUSD
-  const chartData = [...defi.protocolList].splice(0, 10).map((protocol) => {
-    return { name: protocol.name, percentage: protocol.tvl / tvl }
-  })
+  const chartData = (
+    prop.type === 0 ? [...defi.protocolList] : [...defi.chainList]
+  )
+    .sort((a, b) => b.tvl - a.tvl)
+    .splice(0, 10)
+    .map((protocol) => {
+      return { name: protocol.name, percentage: protocol.tvl / tvl }
+    })
   const others = 1 - chartData.reduce((x, y) => x + y.percentage, 0)
   chartData.push({ name: 'Others', percentage: others })
+
+  // const tokenData = [...defi.chainList].sort((a, b) => b.tvl - a.tvl).splice(0, 10).map((chain) => {
+  //   return {name: chain.name, percentage: per}
+  // })
 
   function customizeLabel(data: any) {
     const RADIAN = Math.PI / 180

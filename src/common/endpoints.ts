@@ -49,4 +49,5 @@ export const defiLlama = {
   protocol: (id: string) => `protocol/${id}`,
   tvlChart: `charts`,
   chainList: `chains`,
+  chainTVL: (id: string) => `charts/${id}`,
 }

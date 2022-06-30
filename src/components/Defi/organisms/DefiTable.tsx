@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     textAlign: 'center',
     cursor: 'pointer',
+    position: 'sticky',
+    left: 0,
     '&:hover': {
       color: theme.palette.text.secondary,
     },

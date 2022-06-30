@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.paper,
     borderColor: theme.palette.text.secondary,
     [theme.breakpoints.down('xs')]: {
-      position: 'relative',
       left: 'auto !important',
     },
   },

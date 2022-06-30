@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   stickyColumn: {
     zIndex: 900,
     [theme.breakpoints.down('xs')]: {
-      position: 'relative',
       left: 'auto !important',
     },
   },

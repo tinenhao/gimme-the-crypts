@@ -7,6 +7,7 @@ import { chartData, protocol, protocolDetails, chain } from '../models/api/defi'
 const initialState = {
   protocolList: [] as protocol[],
   chainList: [] as chain[],
+  chainTVLList: [] as chartData[][],
   protocol: {} as protocolDetails,
   TVLChart: [] as chartData[],
   sortKey: 'tvl',
@@ -15,6 +16,7 @@ const initialState = {
   statusChainList: 'IDLE',
   statusProtocol: 'IDLE',
   statusTVLChart: 'IDLE',
+  statusChainTVL: 'IDLE',
 }
 
 interface Param {
@@ -55,6 +57,21 @@ export const fetchProtocolDetails = createAsyncThunk(
     })
 
     return { ...response.data, color: '' }
+  },
+)
+
+export const fetchChainTVL = createAsyncThunk(
+  'chainTVL',
+  async (param: Param) => {
+    const canceler = axios.CancelToken.source()
+
+    const response = await http.request({
+      ...config('defiLlama'),
+      url: API.chainTVL(param.id),
+      cancelToken: canceler.token,
+    })
+
+    return response.data
   },
 )
 
@@ -129,6 +146,16 @@ const protocolSlice = createSlice({
       })
       .addCase(fetchTVLData.rejected, (state) => {
         state.statusTVLChart = 'FAILED'
+      })
+      .addCase(fetchChainTVL.pending, (state) => {
+        state.statusChainTVL = 'LOADING'
+      })
+      .addCase(fetchChainTVL.fulfilled, (state, action) => {
+        state.statusChainTVL = 'IDLE'
+        state.chainTVLList = [...state.chainTVLList, action.payload]
+      })
+      .addCase(fetchChainTVL.rejected, (state) => {
+        state.statusChainTVL = 'FAILED'
       })
   },
 })
