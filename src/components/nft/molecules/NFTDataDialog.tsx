@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { handleDialog } from '../../../features/nftSlice'
+import { handleNotExist, formatPercentage } from '../../../common/number'
 import DialogLayout from '../../template/DialogLayout'
 import Address from '../atoms/Address'
 import moment from 'moment'
@@ -40,12 +41,15 @@ function NFTDataDialog() {
       color: theme.palette.text.primary,
       value: '#' + nft.sale.rank,
     },
-    { title: 'Token', value: nft.sale.paymentToken },
-    { title: 'Marketplace', value: nft.sale.marketplaceName },
-    { title: 'Price (Token)', value: nft.sale.price.toFixed(5) },
+    { title: 'Token', value: handleNotExist(nft.sale.paymentToken) },
+    { title: 'Marketplace', value: handleNotExist(nft.sale.marketplaceName) },
+    {
+      title: 'Price (Token)',
+      value: handleNotExist(nft.sale.price.toFixed(5)),
+    },
     {
       title: 'Price (USD)',
-      value: 'US$ ' + nft.sale.priceUSD.toLocaleString(),
+      value: 'US$ ' + handleNotExist(nft.sale.priceUSD.toLocaleString()),
     },
     {
       title: 'Date',
@@ -66,11 +70,16 @@ function NFTDataDialog() {
 
   const collection = [
     { title: 'Rank', value: '#' + nft.collection.rank },
-    { title: 'Token', value: nft.collection.baseCurrency },
-    { title: 'Sales (Token)', value: nft.collection.value.toFixed(5) },
+    { title: 'Token', value: handleNotExist(nft.collection.baseCurrency) },
+    {
+      title: 'Sales (Token)',
+      value: handleNotExist(nft.collection.value.toFixed(5)),
+    },
     {
       title: 'Sales (USD)',
-      value: 'US$ ' + nft.collection.previousValueUSD.toLocaleString(),
+      value:
+        'US$ ' +
+        handleNotExist(nft.collection.previousValueUSD.toLocaleString()),
     },
     {
       title: 'Percentage Change',
@@ -80,15 +89,15 @@ function NFTDataDialog() {
           : theme.palette.error.light,
       value:
         (nft.collection.changeInValueUSD > 0
-          ? '+' + nft.collection.changeInValueUSD.toFixed(2)
-          : nft.collection.changeInValueUSD.toFixed(2)) + '%',
+          ? '+' + formatPercentage(nft.collection.changeInValueUSD)
+          : formatPercentage(nft.collection.changeInValueUSD)) + '%',
     },
-    { title: 'Buyers', value: nft.collection.buyers },
-    { title: 'Sellers', value: nft.collection.sellers },
+    { title: 'Buyers', value: handleNotExist(nft.collection.buyers) },
+    { title: 'Sellers', value: handleNotExist(nft.collection.sellers) },
     {
       title: 'Transactions',
       address: false,
-      value: nft.collection.transactions,
+      value: handleNotExist(nft.collection.transactions),
     },
   ]
 
