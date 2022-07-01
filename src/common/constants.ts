@@ -12,14 +12,16 @@ export const API_CONFIG: (
     | 'owlracle'
     | 'alternative.me'
     | 'blockchain.com'
-    | 'defiLlama',
+    | 'defiLlama'
+    | 'cryptoslam',
 ) => AxiosRequestConfig = (
   server:
     | 'coinGecko'
     | 'owlracle'
     | 'alternative.me'
     | 'blockchain.com'
-    | 'defiLlama',
+    | 'defiLlama'
+    | 'cryptoslam',
 ) => {
   switch (server) {
     case 'coinGecko':
@@ -49,6 +51,12 @@ export const API_CONFIG: (
     case 'defiLlama':
       return {
         baseURL: 'https://api.llama.fi',
+        responseType: 'json',
+        method: 'GET',
+      }
+    case 'cryptoslam':
+      return {
+        baseURL: 'https://api.cryptoslam.io/v1',
         responseType: 'json',
         method: 'GET',
       }

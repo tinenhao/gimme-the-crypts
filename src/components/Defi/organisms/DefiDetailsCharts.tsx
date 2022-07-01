@@ -17,37 +17,39 @@ const useStyles = makeStyles((theme: Theme) => ({
 function DefiDetailsChart() {
   const classes = useStyles()
   const defi = useAppSelector((state) => state.defiProtocol)
-  const banned = ['UNI', 'MATIC']
+  let banned1 = false
+  for (let i = 0; i < defi.protocol.tokensInUsd.length; i++) {
+    if (Object.keys(defi.protocol.tokensInUsd[i].tokens).length > 20) {
+      banned1 = true
+      break
+    }
+  }
 
   return (
     <div className={classes.main}>
       <Hidden mdDown>
         <Box display="flex" width="100%">
           <DefiChartLayout type={0} />
-          {defi.protocol.tokensInUsd.length !== 0 &&
-            !banned.includes(defi.protocol.symbol) && (
-              <DefiChartLayout type={1} />
-            )}
+          {defi.protocol.tokensInUsd.length !== 0 && !banned1 && (
+            <DefiChartLayout type={1} />
+          )}
         </Box>
         <Box display="flex" width="100%">
           <DefiChartLayout type={2} />
-          {defi.protocol.tokensInUsd.length !== 0 &&
-            !banned.includes(defi.protocol.symbol) && (
-              <DefiChartLayout type={3} />
-            )}
+          {defi.protocol.tokensInUsd.length !== 0 && !banned1 && (
+            <DefiChartLayout type={3} />
+          )}
         </Box>
       </Hidden>
       <Hidden lgUp>
         <DefiChartLayout type={0} />
-        {defi.protocol.tokensInUsd.length !== 0 &&
-          !banned.includes(defi.protocol.symbol) && (
-            <DefiChartLayout type={1} />
-          )}
+        {defi.protocol.tokensInUsd.length !== 0 && !banned1 && (
+          <DefiChartLayout type={1} />
+        )}
         <DefiChartLayout type={2} />
-        {defi.protocol.tokensInUsd.length !== 0 &&
-          !banned.includes(defi.protocol.symbol) && (
-            <DefiChartLayout type={3} />
-          )}
+        {defi.protocol.tokensInUsd.length !== 0 && !banned1 && (
+          <DefiChartLayout type={3} />
+        )}
       </Hidden>
     </div>
   )

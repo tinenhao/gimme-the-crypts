@@ -3,6 +3,7 @@ import {
   AvailableDayRanges,
   AvailableIntervals,
 } from '../models/api/coinMarketChart'
+import { timeframe } from '../models/api/nft'
 
 const owlracle_API_key = '48f432cdbb73459dba8203365a8dc3cf'
 
@@ -50,4 +51,10 @@ export const defiLlama = {
   tvlChart: `charts`,
   chainList: `chains`,
   chainTVL: (id: string) => `charts/${id}`,
+}
+
+export const cryptoSlam = {
+  collection: (timeframe: timeframe) =>
+    `collections/top-100?timeRange=${timeframe}`,
+  sales: (timeframe: timeframe) => `sales/top-100?timeRange=${timeframe}`,
 }
