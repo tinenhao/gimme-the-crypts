@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+![image](https://user-images.githubusercontent.com/88677292/176935108-f8716d74-68cd-4d91-9703-090f953f9c10.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+This project was born out of my interest for the Crypto world and my desire to practice and learn more about frontend development, specifically the framework - React, state management library - Redux and component library - Material UI. I was fortunate to chance upon [Cryptospaces](https://cryptoscapes.org/), a Crypto Dashboard developed by Leonard Tng which served as an inspiration and reference for the development of Gimme the Crypts. 
 
-## Available Scripts
+## Contents
+Gimme the Crypts has 7 main pages as listed below
+ 1. Overview - Top Level Market Data for all supported Cryptocurrencies (Market Cap, Trending Coins, Dominant Coins, ETH gas Price etc.)
+ 2. Correlation - Correlation values between the Top 50 Coins by Market Cap presented in a HeatMap
+ 3. Currency - Currency conversion between the top 250 Coins
+ 4. Coins - List of all supported Coins presented with its corresponding data
+ 5. Exchanges - List of all supported Exchanges presented with its corresponding data
+ 6. Defi - Top level Market Data for the entire Defi Space across multiple chains and the list of all supported Defi protocols with its corresponding data
+ 7. NFT - List of Top 100 NFT Sales and Collections
+ 
+ Take a look at the dashboard at [Test](gajsog)
 
-In the project directory, you can run:
+## Technologies
+This project was developed using
+  1. React
+  2. Redux Toolkit
+  3. Material UI
+  4. Typescript
 
-### `npm start`
+## Data Sources
+Gimme the Crypts is powered by the following Data Sources
+  1. [CoinGecko](https://www.coingecko.com/)
+  2. [Owlracle](https://owlracle.info/eth)
+  3. [Blockchain](https://www.blockchain.com/)
+  4. [DefiLlama](https://defillama.com/)
+  5. [CryptoSlam](https://cryptoslam.io/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Connect with Me
+Feel free to drop me an email at tinenhao@u.nus.edu or through the various platforms on the website if you have any queries or just want to connect. Hope this dashboard has been beneficial to you one way or another and hope you have a nice day. 
