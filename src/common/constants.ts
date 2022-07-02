@@ -3,14 +3,13 @@ import axios, { AxiosRequestConfig } from 'axios'
 
 export const http = rateLimit(axios.create(), {
   maxRequests: 2,
-  perMilliseconds: 1500,
+  perMilliseconds: 1750,
 })
 
 export const API_CONFIG: (
   server:
     | 'coinGecko'
     | 'owlracle'
-    | 'alternative.me'
     | 'blockchain.com'
     | 'defiLlama'
     | 'cryptoslam',
@@ -18,7 +17,6 @@ export const API_CONFIG: (
   server:
     | 'coinGecko'
     | 'owlracle'
-    | 'alternative.me'
     | 'blockchain.com'
     | 'defiLlama'
     | 'cryptoslam',
@@ -33,12 +31,6 @@ export const API_CONFIG: (
     case 'owlracle':
       return {
         baseURL: 'https://owlracle.info/eth',
-        responseType: 'json',
-        method: 'GET',
-      }
-    case 'alternative.me':
-      return {
-        baseURL: ' https://api.alternative.me',
         responseType: 'json',
         method: 'GET',
       }

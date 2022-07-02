@@ -29,6 +29,7 @@ function Defi() {
   const [isLoading2, setIsLoading2] = useState<boolean>(true)
   const [isLoading3, setIsLoading3] = useState<boolean>(true)
   const [isLoading4, setIsLoading4] = useState<boolean>(true)
+  console.log(defi)
 
   useEffect(() => {
     if (defi.protocolList.length === 0) {
@@ -67,10 +68,10 @@ function Defi() {
       for (let i = 0; i < chainList.length; i++) {
         dispatch(fetchChainTVL({ id: chainList[i] }))
       }
-    } else {
+    } else if (defi.chainTVLList.length === 9) {
       setIsLoading4(false)
     }
-  }, [dispatch, defi.chainList])
+  }, [dispatch, defi.chainList, defi.statusChainTVL])
 
   useEffect(() => {
     if (coins.status === 'IDLE' && coins.page <= 2) {

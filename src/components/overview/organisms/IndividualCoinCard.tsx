@@ -3,7 +3,7 @@ import { makeStyles, Theme, CardHeader, Box } from '@material-ui/core'
 import CardLayout from '../../template/CardLayout'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchTrendingCoins } from '../../../features/trendingSlice'
-import { fetchCoins } from '../../../features/coinSlice'
+import { fetchCoins, addPage } from '../../../features/coinSlice'
 import { fetchCoinMarketChartList } from '../../../features/coinMarketChartSlice'
 import { TrendingCoin } from '../../../models/api/trending'
 import TrendingPrice from '../molecules/TrendingPrice'
@@ -50,6 +50,7 @@ function IndividualCoinCard(prop: Prop) {
   useEffect(() => {
     if (coins.value.length === 0 && coins.status === 'IDLE') {
       dispatch(fetchCoins())
+      dispatch(addPage())
     } else if (coins.value.length !== 0) {
       setIsLoading2(false)
     }

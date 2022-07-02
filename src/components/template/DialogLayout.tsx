@@ -14,7 +14,7 @@ const useStyles = (prop: Props) =>
   makeStyles(() => ({
     main: {
       height: prop.height ? prop.height : 700,
-      width: 400,
+      width: prop.width ? prop.width : 400,
       borderRadius: 30,
       paddingBottom: 25,
     },
@@ -29,6 +29,7 @@ interface Props {
   title: string
   onClose: () => void
   height?: number
+  width?: number
   header?: ReactElement<any, any> | ReactElement<any, any>[]
   children: ReactElement<any, any> | ReactElement<any, any>[]
 }

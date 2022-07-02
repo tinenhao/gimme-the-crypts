@@ -101,6 +101,8 @@ function CoinListTable(prop: Prop) {
     }
   }, [dispatch, coins.status, coins.value, coins.page])
 
+  console.log(coins)
+
   function formatData(data: CoinSparkline) {
     return data.price.map((element, index) => {
       return [index, element] as [number, number]

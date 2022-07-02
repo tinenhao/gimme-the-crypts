@@ -13,6 +13,7 @@ import {
   updateCorrelationValues,
   incrementProgress,
 } from '../../../features/correlationSlice'
+import { fetchCoins, addPage } from '../../../features/coinSlice'
 import { correlationCalculator } from '../../../common/correlationCalculator'
 import MapIcon from '@mui/icons-material/Map'
 import CardLayout from '../../template/CardLayout'
@@ -53,6 +54,13 @@ function MainCorrelation() {
   }, [])
 
   useEffect(() => {
+    if (topCoins.value.length === 0) {
+      dispatch(fetchCoins())
+      dispatch(addPage())
+    }
+  }, [])
+
+  useEffect(() => {
     if (
       topCoins.value.length !== 0 &&
       correlation.correlationValues[correlation.timeframe] === undefined
@@ -64,7 +72,7 @@ function MainCorrelation() {
         }),
       )
     }
-  }, [correlation.timeframe])
+  }, [correlation.timeframe, topCoins])
 
   useEffect(() => {
     for (let a = 0; a < 5; a++) {

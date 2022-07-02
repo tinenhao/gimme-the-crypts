@@ -47,6 +47,7 @@ function NFTList() {
   const classes = useStyles()
   const dispatch = useAppDispatch()
   const nft = useAppSelector((state) => state.nft)
+  console.log(nft)
 
   useEffect(() => {
     if (nft.type === 0) {
@@ -77,7 +78,10 @@ function NFTList() {
           </Box>
         )
       })}
-      <NFTDataDialog />
+      {((nft.type === 0 && Object.keys(nft.collection).length !== 0) ||
+        (nft.type === 1 && Object.keys(nft.sale).length !== 0)) && (
+        <NFTDataDialog />
+      )}
     </div>
   ) : (
     <Box

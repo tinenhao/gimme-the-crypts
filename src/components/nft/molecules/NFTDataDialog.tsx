@@ -5,7 +5,6 @@ import {
   Typography,
   List,
   ListItem,
-  Theme,
   useTheme,
   Avatar,
 } from '@material-ui/core'
@@ -16,7 +15,7 @@ import DialogLayout from '../../template/DialogLayout'
 import Address from '../atoms/Address'
 import moment from 'moment'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   content: {
     width: '100%',
     overflow: 'auto',
@@ -35,71 +34,83 @@ function NFTDataDialog() {
   const dispatch = useAppDispatch()
   const theme = useTheme()
   const nft = useAppSelector((state) => state.nft)
-  const sale = [
-    {
-      title: 'Rank',
-      color: theme.palette.text.primary,
-      value: '#' + nft.sale.rank,
-    },
-    { title: 'Token', value: handleNotExist(nft.sale.paymentToken) },
-    { title: 'Marketplace', value: handleNotExist(nft.sale.marketplaceName) },
-    {
-      title: 'Price (Token)',
-      value: handleNotExist(nft.sale.price.toFixed(5)),
-    },
-    {
-      title: 'Price (USD)',
-      value: 'US$ ' + handleNotExist(nft.sale.priceUSD.toLocaleString()),
-    },
-    {
-      title: 'Date',
-      value: moment(nft.sale.timeStamp).format('Do MMM YYYY HH:MM'),
-    },
-    { title: 'Buyer', address: true, value: <Address text={nft.sale.buyer} /> },
-    {
-      title: 'Seller',
-      address: true,
-      value: <Address text={nft.sale.seller} />,
-    },
-    {
-      title: 'Transaction',
-      address: true,
-      value: <Address text={nft.sale.transactionHash} />,
-    },
-  ]
 
-  const collection = [
-    { title: 'Rank', value: '#' + nft.collection.rank },
-    { title: 'Token', value: handleNotExist(nft.collection.baseCurrency) },
-    {
-      title: 'Sales (Token)',
-      value: handleNotExist(nft.collection.value.toFixed(5)),
-    },
-    {
-      title: 'Sales (USD)',
-      value:
-        'US$ ' +
-        handleNotExist(nft.collection.previousValueUSD.toLocaleString()),
-    },
-    {
-      title: 'Percentage Change',
-      color:
-        nft.collection.changeInValueUSD > 0
-          ? theme.palette.success.light
-          : theme.palette.error.light,
-      value:
-        (nft.collection.changeInValueUSD > 0
-          ? '+' + formatPercentage(nft.collection.changeInValueUSD)
-          : formatPercentage(nft.collection.changeInValueUSD)) + '%',
-    },
-    { title: 'Buyers', value: handleNotExist(nft.collection.buyers) },
-    { title: 'Sellers', value: handleNotExist(nft.collection.sellers) },
-    {
-      title: 'Transactions',
-      address: false,
-      value: handleNotExist(nft.collection.transactions),
-    },
-  ]
+  const data =
+    nft.type === 1
+      ? [
+          {
+            title: 'Rank',
+            color: theme.palette.text.primary,
+            value: '#' + nft.sale.rank,
+          },
+          { title: 'Token', value: handleNotExist(nft.sale.paymentToken) },
+          {
+            title: 'Marketplace',
+            value: handleNotExist(nft.sale.marketplaceName),
+          },
+          {
+            title: 'Price (Token)',
+            value: handleNotExist(nft.sale.price.toFixed(5)),
+          },
+          {
+            title: 'Price (USD)',
+            value: 'US$ ' + handleNotExist(nft.sale.priceUSD.toLocaleString()),
+          },
+          {
+            title: 'Date',
+            value: moment(nft.sale.timeStamp).format('Do MMM YYYY HH:MM'),
+          },
+          {
+            title: 'Buyer',
+            address: true,
+            value: <Address text={nft.sale.buyer} />,
+          },
+          {
+            title: 'Seller',
+            address: true,
+            value: <Address text={nft.sale.seller} />,
+          },
+          {
+            title: 'Transaction',
+            address: true,
+            value: <Address text={nft.sale.transactionHash} />,
+          },
+        ]
+      : [
+          { title: 'Rank', value: '#' + nft.collection.rank },
+          {
+            title: 'Token',
+            value: handleNotExist(nft.collection.baseCurrency),
+          },
+          {
+            title: 'Sales (Token)',
+            value: handleNotExist(nft.collection.value.toFixed(5)),
+          },
+          {
+            title: 'Sales (USD)',
+            value:
+              'US$ ' +
+              handleNotExist(nft.collection.previousValueUSD.toLocaleString()),
+          },
+          {
+            title: 'Percentage Change',
+            color:
+              nft.collection.changeInValueUSD > 0
+                ? theme.palette.success.light
+                : theme.palette.error.light,
+            value:
+              nft.collection.changeInValueUSD > 0
+                ? '+' + formatPercentage(nft.collection.changeInValueUSD)
+                : formatPercentage(nft.collection.changeInValueUSD),
+          },
+          { title: 'Buyers', value: handleNotExist(nft.collection.buyers) },
+          { title: 'Sellers', value: handleNotExist(nft.collection.sellers) },
+          {
+            title: 'Transactions',
+            address: false,
+            value: handleNotExist(nft.collection.transactions),
+          },
+        ]
 
   return (
     <DialogLayout
@@ -124,7 +135,7 @@ function NFTDataDialog() {
                 : nft.sale.collectionName}
             </Typography>
           </ListItem>
-          {(nft.type === 0 ? collection : sale).map((obj, index) => {
+          {data.map((obj, index) => {
             return (
               <ListItem key={index} className={classes.item}>
                 <Typography>{obj.title}</Typography>

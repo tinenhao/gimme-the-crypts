@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import { Coin } from '../../../models/api/coin'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
-import { fetchCoins } from '../../../features/coinSlice'
+import { fetchCoins, addPage } from '../../../features/coinSlice'
 import {
   handleDialog,
   updateCoin,
@@ -47,6 +47,7 @@ function ChooseCurrencyDialog() {
   useEffect(() => {
     if (coinArr.length === 0) {
       dispatch(fetchCoins())
+      dispatch(addPage())
     }
   }, [])
 

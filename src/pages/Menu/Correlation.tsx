@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { makeStyles, useTheme, Grid, Hidden } from '@material-ui/core'
+import { useAppDispatch } from '../../app/hooks'
+import { handleWarning } from '../../features/mainSlice'
+import WarningDialog from '../../components/correlation/atoms/WarningDialog'
 import MainCorrelation from '../../components/correlation/organisms/MainCorrelation'
 import SideCorrelation from '../../components/correlation/organisms/SideCorrelation'
 
@@ -12,7 +15,12 @@ const useStyles = makeStyles(() => ({
 
 function Trends() {
   const classes = useStyles()
+  const dispatch = useAppDispatch()
   const theme = useTheme()
+
+  useEffect(() => {
+    dispatch(handleWarning())
+  }, [])
 
   return (
     <Grid container className={classes.main}>
@@ -75,6 +83,7 @@ function Trends() {
           </Grid>
         </Grid>
       </Hidden>
+      <WarningDialog />
     </Grid>
   )
 }

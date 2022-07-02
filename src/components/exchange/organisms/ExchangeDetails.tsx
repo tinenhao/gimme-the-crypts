@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Box, Hidden } from '@material-ui/core'
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
-import { fetchCoins } from '../../../features/coinSlice'
+import { fetchCoins, addPage } from '../../../features/coinSlice'
 import CardLayout from '../../template/CardLayout'
 import ExchangeStats from '../molecules/ExchangeStats'
 import ChartToolbar from '../../coins/atoms/ChartToolbar'
@@ -14,6 +14,7 @@ function ExchangeDetails() {
   useEffect(() => {
     if (exchange.exchangeList.length === 0) {
       dispatch(fetchCoins())
+      dispatch(addPage())
     }
   }, [])
 
