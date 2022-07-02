@@ -2,8 +2,13 @@ import rateLimit from 'axios-rate-limit'
 import axios, { AxiosRequestConfig } from 'axios'
 
 export const http = rateLimit(axios.create(), {
-  maxRequests: 2,
-  perMilliseconds: 1750,
+  maxRequests: 3,
+  perMilliseconds: 1000,
+})
+
+export const httpCorrelation = rateLimit(axios.create(), {
+  maxRequests: 1,
+  perMilliseconds: 1000,
 })
 
 export const API_CONFIG: (

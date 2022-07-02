@@ -67,7 +67,7 @@ function CoinListCard() {
         }),
       )
     }
-  }, [dispatch, coinMarketChart.value30, top15.length])
+  }, [top15.length])
 
   return (
     <CardLayout>
