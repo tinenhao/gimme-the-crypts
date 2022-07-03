@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   buttons: {
     fontSize: 20,
     color: theme.palette.text.primary,
+    border: 'none',
     borderRadius: 15,
     '&.Mui-selected': {
       color: theme.palette.text.primary,

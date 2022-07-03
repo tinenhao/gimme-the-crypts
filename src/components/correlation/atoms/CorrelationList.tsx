@@ -119,9 +119,11 @@ function CorrelationList(prop: Prop) {
                   {coins[element.index].symbol.toUpperCase()}
                 </Typography>
                 <Typography
+                  align="right"
                   style={{
                     marginLeft: 8,
                     marginTop: 8,
+                    width: 55,
                     color: types[prop.type].color,
                   }}
                 >

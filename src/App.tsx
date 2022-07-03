@@ -6,7 +6,10 @@ import {
   CssBaseline,
   Theme,
   ThemeProvider,
+  ThemeOptions,
+  responsiveFontSizes,
 } from '@material-ui/core'
+import { useAppSelector } from './app/hooks'
 
 type fontDisplay = 'swap' | 'auto'
 
@@ -21,8 +24,33 @@ const erbaum = {
   url(${Erbaum}) format('woff')`,
 }
 
-const theme: Theme = createTheme({
+const common: ThemeOptions = {
+  typography: {
+    allVariants: {
+      fontFamily: "'erbaum', sans-serif !important",
+    },
+  },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': [erbaum],
+      },
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
+}
+
+const dark: Theme = createTheme({
   palette: {
+    type: 'dark',
     background: {
       default: '#1b1d31',
       paper: '#26273c',
@@ -49,32 +77,45 @@ const theme: Theme = createTheme({
       main: '#353652',
     },
   },
-  typography: {
-    allVariants: {
-      fontFamily: "'erbaum', sans-serif !important",
+  ...common,
+})
+
+const light: Theme = createTheme({
+  palette: {
+    type: 'light',
+    background: {
+      default: '#f5f5f5',
+      paper: '#e4e7ec',
+    },
+    text: {
+      primary: '#000000',
+      secondary: '#7d7979',
+    },
+    primary: {
+      main: '#2768a0',
+    },
+    secondary: {
+      main: '#f5b94c',
+    },
+    success: {
+      main: '#293e41',
+      light: '#68ca87',
+    },
+    error: {
+      main: '#40263a',
+      light: '#d16a6d',
+    },
+    info: {
+      main: '#d5d9db',
     },
   },
-  overrides: {
-    MuiCssBaseline: {
-      '@global': {
-        '@font-face': [erbaum],
-      },
-    },
-  },
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 960,
-      lg: 1280,
-      xl: 1920,
-    },
-  },
+  ...common,
 })
 
 function App() {
+  const main = useAppSelector((state) => state.main)
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={responsiveFontSizes(main.darkMode ? dark : light)}>
       <Main />
       <CssBaseline />
     </ThemeProvider>

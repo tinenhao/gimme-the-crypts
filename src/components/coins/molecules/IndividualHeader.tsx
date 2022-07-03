@@ -18,7 +18,7 @@ import PercentageChange from '../../overview/atoms/PercentageChange'
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
     width: '100%',
-    height: 150,
+    height: 130,
     display: 'flex',
     justifyContent: 'space-between',
     paddingTop: 15,

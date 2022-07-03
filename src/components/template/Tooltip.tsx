@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.paper,
     fontSize: '11px',
     fontFamily: 'erbaum',
+    color: theme.palette.text.primary,
     border: `1px solid ${theme.palette.text.secondary}`,
     borderRadius: '15px',
     marginTop: 5,

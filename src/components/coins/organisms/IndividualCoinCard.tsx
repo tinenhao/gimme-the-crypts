@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     paddingLeft: 20,
     paddingRight: 20,
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
     [theme.breakpoints.down('xs')]: {
       paddingLeft: 5,
       paddingRight: 5,
@@ -69,6 +73,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.secondary.main,
     color: 'black',
     width: '70%',
+  },
+  mobile: {
+    height: '98%',
+    overflow: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
   },
 }))
 
@@ -114,6 +125,7 @@ function CoinListCard() {
             </Box>
             <Box
               width="100%"
+              minHeight={300}
               className={classes.tab}
               style={{ height: `calc(88% - ${320}px)` }}
             >

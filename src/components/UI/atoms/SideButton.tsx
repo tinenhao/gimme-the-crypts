@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Theme, IconButton } from '@material-ui/core'
+import { makeStyles, Theme, useTheme, IconButton } from '@material-ui/core'
 import {
   GitHub as GitHubIcon,
   Email as EmailIcon,
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function SideButton(prop: Prop) {
   const classes = useStyles()
+  const theme = useTheme()
   const dict = {
     emailLink: 'mailto:tinenhao@hotmail.com',
     linkedinLink: 'https://www.linkedin.com/in/tinenhao/',
@@ -43,18 +44,18 @@ function SideButton(prop: Prop) {
       ? {
           link: dict.emailLink,
           title: dict.emailTitle,
-          icon: <EmailIcon style={{ fill: 'white' }} />,
+          icon: <EmailIcon style={{ fill: theme.palette.text.primary }} />,
         }
       : prop.type === 'github'
       ? {
           link: dict.githubLink,
           title: dict.githubTitle,
-          icon: <GitHubIcon style={{ fill: 'white' }} />,
+          icon: <GitHubIcon style={{ fill: theme.palette.text.primary }} />,
         }
       : {
           link: dict.linkedinLink,
           title: dict.linkedinTitle,
-          icon: <LinkedInIcon style={{ fill: 'white' }} />,
+          icon: <LinkedInIcon style={{ fill: theme.palette.text.primary }} />,
         }
 
   return (

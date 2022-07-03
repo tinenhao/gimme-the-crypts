@@ -1,5 +1,6 @@
 import React from 'react'
-import { makeStyles, Theme, Box, Typography } from '@material-ui/core'
+import { makeStyles, Theme, useTheme, Box, Typography } from '@material-ui/core'
+import { useAppSelector } from '../../../app/hooks'
 import {
   GppGood as LowRiskIcon,
   HourglassTop as MiddleRiskIcon,
@@ -30,6 +31,8 @@ interface Prop {
 
 function GasSpeed(prop: Prop) {
   const classes = useStyles()
+  const main = useAppSelector((state) => state.main)
+  const theme = useTheme()
   const speeds = [
     {
       title: 'High',
@@ -42,14 +45,24 @@ function GasSpeed(prop: Prop) {
     },
     {
       title: 'Medium',
-      color: '#f0d46f',
-      icon: <MiddleRiskIcon style={{ fill: '#f0d46f', marginTop: 8 }} />,
+      color: main.darkMode ? '#f0d46f' : '#d1b85e',
+      icon: (
+        <MiddleRiskIcon
+          style={{ fill: main.darkMode ? '#f0d46f' : '#b59628', marginTop: 8 }}
+        />
+      ),
     },
     {
       title: 'Low',
-      color: '#11e4a2',
+      color: main.darkMode ? '#11e4a2' : '#0fba85',
       icon: (
-        <LowRiskIcon style={{ fill: '#11e4a2', marginTop: 8, marginLeft: 5 }} />
+        <LowRiskIcon
+          style={{
+            fill: main.darkMode ? '#11e4a2' : '#0fba85',
+            marginTop: 8,
+            marginLeft: 5,
+          }}
+        />
       ),
     },
   ]

@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  infoDialog: false,
+  infoDialog: true,
   warningDialog: false,
+  darkMode: true,
 }
 
 const mainSlice = createSlice({
@@ -15,9 +16,16 @@ const mainSlice = createSlice({
     handleWarning(state) {
       state.warningDialog = !state.warningDialog
     },
+    setDarkMode(state) {
+      state.darkMode = true
+    },
+    setLightMode(state) {
+      state.darkMode = false
+    },
   },
 })
 
-export const { handleDialog, handleWarning } = mainSlice.actions
+export const { handleDialog, handleWarning, setDarkMode, setLightMode } =
+  mainSlice.actions
 
 export default mainSlice.reducer

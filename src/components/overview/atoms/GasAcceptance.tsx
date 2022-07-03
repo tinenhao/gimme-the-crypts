@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles, Theme } from '@material-ui/core'
+import { useAppSelector } from '../../../app/hooks'
 import Tooltip from '../../../components/template/Tooltip'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -20,6 +21,7 @@ interface Prop {
 
 function GasAcceptance(prop: Prop) {
   const classes = useStyles()
+  const main = useAppSelector((state) => state.main)
   const speeds = [
     {
       title: '50%',
@@ -27,11 +29,11 @@ function GasAcceptance(prop: Prop) {
     },
     {
       title: '80%',
-      color: '#f0d46f',
+      color: main.darkMode ? '#f0d46f' : '#b59628',
     },
     {
       title: '100%',
-      color: '#11e4a2',
+      color: main.darkMode ? '#11e4a2' : '#0fba85',
     },
   ]
 

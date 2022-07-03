@@ -1,5 +1,12 @@
 import React, { useState } from 'react'
-import { makeStyles, Theme, Box, IconButton, Slide } from '@material-ui/core'
+import {
+  makeStyles,
+  Theme,
+  useTheme,
+  Box,
+  IconButton,
+  Slide,
+} from '@material-ui/core'
 import {
   Menu as DrawerIcon,
   Search as AppBarIcon,
@@ -36,6 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function MobileMainUtils(prop: Prop) {
   const classes = useStyles()
+  const theme = useTheme()
   const [appBarOpen, setAppBarOpen] = useState<boolean>(false)
 
   function handleDrawerClick() {
@@ -45,14 +53,14 @@ function MobileMainUtils(prop: Prop) {
   return (
     <Box className={classes.main}>
       <IconButton onClick={prop.toggleDrawer} className={classes.button}>
-        <DrawerIcon style={{ fill: 'white' }} />
+        <DrawerIcon style={{ fill: theme.palette.text.primary }} />
       </IconButton>
       <IconButton
         onClick={handleDrawerClick}
         className={classes.button}
         style={{ marginLeft: 10 }}
       >
-        <AppBarIcon style={{ fill: 'white' }} />
+        <AppBarIcon style={{ fill: theme.palette.text.primary }} />
       </IconButton>
       <Slide direction="down" in={appBarOpen} appear={false}>
         <Box className={classes.appBar}>

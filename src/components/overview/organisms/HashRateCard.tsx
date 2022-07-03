@@ -76,7 +76,9 @@ function HashRateCard() {
           <CardHeader
             avatar={
               <Avatar style={{ backgroundColor: theme.palette.text.secondary }}>
-                <HandymanIcon style={{ fill: 'black' }} />
+                <HandymanIcon
+                  style={{ fill: theme.palette.background.default }}
+                />
               </Avatar>
             }
             title="BTC Mine"

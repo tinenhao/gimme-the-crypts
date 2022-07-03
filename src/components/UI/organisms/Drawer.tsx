@@ -10,6 +10,10 @@ const useStyles = makeStyles(() => ({
     background: 'transparent',
     width: drawerWidth,
     borderWidth: 0,
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
   },
 }))
 

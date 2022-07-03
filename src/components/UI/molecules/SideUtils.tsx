@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: 20,
     marginTop: 12,
     cursor: 'pointer',
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.primary,
     '&:hover': {
       transform: 'scale(1.15)',
     },

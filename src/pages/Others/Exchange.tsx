@@ -10,6 +10,10 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    overflowY: 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
   },
 }))
 
@@ -18,10 +22,10 @@ function Exchange() {
 
   return (
     <div className={classes.main}>
-      <Box height="32%">
+      <Box height={300}>
         <ExchangeDetails />
       </Box>
-      <Box height="65%">
+      <Box height={`calc(100% - ${300}px)`} minHeight={300} marginTop={2}>
         <ExchangeList />
       </Box>
     </div>

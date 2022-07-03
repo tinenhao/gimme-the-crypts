@@ -83,7 +83,7 @@ function SearchBar() {
           <TextField
             {...params}
             variant="outlined"
-            placeholder="search"
+            placeholder="Search"
             className={classes.textfield}
             InputProps={{
               ...params.InputProps,

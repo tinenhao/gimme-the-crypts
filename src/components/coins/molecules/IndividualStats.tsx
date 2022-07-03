@@ -7,6 +7,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   main: {
     width: '100%',
     height: '12%',
+    minHeight: 100,
+    marginTop: 15,
     display: 'flex',
     justifyContent: 'space-between',
   },

@@ -9,7 +9,7 @@ const useStyles = (prop: Prop) =>
     main: {
       width: '30%',
       height: '100%',
-      minWidth: prop.mobile ? 300 : 340,
+      minWidth: prop.mobile ? '100%' : 340,
       borderRadius: 20,
       padding: 15,
       display: 'flex',

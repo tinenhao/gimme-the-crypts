@@ -10,7 +10,6 @@ import {
   Legend,
 } from 'recharts'
 import { useAppSelector } from '../../../app/hooks'
-import { formatMarketCap, formatYAxis } from '../../../common/number'
 import moment from 'moment'
 import chroma from 'chroma-js'
 
@@ -49,6 +48,7 @@ function ChainPercentageGraph() {
     return element
   })
   chainList.push('Others')
+  console.log(chartData)
 
   const colors = chroma
     .scale(['#f61802', '#f5bb51', '#ffcc40', '#11e4a2', '#1da1f2', '#a660ff'])

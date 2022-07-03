@@ -73,7 +73,9 @@ function DefiDominanceCard() {
           <CardHeader
             avatar={
               <Avatar style={{ backgroundColor: theme.palette.text.secondary }}>
-                <EmojiEventsIcon style={{ fill: 'black' }} />
+                <EmojiEventsIcon
+                  style={{ fill: theme.palette.background.default }}
+                />
               </Avatar>
             }
             title="Defi"

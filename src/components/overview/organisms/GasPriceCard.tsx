@@ -86,7 +86,9 @@ function GasPriceCard() {
           <CardHeader
             avatar={
               <Avatar style={{ backgroundColor: theme.palette.text.secondary }}>
-                <EvStationIcon style={{ fill: 'black' }} />
+                <EvStationIcon
+                  style={{ fill: theme.palette.background.default }}
+                />
               </Avatar>
             }
             title="ETH Gas Station"

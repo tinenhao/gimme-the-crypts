@@ -87,7 +87,9 @@ function CoinListCard() {
           <CardHeader
             avatar={
               <Avatar style={{ backgroundColor: theme.palette.text.secondary }}>
-                <LandscapeIcon style={{ fill: 'black' }} />
+                <LandscapeIcon
+                  style={{ fill: theme.palette.background.default }}
+                />
               </Avatar>
             }
             title="Top Crypts"

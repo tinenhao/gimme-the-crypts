@@ -72,8 +72,14 @@ function MarketCapCard() {
         <div className={classes.main}>
           <CardHeader
             avatar={
-              <Avatar style={{ backgroundColor: theme.palette.text.secondary }}>
-                <DonutLargeIcon style={{ fill: 'black' }} />
+              <Avatar
+                style={{
+                  backgroundColor: theme.palette.text.secondary,
+                }}
+              >
+                <DonutLargeIcon
+                  style={{ fill: theme.palette.background.default }}
+                />
               </Avatar>
             }
             title="Market Cap"
