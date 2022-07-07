@@ -41,7 +41,6 @@ export const fetchTop50Prices = createAsyncThunk(
         cancelToken: canceler.token,
       })
 
-      console.log('fetched ' + i + ' times ' + params.timeframe)
       accResponse.push(response.data as CoinMarketChart)
     }
 

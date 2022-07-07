@@ -47,7 +47,6 @@ function NFTList() {
   const classes = useStyles()
   const dispatch = useAppDispatch()
   const nft = useAppSelector((state) => state.nft)
-  console.log(nft)
 
   useEffect(() => {
     if (nft.type === 0) {

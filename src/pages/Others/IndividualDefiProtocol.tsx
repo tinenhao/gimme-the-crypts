@@ -54,8 +54,6 @@ function IndividualDefiProtocol() {
     }
   }, [id, defi.protocol])
 
-  console.log(useAppSelector((state) => state.defiProtocol).protocol)
-
   return Object.keys(defi.protocol).length <= 1 ||
     defi.protocolList.length === 0 ||
     defi.protocol.color === '' ? (
