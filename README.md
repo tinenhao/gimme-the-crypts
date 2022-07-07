@@ -13,7 +13,7 @@ Gimme the Crypts has 7 main pages as listed below
  6. Defi - Top level Market Data for the entire Defi Space across multiple chains and the list of all supported Defi protocols with its corresponding data
  7. NFT - List of Top 100 NFT Sales and Collections
  
- Take a look at the dashboard at [Test](gajsog)
+ Take a look at the dashboard at [Gimme the Crypts](https://gimme-the-crypts.vercel.app/)
 
 ## Technologies
 This project was developed using
