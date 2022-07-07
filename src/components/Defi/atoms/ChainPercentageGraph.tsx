@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTheme, Box, Typography } from '@material-ui/core'
+import { useTheme } from '@material-ui/core'
 import {
   Area,
   AreaChart,
@@ -48,7 +48,6 @@ function ChainPercentageGraph() {
     return element
   })
   chainList.push('Others')
-  console.log(chartData)
 
   const colors = chroma
     .scale(['#f61802', '#f5bb51', '#ffcc40', '#11e4a2', '#1da1f2', '#a660ff'])

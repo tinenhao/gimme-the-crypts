@@ -28,8 +28,6 @@ function Defi() {
   const [isLoading1, setIsLoading1] = useState<boolean>(true)
   const [isLoading2, setIsLoading2] = useState<boolean>(true)
   const [isLoading3, setIsLoading3] = useState<boolean>(true)
-  const [isLoading4, setIsLoading4] = useState<boolean>(true)
-  console.log(defi)
 
   useEffect(() => {
     if (defi.protocolList.length === 0) {
@@ -68,10 +66,8 @@ function Defi() {
       for (let i = 0; i < chainList.length; i++) {
         dispatch(fetchChainTVL({ id: chainList[i] }))
       }
-    } else if (defi.chainTVLList.length === 9) {
-      setIsLoading4(false)
     }
-  }, [dispatch, defi.chainList, defi.statusChainTVL])
+  }, [defi.chainList])
 
   useEffect(() => {
     if (coins.status === 'IDLE' && coins.page <= 2) {
@@ -83,7 +79,7 @@ function Defi() {
   return isLoading1 ||
     isLoading2 ||
     isLoading3 ||
-    isLoading4 ||
+    defi.chainTVLList.length !== 9 ||
     defi.protocol.color === '' ? (
     <Box
       height="100%"
