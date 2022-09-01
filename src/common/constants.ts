@@ -6,11 +6,6 @@ export const http = rateLimit(axios.create(), {
   perMilliseconds: 1200,
 })
 
-export const httpCorrelation = rateLimit(axios.create(), {
-  maxRequests: 1,
-  perMilliseconds: 1200,
-})
-
 export const API_CONFIG: (
   server:
     | 'coinGecko'
