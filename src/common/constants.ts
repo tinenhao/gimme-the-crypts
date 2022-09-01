@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 
 export const http = rateLimit(axios.create(), {
   maxRequests: 1,
-  perMilliseconds: 1200,
+  perMilliseconds: 1500,
 })
 
 export const API_CONFIG: (
